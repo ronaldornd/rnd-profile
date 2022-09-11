@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Typical from 'react-typical'
 import { X } from "phosphor-react";
 import Share from "./components/Share";
-import Info from "./components/info";
+import Info from "./components/Info";
 import Head from "./components/Head";
 
 
@@ -58,12 +58,12 @@ export default function Page() {
 
     return (
         <>
-            <div className="flex-row w-screen items-center justify-between self-center ontent-center">
+            <div className="flex-row h-screen w-screen items-center justify-around self-center content-center">
                 {alerting ?
                     (
-                        <div className="flex-col ease-out mt-10 justify-center">
-                            <div className="flex py-60  flex-col h-96 border-4 border-black shadow-2xl shadow-green-800 text-center rounded-xl  justify-center  bg-green-500">
-                                <X size={40} onClick={() => { abort() }} className="text-black absolute top-20 m-2 right-10" />
+                        <div className="flex-col p-5 h-full ease-out justify-center">
+                            <div className="flex  flex-col h-full border-4 border-black shadow-2xl shadow-green-800 text-center rounded-xl  justify-center  bg-green-500">
+                                <X size={40} onClick={() => { abort() }} className="text-black absolute top-10 m-2 right-10" />
                                 <Typical
                                     steps={[message]}
                                     loop={10}
@@ -74,11 +74,15 @@ export default function Page() {
 
                         </div>
                     ) :
-                    <>
-                        <Head />
-                        <Info />
-                        <Share />
-                    </>
+                    (
+                        <>
+                            <Head />
+
+                            <div className="flex lg:flex-row flex-col items-center  h-full w-auto justify-between p-5 gap-2  lg:ml-36   ">
+                                <Info />
+                                <Share />
+                            </div>
+                        </>)
                 }
             </div>
         </>
