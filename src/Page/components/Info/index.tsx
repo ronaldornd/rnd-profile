@@ -3,6 +3,7 @@ import profile from "../../../images/profile.jpg";
 
 export default function Info() {
     return (
+
         <>
             <div className="flex lg:mt-0 mt-14 flex-col h-auto w-auto justify-between gap-5">
 
@@ -11,7 +12,7 @@ export default function Info() {
                         <img className="h-28 w-28 rounded-lg" src={profile}></img>
                         <div className="flex-col flex justify-between rounded-xl py-2 px-5 bg-zinc-900 w-auto lg:w-auto h-auto">
                             <h1 className="text-center text-2xl w-auto text-zinc-400 pb-3    ">Básico</h1>
-                            <p className="text-2xl lg:text-xl w-auto text-center">Ronaldo da Silva Barbosa</p>
+                            <p className="text-2xl lg:text-xl w-max text-center ">Ronaldo da Silva Barbosa</p>
                             <div className="flex-row flex justify-between  w-auto">
                                 <h1 className="text-xl w-max">24 anos</h1><h1 className="text-xl w-max">Solteiro</h1>
                             </div>
