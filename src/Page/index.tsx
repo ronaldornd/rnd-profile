@@ -120,7 +120,7 @@ export default function Page() {
 
                                     className="outlet p-5 lg:ml-36 items-center w-full h-full">
                                     <div className=" flex flex-col lg:flex-row gap-5 items-center w-full h-full">
-                                        <Info />
+                                        <Info /><Share />
                                     </div>
                                 </div>
 
