@@ -118,8 +118,8 @@ export default function Page() {
                                 <div
 
 
-                                    className="outlet lg:ml-36 items-center w-full h-full">
-                                    <div className=" flex flex-col lg:flex-row gap-5 items-center w-full lg:h-screen h-full p-5">
+                                    className="outlet lg:ml-36 items-center w-auto h-full">
+                                    <div className=" flex flex-col lg:flex-row  items-center w-full lg:h-screen h-full p-5">
                                         <Info /><Share />
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@ export default function Page() {
                                     :
                                     <div
                                         className="outlet p-5 lg:ml-36 items-center w-full h-full">
-                                        <Info />
+                                        <Academic />
                                     </div>
 
 

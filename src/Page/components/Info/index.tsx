@@ -7,7 +7,7 @@ export default function Info() {
         <>
             <div className="flex lg:mt-0 mt-14 flex-col h-full w-full justify-between gap-5">
 
-                <div className="flex flex-col lg:flex-row w-full gap-auto justify-between">
+                <div className="flex  flex-col lg:flex-row w-max gap-5 justify-between">
                     <div className="flex gap-5 flex-col lg:flex-row bg-zinc-800 rounded-xl  border-green-800 lg:w-max h-fit border-2 p-4  items-center justify-center">
                         <img className="h-28 w-28 rounded-lg" src={profile}></img>
                         <div className="flex-col flex justify-between rounded-xl py-2 px-5 bg-zinc-900 w-auto lg:w-auto h-auto">
@@ -19,7 +19,7 @@ export default function Info() {
                         </div>
 
                     </div>
-                    <div className="flex ga4 bg-zinc-800 rounded-xl  border-green-800 flex-row border-2 p-4  items-center justify-center">
+                    <div className="flex bg-zinc-800 rounded-xl  border-green-800 flex-row border-2 p-4  items-center justify-center">
                         <div className="flex-col flex justify-between rounded-xl py-2 px-5 bg-zinc-900 w-auto h-auto">
                             <h1 className="text-center text-2xl w-auto text-zinc-400 pb-3    ">Contatos</h1>
                             <div className="flex-row  justify-between  w-auto">
@@ -31,7 +31,7 @@ export default function Info() {
                     </div>
 
                 </div>
-                <div className="flex bg-zinc-800 rounded-xl border-green-800 flex-row w-auto h-auto border-2 p-4  items-center justify-center">
+                <div className="flex w-full bg-zinc-800 rounded-xl border-green-800 flex-row  h-auto border-2 p-4  items-center justify-center">
                     <div className="flex-col rounded-xl py-2 px-5 bg-zinc-900 w-auto h-auto">
                         <h1 className="text-center text-2xl w-auto text-zinc-400 pb-3    ">Blá, blá, blá...</h1>
                         <span>É bem dificil isso de se descrever, mas como eu encaro todo desafio, vms tentar.

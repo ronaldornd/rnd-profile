@@ -1,11 +1,13 @@
+import construction from "../../../images/construction.svg";
 export default function Academic() {
     return (
         <>
 
-            <div className="snap-center flex lg:mt-0 mt-14 flex-col h-auto w-auto justify-between gap-5">
-                <div className="flex flex-col lg:flex-row lg:w-auto sm:w-screen gap-5 justify-between">
-                    <div className="flex gap-5 flex-col lg:flex-row bg-zinc-800 rounded-xl  border-green-800 w-auto h-fit border-2 p-4  items-center justify-center">
-                        hello
+            <div className=" flex flex-1 lg:mt-0 mt-14 flex-col h-full w-full items-center justify-center gap-5">
+                <div className="flex flex-col w-full h-full  justify-center">
+                    <div className="flex gap-5 flex-col  bg-zinc-800 rounded-xl  border-green-800 w-full h-full border-2 p-4  self-center justify-center">
+                        <img src={construction} className=" h-200" />
+                        Under construction!!
                     </div>
                 </div>
             </div>
