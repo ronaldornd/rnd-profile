@@ -5,10 +5,10 @@ export default function Info() {
     return (
 
         <>
-            <div className="flex lg:mt-0 mt-14 flex-col h-auto w-auto justify-between gap-5">
+            <div className="flex lg:mt-0 mt-14 flex-col h-full w-full justify-between gap-5">
 
-                <div className="flex flex-col lg:flex-row lg:w-auto sm:w-screen gap-5 justify-between">
-                    <div className="flex gap-5 flex-col lg:flex-row bg-zinc-800 rounded-xl  border-green-800 w-auto h-fit border-2 p-4  items-center justify-center">
+                <div className="flex flex-col lg:flex-row w-full gap-auto justify-between">
+                    <div className="flex gap-5 flex-col lg:flex-row bg-zinc-800 rounded-xl  border-green-800 lg:w-max h-fit border-2 p-4  items-center justify-center">
                         <img className="h-28 w-28 rounded-lg" src={profile}></img>
                         <div className="flex-col flex justify-between rounded-xl py-2 px-5 bg-zinc-900 w-auto lg:w-auto h-auto">
                             <h1 className="text-center text-2xl w-auto text-zinc-400 pb-3    ">Básico</h1>

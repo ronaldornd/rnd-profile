@@ -88,7 +88,7 @@ export default function Page() {
 
     return (
         <>
-            <div className="flex-row h-full w-full items-center justify-around self-center content-center">
+            <div className="flex-row h-full w-full items-center justify-center self-center content-center">
                 {alerting ?
                     (
                         <div className="flex-col p-5 h-full ease-out justify-center">
@@ -118,8 +118,8 @@ export default function Page() {
                                 <div
 
 
-                                    className="outlet p-5 lg:ml-36 items-center w-full h-full">
-                                    <div className=" flex flex-col lg:flex-row gap-5 items-center w-full h-full">
+                                    className="outlet lg:ml-36 items-center w-full h-full">
+                                    <div className=" flex flex-col lg:flex-row gap-5 items-center w-full lg:h-screen h-full p-5">
                                         <Info /><Share />
                                     </div>
                                 </div>
