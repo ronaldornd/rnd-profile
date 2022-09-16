@@ -88,37 +88,30 @@ export default function Page() {
 
     return (
         <>
-            <div className="flex-row h-full w-full items-center justify-center self-center content-center">
+            <div className="flex-row h-full w-screen items-center justify-center self-center content-center">
                 {alerting ?
                     (
                         <div className="flex-col p-5 h-full ease-out justify-center">
                         </div>
                     ) :
                     (
-                        <div className="Tabs" onScroll={() => {
-                            if (isVisible1) {
-
-                            }
-                        }} >
+                        <>
                             <ul className="nav fixed lg:flex-col sm:flex-row sm:w-full  justify-center flex p-4 gap-2 bg-green-600 items-center h-14 w-full lg:w-36 lg:h-full ">
-                                <div className="h-14 w-14 lg:h-28 lg:w-28 lg:mt-3 left-1 lg:left-5 lg:top-5  absolute justify-center">
+                                <li className="h-14 w-14 lg:h-28 lg:w-28 lg:mt-3 left-1 lg:left-5 lg:top-5  absolute justify-center">
 
                                     <img src={icon} />
-                                </div>
+                                </li>
 
-                                <li onMouseEnter={handleTab1} className={activeTab == "tab1" ? "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Básico</li>
-                                <li onMouseEnter={handleTab2} className={activeTab == "tab2" ? "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Acadêmico</li>
-                                <li onMouseEnter={handleTab3} className={activeTab == "tab3" ? "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Habilidades</li>
+                                <li onMouseOver={handleTab1} className={activeTab == "tab1" ? "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:hover:-translate-y-1 hover:-translate-y-20 hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Básico</li>
+                                <li onMouseOver={handleTab2} className={activeTab == "tab2" ? "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:hover:-translate-y-1 hover:-translate-y-20 hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Acadêmico</li>
+                                <li onMouseOver={handleTab3} className={activeTab == "tab3" ? "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:hover:-translate-y-1 hover:-translate-y-20 hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Habilidades</li>
 
                             </ul>
 
 
                             {activeTab === "tab1" ?
 
-                                <div
-
-
-                                    className="outlet lg:ml-36 items-center w-auto h-full">
+                                <div className=" flex lg:ml-36 items-center w-auto h-full">
                                     <div className=" flex flex-col lg:flex-row  items-center w-full lg:h-screen h-full p-5">
                                         <Info /><Share />
                                     </div>
@@ -129,7 +122,7 @@ export default function Page() {
                                 : activeTab === 'tab2' ?
                                     <div
 
-                                        className="outlet p-5 lg:ml-36 items-center w-full h-full">
+                                        className="lg:ml-36 p-5">
                                         <Academic />
                                     </div>
                                     :
@@ -141,7 +134,7 @@ export default function Page() {
 
                             }
 
-                        </div >
+                        </>
 
                     )
                 }
