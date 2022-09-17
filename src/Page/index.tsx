@@ -6,6 +6,7 @@ import Info from "./components/Info";
 import icon from "../images/icon.png"
 import { Nav } from "react-bootstrap";
 import Academic from "./components/Academic";
+import { Barricade } from "phosphor-react";
 
 const variants = {
     visible: { opacity: 1, transition: { duration: 1 } },
@@ -96,15 +97,15 @@ export default function Page() {
                     ) :
                     (
                         <>
-                            <ul className="nav fixed lg:flex-col sm:flex-row sm:w-full  justify-center flex p-4 gap-2 bg-green-600 items-center h-14 w-full lg:w-36 lg:h-full ">
-                                <li className="h-14 w-14 lg:h-28 lg:w-28 lg:mt-3 left-1 lg:left-5 lg:top-5  absolute justify-center">
+                            <ul className="nav fixed lg:flex-col sm:flex-row justify-center flex p-4 gap-2 lg:p-0 pl-14 bg-green-600 items-center h-14 w-full lg:w-36 lg:h-full ">
+                                <li className="h-14 w-14 lg:h-28 lg:w-28 lg:mt-3 left-0 lg:left-5 lg:top-5  absolute justify-center">
 
                                     <img src={icon} />
                                 </li>
 
-                                <li onMouseOver={handleTab1} className={activeTab == "tab1" ? "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:hover:-translate-y-1 hover:-translate-y-20 hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Básico</li>
-                                <li onMouseOver={handleTab2} className={activeTab == "tab2" ? "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:hover:-translate-y-1 hover:-translate-y-20 hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Acadêmico</li>
-                                <li onMouseOver={handleTab3} className={activeTab == "tab3" ? "transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:hover:-translate-y-1 hover:-translate-y-20 hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Habilidades</li>
+                                <li onMouseOver={handleTab1} className={activeTab == "tab1" ? "transition ease-in-out delay-150  lg:hover:-translate-y-1 lg:hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:lg:hover:-translate-y-1 hover:-translate-y-20 lg:hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Básico</li>
+                                <li onMouseOver={handleTab2} className={activeTab == "tab2" ? "transition ease-in-out delay-150  lg:hover:-translate-y-1 lg:hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:lg:hover:-translate-y-1 hover:-translate-y-20 lg:hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Acadêmico</li>
+                                <li onMouseOver={handleTab3} className={activeTab == "tab3" ? "transition ease-in-out delay-150  lg:hover:-translate-y-1 lg:hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:lg:hover:-translate-y-1 hover:-translate-y-20 lg:hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Habilidades</li>
 
                             </ul>
 
@@ -127,8 +128,9 @@ export default function Page() {
                                     </div>
                                     :
                                     <div
-                                        className="outlet p-5 lg:ml-36 items-center w-full h-full">
-                                        <Academic />
+                                        className="outletv flex flex-col p-32 lg:ml-36 items-center w-screen h-sreen justify-center">
+                                        <Barricade size={100} />
+                                        Em Construção
                                     </div>
 
 
