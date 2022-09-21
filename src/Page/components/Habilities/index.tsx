@@ -182,7 +182,7 @@ export default function Habilities() {
                                     <Disc className="h-6 w-6 m-1 " />
                                     Instalação
                                 </span>
-                                <span className="flex flex-row col-span-1 justify-center items-center text-center">
+                                <span className="flex w-max flex-row col-span-1 justify-center items-center text-center">
                                     <Wrench className="h-6 w-6 m-1" />
 
                                     Troca de peças
