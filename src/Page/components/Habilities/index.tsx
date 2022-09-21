@@ -9,6 +9,7 @@ import apksvg from "../../../images/apk.svg";
 import cleansvg from "../../../images/clean.svg";
 import createsvg from "../../../images/create.svg";
 import backsvg from "../../../images/back.svg";
+import glasssvg from "../../../images/glass.svg";
 import { AndroidLogo, CheckCircle, ClockClockwise, Disc, DotsNine, Eraser, FigmaLogo, GearSix, GoogleChromeLogo, GooglePlayLogo, LinuxLogo, ScribbleLoop, WindowsLogo, Wrench } from "phosphor-react";
 
 export default function Habilities() {
@@ -160,6 +161,10 @@ export default function Habilities() {
                                         Reparo de peças
                                     </span>
                                     <span className="flex flex-row items-center">
+                                        <img src={glasssvg} className="h-6 w-6 m-1" />
+                                        Aplicação de peliculas
+                                    </span>
+                                    <span className="flex flex-row items-center">
                                         <GooglePlayLogo className="h-6 w-6 m-1" />
                                         Auxilio para instalação de serviços
                                     </span>
@@ -268,7 +273,9 @@ export default function Habilities() {
                     </div>
 
                 </div>
+                <div className="h-full w-full bg-zinc-700">
 
+                </div>
 
             </div>
         </>
