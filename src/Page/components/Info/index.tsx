@@ -13,7 +13,7 @@ export default function Info() {
                         <img className="h-20 w-20 md:h-28 md:w-28 rounded-lg" src={profile}></img>
                         <div className="md:flex-col sm:flex-row justify-between rounded-xl p-2 bg-zinc-900 w-full lg:w-max h-auto">
                             <h1 className="text-center text-2xl w-auto text-zinc-400 pb-3    ">Básico</h1>
-                            <p className="text-xl  w-auto text-center ">Ronaldo da Silva Barbosa</p>
+                            <p className="t text-xl  w-auto text-center ">Ronaldo da Silva Barbosa</p>
                             <div className="flex-row flex lg:justify-between justify-around  lg:w-auto">
                                 <h1 className="text-xl w-max">24 anos</h1><h1 className="text-xl w-max">Solteiro</h1>
                             </div>
@@ -24,8 +24,8 @@ export default function Info() {
                         <div className="flex-col flex justify-between rounded-xl p-2 bg-zinc-900 w-full h-auto">
                             <h1 className="text-center text-2xl w-auto text-zinc-400 pb-3    ">Contatos</h1>
                             <div className="flex-col flex items-center justify-center  w-auto">
-                                <h1 className="text-xl w-auto">ronaldo.s.barbosa@outlook.com</h1>
-                                <h1 className="text-xl w-auto">(11)95690-3190 (81)98291-4552</h1>
+                                <h1 className=" text-lg lg:text-xl w-auto">ronaldo.s.barbosa@outlook.com</h1>
+                                <h1 className="text-lg lg:text-xl w-auto">(11)95690-3190 (81)98291-4552</h1>
                             </div>
                         </div>
 

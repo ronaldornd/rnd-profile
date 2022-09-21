@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 import Share from "./components/Share";
 import Info from "./components/Info";
 import icon from "../images/icon.png"
-import { Nav } from "react-bootstrap";
 import Academic from "./components/Academic";
-import { Barricade } from "phosphor-react";
+import Habilities from "./components/Habilities";
 
 const variants = {
     visible: { opacity: 1, transition: { duration: 1 } },
@@ -127,10 +125,8 @@ export default function Page() {
                                         <Academic />
                                     </div>
                                     :
-                                    <div
-                                        className="outletv flex flex-col p-32 lg:ml-36 items-center w-screen h-sreen justify-center">
-                                        <Barricade size={100} />
-                                        Em Construção
+                                    <div className="lg:ml-36 p-5">
+                                        <Habilities />
                                     </div>
 
 
