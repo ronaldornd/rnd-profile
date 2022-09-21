@@ -232,42 +232,42 @@ export default function Habilities() {
 
                         </span>
                     </span>
-                    <div className="flex flex-col col-span-1 row-span-1 h-max gap-2">
-                        <span className="flex flex-col w-full h-full text-center text-3xl m-2 p-2">
+                    <div className="flex flex-col col-span-1 row-span-1 h-max gap-1">
+                        <span className="flex flex-col w-full h-full text-center text-3xl p-2">
                             Habilidades
                         </span>
 
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" />
                             Facilidade no aprendizado
                         </span>
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" />
                             Desenvolvimento de bases de dados
                         </span>
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" />
                             Resolução de problemas e depuração
                         </span>
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" /> Criação de programas em Java
                         </span>
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" />Gerenciamento de banco de dados
                         </span>
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" /> Fundamentos de hardware
                         </span>
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" /> Desenvolvimento de páginas web
                         </span>
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" /> Implementação de JavaScript
                         </span>
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" /> Gerenciamento de redes
                         </span>
-                        <span className="flex flex-row gap-2 items-center">
+                        <span className="flex flex-row gap-2 items-center lg:text-lg">
                             <CheckCircle color="#22ff59" /> Engenharia de Software
                         </span>
                     </div>
