@@ -49,69 +49,72 @@ export default function Page() {
 
     useEffect(() => {
         setAlerting(false);
-        let seconds = 0;
-        const timer = setInterval(() => {
-            seconds += 1;
-            console.log(seconds)
+        if (!alerting) {
 
-            switch (seconds) {
-                case 1:
-                    setMessage('Olá')
-                    break;
-                case 2:
-                    setMessage('Obrigado pelo interesse no meu perfil 🥰')
-                    break;
-                case 4:
-                    setMessage('Estou testando uma nova ferramenta 🚧')
-                    break;
-                case 7:
-                    setMessage('E gostaria muito que você pudesse me ajudar!')
-                    break;
-                case 10:
-                    setMessage('É só clicar no botão de download e instalar o app 😁💕')
-                    break;
-                case 13:
-                    setMessage('Fica tranquilo que é tudo seguro, só não tive 💵 para colocar na PlayStore ')
-                    break;
-                case 17:
-                    abort()
-                    clearInterval(timer)
-                    break;
-            }
+            let steps = 16;
+            const timer = setInterval(() => {
+                steps += 1;
+                console.log(steps)
 
-        }, 3000);
+                switch (steps) {
+                    case 1:
+                        setMessage('Olá')
+                        break;
+                    case 2:
+                        setMessage('Obrigado pelo interesse no meu perfil 🥰')
+                        break;
+                    case 4:
+                        setMessage('Estou testando uma nova ferramenta 🚧')
+                        break;
+                    case 7:
+                        setMessage('E gostaria muito que você pudesse me ajudar!')
+                        break;
+                    case 10:
+                        setMessage('É só clicar no botão de download e instalar o app 😁💕')
+                        break;
+                    case 13:
+                        setMessage('Fica tranquilo que é tudo seguro, só não tive 💵 para colocar na PlayStore ')
+                        break;
+                    case 17:
+                        abort()
+                        clearInterval(timer)
+                        break;
+                }
 
-        return (() => clearInterval(timer))
+            }, 3000);
+
+        }
+
     }, []);
 
 
     return (
         <>
-            <div className="flex-row h-full w-screen items-center justify-center self-center content-center">
+            <div className="flex lg:flex-row flex-col h-sreen w-screen items-center justify-center self-center content-center">
                 {alerting ?
                     (
-                        <div className="flex-col p-5 h-full ease-out justify-center">
+                        <div className="flex-col p-3 h-full ease-out justify-center">
                         </div>
                     ) :
                     (
                         <>
-                            <ul className="nav fixed lg:flex-col sm:flex-row justify-center flex p-4 gap-2 lg:p-0 pl-14 bg-green-600 items-center h-14 w-full lg:w-36 lg:h-full ">
-                                <li className="h-14 w-14 lg:h-28 lg:w-28 lg:mt-3 left-0 lg:left-5 lg:top-5  absolute justify-center">
+                            <ul className="flex lg:flex-col justify-start lg:justify-center    bg-green-600 items-center h-14 w-screen lg:w-40 2xl:w-52 lg:h-screen lg:left-0 ">
+                                <span className="h-14 w-14 lg:h-28 lg:w-28 2xl:w-40 lg:mt-3 left-0 lg:left-4 lg:top-4 lg:fixed justify-center">
 
                                     <img src={icon} />
-                                </li>
+                                </span>
 
-                                <li onMouseOver={handleTab1} className={activeTab == "tab1" ? "transition ease-in-out delay-150  lg:hover:-translate-y-1 lg:hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:lg:hover:-translate-y-1 hover:-translate-y-20 lg:hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Básico</li>
-                                <li onMouseOver={handleTab2} className={activeTab == "tab2" ? "transition ease-in-out delay-150  lg:hover:-translate-y-1 lg:hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:lg:hover:-translate-y-1 hover:-translate-y-20 lg:hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Acadêmico</li>
-                                <li onMouseOver={handleTab3} className={activeTab == "tab3" ? "transition ease-in-out delay-150  lg:hover:-translate-y-1 lg:hover:scale-110  text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium bg-black" : "transition ease-in-out delay-150  lg:lg:hover:-translate-y-1 hover:-translate-y-20 lg:hover:scale-110   text-gray-300 hover:bg-black hover:text-white self-center px-3 py-2 rounded-md lg:text-lg font-medium"} >Habilidades</li>
+                                <li onMouseOver={handleTab1} className={activeTab == "tab1" ? "transition ease-in-out delay-150  lg:hover:-translate-y-1 lg:hover:scale-110  text-white hover:bg-black hover:text-white self-center px-2 py-2 rounded-md lg:text-lg 2xl:text-2xl font-medium bg-black" : "transition ease-in-out delay-150  lg:lg:hover:-translate-y-1 hover:-translate-y-20 lg:hover:scale-110   text-black hover:bg-black hover:text-white self-center px-2 py-2 rounded-md lg:text-lg 2xl:text-2xl font-medium"} >Básico</li>
+                                <li onMouseOver={handleTab2} className={activeTab == "tab2" ? "transition ease-in-out delay-150  lg:hover:-translate-y-1 lg:hover:scale-110  text-white hover:bg-black hover:text-white self-center px-2 py-2 rounded-md lg:text-lg 2xl:text-2xl font-medium bg-black" : "transition ease-in-out delay-150  lg:lg:hover:-translate-y-1 hover:-translate-y-20 lg:hover:scale-110   text-black hover:bg-black hover:text-white self-center px-2 py-2 rounded-md lg:text-lg 2xl:text-2xl font-medium"} >Acadêmico</li>
+                                <li onMouseOver={handleTab3} className={activeTab == "tab3" ? "transition ease-in-out delay-150  lg:hover:-translate-y-1 lg:hover:scale-110  text-white hover:bg-black hover:text-white self-center px-2 py-2 rounded-md lg:text-lg 2xl:text-2xl font-medium bg-black" : "transition ease-in-out delay-150  lg:lg:hover:-translate-y-1 hover:-translate-y-20 lg:hover:scale-110   text-black hover:bg-black hover:text-white self-center px-2 py-2 rounded-md lg:text-lg 2xl:text-2xl font-medium"} >Habilidades</li>
 
                             </ul>
 
 
                             {activeTab === "tab1" ?
 
-                                <div className=" flex lg:ml-36 items-center w-auto h-full">
-                                    <div className=" flex flex-col lg:flex-row  items-center w-full lg:h-screen h-full p-5">
+                                <div className="flex  w-full">
+                                    <div className=" flex flex-col lg:flex-row  items-center w-full lg:h-screen h-full p-3 gap-3">
                                         <Info /><Share />
                                     </div>
                                 </div>
@@ -121,11 +124,11 @@ export default function Page() {
                                 : activeTab === 'tab2' ?
                                     <div
 
-                                        className="lg:ml-36 p-5">
+                                        className="flex w-full h-full">
                                         <Academic />
                                     </div>
                                     :
-                                    <div className="lg:ml-36 p-5">
+                                    <div className="flex w-full h-full">
                                         <Habilities />
                                     </div>
 
