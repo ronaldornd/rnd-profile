@@ -20,6 +20,8 @@ import icon from "../../../images/icon.png"
 import live1 from "../../../images/live1.jpg";
 import live2 from "../../../images/live2.jpg";
 import live3 from "../../../images/live3.jpg";
+import app1 from "../../../images/app1.png";
+import app2 from "../../../images/app2.png";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -90,7 +92,7 @@ export default function Habilities() {
     return (
 
 
-        <Container className="grid lg:h-screen 2xl:mx-36 lg:grid-flow-row gap-3 justify-items-center  w-full">
+        <Container className="grid lg:h-screen 2xl:mx-36 lg:grid-flow-row gap-3 justify-items-center p-3 w-full">
             <Row className="grid grid-flow-row w-full h-full grid-cols-3 lg:grid-cols-6 items-center justify-items-center lg:gap-4 gap-3 justify-between">
                 <span className="flex flex-col w-full items-center 2xl:gap-3 gap-2 m-1 p-2 border-2 border-green-700 bg-black rounded-lg">
                     <span className="flex flex-row items-center justify-center gap-1 2xl:text-3xl">
@@ -347,7 +349,7 @@ export default function Habilities() {
 
             </Row>
             <Row className="grid justify-items-center grid-cols-3 grid-rows-2 gap-2 h-max w-full">
-                <Row className="col-span-3 flex lg:text-3xl text-2xl w-full h-max text-center">Projetos</Row>
+                <Row className="col-span-3 flex lg:text-3xl text-2xl w-full h-max justify-center text-center">Projetos</Row>
                 <Col className=" col-span-1 lg:row-span-1 row-span-2 border-2 rounded-xl w-max justify-center justify-items-center self-center  border-red-600  " onMouseEnter={() => { setIsOpen(true); handleDialog() }}>
                     <span className="flex p-1 lg:flex-row flex-col items-center w-full justify-center">
                         <img src={logosvg} className="2xl:h-10 h-8  mx-2" />
@@ -369,7 +371,7 @@ export default function Habilities() {
                             <Dialog.Description className="grid gap-2 lg:grid-flow-row py-2 lg:grid-cols-2 ">
 
 
-                                <span className="flex row-span-2 items-center justify-center content-center place-items-center">
+                                <span className="flex lg:h-[calc(100vh-18rem)] row-span-2 items-center justify-center content-center place-items-center">
 
                                     <Carousel indicators={false} controls={false} className="lg:h-full  mx-4"
                                         activeIndex={carouselIndex}
@@ -435,7 +437,7 @@ export default function Habilities() {
                     </Dialog>
 
                 </Col>
-                <Col className=" col-span-1 lg:row-span-1 row-span-2 border-2 rounded-xl w-max justify-center justify-items-center self-center  border-red-600  animate-pulse" onMouseEnter={() => { setIsOpen2(true); handleDialog() }}>
+                <Col className=" col-span-1 lg:row-span-1 row-span-2 border-2 rounded-xl w-max justify-center justify-items-center self-center  border-red-600  " onMouseEnter={() => { setIsOpen2(true); handleDialog() }}>
                     <span className="flex p-1 lg:flex-row flex-col items-center w-full justify-center">
                         <img src={logosvg} className="2xl:h-10 h-8  mx-1" />
                         <h1 className="mx-2 lg:text-lg 2xl:text-2xl flex flex-row">
@@ -457,29 +459,29 @@ export default function Habilities() {
 
 
 
-                                <span className="flex row-span-2 items-center justify-center content-center place-items-center">
+                                <span className="flex lg:h-[calc(100vh-18rem)] row-span-2 items-center justify-center content-center place-items-center">
 
                                     <Carousel indicators={false} controls={false} className="lg:h-full mx-4"
                                         activeIndex={carouselIndex}
                                     >
-                                        <Carousel.Item>
+                                        <Carousel.Item >
                                             <img
                                                 src={live1}
-                                                className="h-[calc(100vh-25rem)] lg:h-96 2xl:h-full border-2 rounded-3xl"
+                                                className="h-[calc(100vh-24rem)] lg:h-96 2xl:h-full border-2 rounded-3xl"
+                                            />
+                                        </Carousel.Item>
+                                        <Carousel.Item>
+                                            <img
+                                                src={app1}
+                                                className="h-[calc(100vh-24rem)] lg:h-[calc(100vh-20rem)] border-2 rounded-3xl"
                                             />
 
                                         </Carousel.Item>
 
                                         <Carousel.Item >
                                             <img
-                                                src={live2}
-                                                className="h-[calc(100vh-25rem)] lg:h-96 2xl:h-full border-2 rounded-3xl"
-                                            />
-                                        </Carousel.Item>
-                                        <Carousel.Item >
-                                            <img
-                                                src={live3}
-                                                className="h-[calc(100vh-25rem)] lg:h-96 2xl:h-full border-2 rounded-3xl"
+                                                src={app2}
+                                                className="h-[calc(100vh-24rem)] lg:h-[calc(100vh-20rem)] border-2 rounded-3xl"
                                             />
                                         </Carousel.Item>
                                     </Carousel>

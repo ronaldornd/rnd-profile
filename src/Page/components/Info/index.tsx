@@ -15,7 +15,7 @@ export default function Info() {
                             <h1 className="text-center lg:text-3xl text-2xl w-auto text-zinc-400 pb-3    ">Básico</h1>
                             <p className="text-xl 2xl:text-3xl w-auto text-center ">Ronaldo da Silva Barbosa</p>
                             <div className="flex-row flex lg:justify-between justify-around  lg:w-auto">
-                                <h1 className="text-xl  2xl:text-3xl w-max">24 anos</h1><h1 className="text-xl 2xl:text-3xl w-max">Solteiro</h1>
+                                <h1 className="text-xl  2xl:text-3xl w-max">25 anos</h1><h1 className="text-xl 2xl:text-3xl w-max">Solteiro</h1>
                             </div>
                         </div>
 
@@ -45,9 +45,18 @@ export default function Info() {
                 <div className="flex flex-col">
                     <span className="text-center lg:text-3xl text-2xl flex text-white pb-3 self-center">Sociais</span>
                     <div className=" grid-flow-row grid grid-cols-2 lg:grid-cols-4"  >
-                        <GithubLogo className="flex h-16 2xl:h-20 w-full items-center" color="#22ff59" />
-                        <LinkedinLogo className="flex h-16 2xl:h-20 w-full  items-center" color="#22ff59" />
-                        <InstagramLogo className="flex h-16 2xl:h-20 w-full  items-center" color="#22ff59" />
+                        <a href="https://github.com/ronaldornd">
+                            <GithubLogo className="flex h-16 2xl:h-20 w-full items-center" color="#22ff59" />
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/ronaldosbarbosaa/">
+                            <LinkedinLogo className="flex h-16 2xl:h-20 w-full  items-center" color="#22ff59" />
+                        </a>
+
+                        <a href="https://www.instagram.com/ronaldornd/">
+                            <InstagramLogo className="flex h-16 2xl:h-20 w-full  items-center" color="#22ff59" />
+                        </a>
+
                         <FacebookLogo className="flex h-16 2xl:h-20 w-full  items-center" color="#22ff59" />
                     </div>
                 </div>
