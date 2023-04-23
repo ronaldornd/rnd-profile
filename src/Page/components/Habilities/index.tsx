@@ -37,6 +37,8 @@ export default function Habilities() {
     const [carouselIndex, setCarouselIndex] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const [isOpen2, setIsOpen2] = useState(false);
+    const [isOpen3, setIsOpen3] = useState(false);
+    const [isOpen4, setIsOpen4] = useState(false);
     let index = 0;
 
 
@@ -92,7 +94,7 @@ export default function Habilities() {
     return (
 
 
-        <Container className="grid lg:h-screen 2xl:mx-36 lg:grid-flow-row gap-3 justify-items-center p-3 w-full">
+        <Container className="grid lg:h-screen 2xl:mx-36 lg:grid-flow-row gap-3 justify-items-center p-3 mb-14 lg:mb-0 w-full">
             <Row className="grid grid-flow-row w-full h-full grid-cols-3 lg:grid-cols-6 items-center justify-items-center lg:gap-4 gap-3 justify-between">
                 <span className="flex flex-col w-full items-center 2xl:gap-3 gap-2 m-1 p-2 border-2 border-green-700 bg-black rounded-lg">
                     <span className="flex flex-row items-center justify-center gap-1 2xl:text-3xl">
@@ -200,8 +202,10 @@ export default function Habilities() {
                     </span>
                 </span>
             </Row>
+            {/*descrição de habilidades*/}
             <Row className="grid grid-cols-1 grid-rows-3 gap-3 lg:gap-0 lg:grid-rows-1 grid-flow-col lg:grid-flow-row lg:grid-cols-3 lg:w-max w-full h-full items-center justify-center">
                 <span className="flex flex-col gap-3 grid-col-span-1 w-full h-full">
+                    {/* habilidades com sistemas*/}
                     <span className="flex flex-col gap-2 w-full h-max bg-zinc-800 rounded-lg border-green-800 border-2 p-2 items-center justify-center">
                         <h1 className="text-xl 2xl:p-3  2xl:text-3xl">Instalação de sistemas</h1>
                         <div className=" bg-zinc-900 rounded-lg w-full p-2">
@@ -224,6 +228,8 @@ export default function Habilities() {
                             </div>
                         </div>
                     </span>
+
+                    {/* habilidades com celulares*/}
                     <span className="flex flex-col w-full h-max bg-zinc-800 rounded-lg sm:gap-2 border-green-800 border-2 p-2 items-center justify-center">
                         <h1 className="text-xl 2xl:p-3  2xl:text-3xl">Celulares</h1>
                         <div className=" bg-zinc-900 rounded-lg w-full p-2">
@@ -251,6 +257,7 @@ export default function Habilities() {
                 </span>
                 <span className="flex flex-col gap-3 grid-col-span-1 w-full h-full">
 
+                    {/* habilidades com computadores*/}
                     <span className="flex flex-col w-full h-max bg-zinc-800 rounded-lg sm:gap-2 border-green-800 border-2 p-2 items-center text-center justify-center">
                         <h1 className="text-xl 2xl:p-3  2xl:text-3xl">Manutenção de computadores</h1>
 
@@ -279,8 +286,10 @@ export default function Habilities() {
                         </span>
 
                     </span>
+
+                    {/* habilidades com sites*/}
                     <span className="flex flex-col w-full h-max bg-zinc-800 rounded-lg sm:gap-2 border-green-800 border-2 p-2 items-center text-center justify-center">
-                        <h1 className="text-xl 2xl:p-3  2xl:text-3xl">WEB</h1>
+                        <h1 className="flex flex-row text-xl 2xl:p-3  2xl:text-3xl">WEB <h2 className="text-lg ml-1 align-super">(React)</h2></h1>
 
                         <span className="grid rounded-lg w-full grid-cols-2 p-2 bg-zinc-900 gap-2" >
                             <span className="flex flex-row justify-center items-center text-center 2xl:text-2xl w-max">
@@ -304,7 +313,6 @@ export default function Habilities() {
                                 Criação de versão mobile (APK)
                             </span>
                         </span>
-
                     </span>
                 </span>
                 <div className="flex flex-col col-span-1 row-span-1 w-full h-full gap-1">
@@ -348,11 +356,12 @@ export default function Habilities() {
                 </div>
 
             </Row>
-            <Row className="grid justify-items-center grid-cols-3 grid-rows-2 gap-2 h-max w-full">
-                <Row className="col-span-3 flex lg:text-3xl text-2xl w-full h-max justify-center text-center">Projetos</Row>
+            <Row className="grid justify-items-center grid-cols-3 grid-rows-3 gap-2 h-max w-full">
+                <Row className="col-span-3 flex lg:text-3xl text-2xl w-full h-full justify-center text-center">Projetos</Row>
+
                 <Col className=" col-span-1 lg:row-span-1 row-span-2 border-2 rounded-xl w-max justify-center justify-items-center self-center  border-red-600  " onMouseEnter={() => { setIsOpen(true); handleDialog() }}>
-                    <span className="flex p-1 lg:flex-row flex-col items-center w-full justify-center">
-                        <img src={logosvg} className="2xl:h-10 h-8  mx-2" />
+                    <span className="flex p-2 lg:flex-row flex-col items-center w-full justify-center">
+                        <img src={logosvg} className="h-10  mx-1" />
                         <h1 className="mx-1 lg:text-lg 2xl:text-2xl flex flex-row">
                             Messages
                             <Planet size={18} className="align-super ml-1" />
@@ -437,10 +446,10 @@ export default function Habilities() {
                     </Dialog>
 
                 </Col>
-                <Col className=" col-span-1 lg:row-span-1 row-span-2 border-2 rounded-xl w-max justify-center justify-items-center self-center  border-red-600  " onMouseEnter={() => { setIsOpen2(true); handleDialog() }}>
-                    <span className="flex p-1 lg:flex-row flex-col items-center w-full justify-center">
-                        <img src={logosvg} className="2xl:h-10 h-8  mx-1" />
-                        <h1 className="mx-2 lg:text-lg 2xl:text-2xl flex flex-row">
+                <Col className=" col-span-1 lg:row-span-1 row-span-2 border-2 rounded-xl h-max w-max justify-center justify-items-center self-center  border-red-600  " onMouseEnter={() => { setIsOpen2(true); handleDialog() }}>
+                    <span className="flex p-2 lg:flex-row flex-col items-center w-full justify-center">
+                        <img src={logosvg} className="h-10  mx-1" />
+                        <h1 className="mx-1 lg:text-lg 2xl:text-2xl flex flex-row">
                             Messages
                             <AndroidLogo size={18} className="align-super ml-1" />
                         </h1>
@@ -523,26 +532,31 @@ export default function Habilities() {
                         </Dialog.Panel>
                     </Dialog>
                 </Col>
-                <div className="flex w-full h-full">
+                <Col className="row-span-2">
+                    <span className="flex flex-col animate-pulse"><span className="row-span-1 text-5xl text-center">+</span><span className="row-span-1 text-lg">em breve</span></span>
+                </Col>
+                {/* 
+                
+                <Col className="col-span-1 lg:row-span-1 row-span-2 p-0 h-full flex flex-col gap-2 lg:flex-row  justify-items-center self-center">
 
-                    {/*  
-                    <Col className="flex border-2 rounded-xl w-max justify-center justify-items-center self-center  border-white  " onMouseEnter={() => { setIsOpen2(true); handleDialog() }} onMouseLeave={() => setIsOpen2(false)}>
-                        <span className="flex p-1 lg:flex-row flex-col items-center w-max justify-center">
+
+                    <Col className="row-span-1 border-2 rounded-xl w-full border-white lg:justify-center " onMouseEnter={() => { setIsOpen3(true); handleDialog() }} onMouseLeave={() => setIsOpen3(false)}>
+                        <span className="flex flex-row items-center lg:justify-center  w-full h-full">
                             <img src={icon} className="2xl:h-10 h-8  mx-1" />
-                            <h1 className="mx-2 lg:text-lg 2xl:text-2xl flex flex-row">
+                            <h1 className="lg:text-lg 2xl:text-2xl flex flex-row">
                                 RND
-                                <AndroidLogo size={18} className="align-super ml-1" />
+                                <Planet size={15} className="align-super ml-1" />
                             </h1>
 
                         </span>
-                        <Dialog className="fixed flex lg:w-max lg:h-max h-full p-2 lg:right-9 lg:top-8 bottom-0 lg:mr-8  " open={isOpen2} onClose={() => { setIsOpen2(false) }}>
+                        <Dialog className="fixed flex lg:w-max lg:h-max h-full p-2 lg:right-9 lg:top-8 bottom-0 lg:mr-8  " open={isOpen3} onClose={() => { setIsOpen3(false) }}>
                             <Dialog.Panel className=" flex p-1 flex-col lg:w-96 w-full h-full justify-between rounded-lg border-2 border-white bg-zinc-800">
                                 <Dialog.Title className="lg:text-3xl text-2xl font-bold text-center m-2 w-full">
                                     <button onClick={() => handleDialog()} className="absolute top-5 left-5"><Repeat size={35} /></button>
 
                                     Live Messages
                                     <span className=" align-super text-xs ml-1">(app)</span>
-                                    <button onClick={() => setIsOpen2(false)} className="absolute top-5 right-5"><X size={35} /></button>
+                                    <button onClick={() => setIsOpen3(false)} className="absolute top-5 right-5"><X size={35} /></button>
 
                                 </Dialog.Title>
                                 <Dialog.Description>
@@ -581,27 +595,25 @@ export default function Habilities() {
                             </Dialog.Panel>
                         </Dialog>
                     </Col>
-                */}
-                    {/*  
 
-                     <Col className=" col-span-1 lg:row-span-1 border-2 rounded-xl w-max justify-center justify-items-center self-center  border-white  " onMouseEnter={() => { setIsOpen2(true); handleDialog() }} onMouseLeave={() => setIsOpen2(false)}>
-                        
-                       <span className="flex p-1 lg:flex-row flex-col items-center w-full justify-center">
+                    <Col className="row-span-1 border-2 rounded-xl w-full border-white  " onMouseEnter={() => { setIsOpen4(true); handleDialog() }} onMouseLeave={() => setIsOpe4(false)}>
+
+                        <span className="flex flex-row  items-center lg:justify-center w-full h-full">
                             <img src={icon} className="2xl:h-10 h-8  mx-1" />
-                            <h1 className="mx-2 lg:text-lg 2xl:text-2xl flex flex-row">
+                            <h1 className="lg:text-lg 2xl:text-2xl flex flex-row">
                                 RND
-                                <AndroidLogo size={18} className="align-super ml-1" />
+                                <AndroidLogo size={15} className="align-super ml-1" />
                             </h1>
 
                         </span>
-                        <Dialog className="fixed flex lg:w-max lg:h-max h-full p-2 lg:right-96 lg:top-8 bottom-0 lg:mr-8  " open={isOpen2} onClose={() => { setIsOpen2(false) }}>
+                        <Dialog className="fixed flex lg:w-max lg:h-max h-full p-2 lg:right-96 lg:top-8 bottom-0 lg:mr-8  " open={isOpen4} onClose={() => { setIsOpen4(false) }}>
                             <Dialog.Panel className=" flex p-1 flex-col lg:w-96 w-full h-full justify-between rounded-lg border-2 border-white bg-zinc-800">
                                 <Dialog.Title className="lg:text-3xl text-2xl font-bold text-center m-2 w-full">
                                     <button onClick={() => handleDialog()} className="absolute top-5 left-5"><Repeat size={35} /></button>
 
                                     Live Messages
                                     <span className=" align-super text-xs ml-1">(app)</span>
-                                    <button onClick={() => setIsOpen2(false)} className="absolute top-5 right-5"><X size={35} /></button>
+                                    <button onClick={() => setIsOpen4(false)} className="absolute top-5 right-5"><X size={35} /></button>
 
                                 </Dialog.Title>
                                 <Dialog.Description>
@@ -624,7 +636,7 @@ export default function Habilities() {
                                                 <img
                                                     src={live2}
                                                     className="lg:h-full h-96 border-2 rounded-3xl"
-                                                    />
+                                                />
                                             </Carousel.Item>
                                             <Carousel.Item >
                                                 <img
@@ -640,9 +652,9 @@ export default function Habilities() {
                             </Dialog.Panel>
                         </Dialog>
                     </Col>
-                */}
 
-                </div>
+                </Col>
+ */}
             </Row>
 
         </Container>
