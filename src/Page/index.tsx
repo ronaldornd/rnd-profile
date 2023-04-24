@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import Share from "./components/Share";
 import Info from "./components/Info";
 import icon from "../images/icon.png"
 import Academic from "./components/Academic";
@@ -48,11 +47,12 @@ export default function Page() {
     };
 
     useEffect(() => {
-        setAlerting(false);
-        if (!alerting) {
+        setAlerting(true);
+        if (alerting) {
 
-            let steps = 16;
+            let steps = 0;
             const timer = setInterval(() => {
+                setAlerting(false);
                 steps += 1;
                 console.log(steps)
 
@@ -93,7 +93,8 @@ export default function Page() {
             <div className="flex lg:flex-row flex-col h-sreen w-screen items-center justify-center self-center content-center">
                 {alerting ?
                     (
-                        <div className="flex-col p-3 h-full ease-out justify-center">
+                        <div className="flex-col p-3  ease-out justify-center h-screen w-screen bg-green-300 rounded-xl border-4  border-black text-black text-center justify-items-center text-5xl font-thin">
+                            {message}
                         </div>
                     ) :
                     (
@@ -115,7 +116,7 @@ export default function Page() {
 
                                 <div className="flex  w-full">
                                     <div className=" flex flex-col lg:flex-row  items-center w-full lg:h-screen h-full p-3 gap-3">
-                                        <Info /><Share />
+                                        <Info />
                                     </div>
                                 </div>
 

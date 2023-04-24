@@ -1,5 +1,5 @@
-import downloadImage from "../../../images/download.svg";
-import qrImage from "../../../images/frame.svg";
+import downloadImage from "../../../../images/download.svg";
+import qrImage from "../../../../images/frame.svg";
 export default function Share() {
     return (
         <div className="flex flex-col gap-2 w-full lg:w-max">

@@ -413,22 +413,22 @@ export default function Habilities() {
                                     <span className="flex text-sm flex-row w-max justify-between mx-4 lg:mt-4 lg:mx-5 2xl:mx-11">
 
                                         <span className="flex flex-col justify-center m-2">
-                                            <img src={vitesvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" alt="React Native" />
+                                            <img src={vitesvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" />
 
                                             <span className="lg:text-sm 2xl:text-xl">Vite</span>
                                         </span>
                                         <span className="flex flex-col justify-center m-2">
-                                            <img src={typesvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" alt="React Native" />
+                                            <img src={typesvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" />
 
                                             <span className="lg:text-sm 2xl:text-xl">TypeScript</span>
                                         </span>
                                         <span className="flex flex-col justify-center m-2">
-                                            <img src={reactredsvg} className=" mt-2 h-8 md:h-12 2xl:h-20 text-red-600" alt="React Native" />
+                                            <img src={reactredsvg} className=" mt-2 h-8 md:h-12 2xl:h-20 text-red-600" />
 
                                             <span className="lg:text-sm 2xl:text-xl">ReactJS</span>
                                         </span>
                                         <span className="flex flex-col justify-center m-2 items-center">
-                                            <GithubLogo className="h-8 w-8 md:h-14 md:w-14 2xl:h-20 2xl:w-20" color="red" />
+                                            <GithubLogo className="h-10 w-10 md:h-16 md:w-16 2xl:h-24 2xl:w-24" color="red" />
 
                                             <span className="lg:text-sm 2xl:text-xl">OAuth</span>
                                         </span>
@@ -482,7 +482,7 @@ export default function Habilities() {
                                         <Carousel.Item>
                                             <img
                                                 src={app1}
-                                                className="h-[calc(100vh-24rem)] lg:h-[calc(100vh-20rem)] border-2 rounded-3xl"
+                                                className="h-[calc(100vh-24rem)] lg:h-[calc(100vh-20rem)]  border-2 rounded-3xl"
                                             />
 
                                         </Carousel.Item>
@@ -496,27 +496,28 @@ export default function Habilities() {
                                     </Carousel>
                                 </span>
 
-                                <span className="flex flex-col justify-center h-max w-max  rounded-lg place-self-center mb-0 p-2 text-center text-lg md :text-xl 2xl:text-3xl bg-black">
+                                <span className="flex flex-col justify-center h-max w-max  rounded-lg place-self-center mb-0 p-2 text-center text-lg lg:text-xl 2xl:text-3xl bg-black">
                                     Techs:
                                     <span className="flex text-sm flex-row w-max justify-between mx-4 lg:mt-4 lg:mx-5 2xl:mx-11">
 
                                         <span className="flex flex-col justify-center m-2">
-                                            <img src={exposvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" alt="React Native" />
+                                            <img src={exposvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" />
 
                                             <span className="lg:text-sm 2xl:text-xl">Expo</span>
                                         </span>
                                         <span className="flex flex-col justify-center m-2">
-                                            <img src={typesvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" alt="React Native" />
+                                            <img src={typesvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" />
 
                                             <span className="lg:text-sm 2xl:text-xl">TypeScript</span>
                                         </span>
                                         <span className="flex flex-col justify-center m-2">
-                                            <img src={reactredsvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" alt="React Native" />
+
+                                            <img src={reactredsvg} className="mt-2 h-8 md:h-12 2xl:h-20 text-red-600" />
 
                                             <span className="lg:text-sm 2xl:text-xl">React Native</span>
                                         </span>
                                         <span className="flex flex-col justify-center m-2 items-center">
-                                            <GithubLogo className="h-8 w-8 md:h-14 md:w-14 2xl:h-20 2xl:w-20" color="red" />
+                                            <GithubLogo className="h-10 w-10 md:h-16 md:w-16 2xl:h-24 2xl:w-24" color="red" />
 
                                             <span className="lg:text-sm 2xl:text-xl">OAuth</span>
                                         </span>
@@ -532,8 +533,8 @@ export default function Habilities() {
                         </Dialog.Panel>
                     </Dialog>
                 </Col>
-                <Col className="row-span-2">
-                    <span className="flex flex-col animate-pulse"><span className="row-span-1 text-5xl text-center">+</span><span className="row-span-1 text-lg">em breve</span></span>
+                <Col className="row-span-2 lg:row-span-1">
+                    <span className="flex gap-2 flex-col h-full items-center lg:flex-row animate-pulse"><span className="row-span-1 flex text-5xl text-center">+</span><span className="row-span-1 flex text-lg lg:text-4xl text-center" >em breve</span></span>
                 </Col>
                 {/* 
                 
