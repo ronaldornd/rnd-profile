@@ -1,41 +1,25 @@
-import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo } from "phosphor-react";
-import Contacts from "./Contacts";
 import Description from "./Description";
 import Profile from "./Profile/indes";
-import Share from "./Share";
 import Social from "./Social";
 
-const boxes = "flex gap-3 w-auto h-full bg-zinc-800 rounded-xl  border-green-800 flex-row border-2 p-3  items-center justify-center";
+
 export default function Info() {
     return (
 
         <>
-            <div className=" flex lg:mt-0  flex-col h-full w-full justify-center gap-3">
+            <div className="lg:grid flex flex-col grid-flow-row grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 lg:mt-0 h-max w-full align-center gap-3">
 
-                <div className="flex gap-3 flex-col lg:flex-row  w-full justify-between">
-                    <div className={boxes}>
+                    <div className="flex col-span-2 row-span-1 gap-3 w-full h-max bg-zinc-800 rounded-xl border-green-800 flex-row border-2 p-3">
                         <Profile />
 
                     </div>
-                    <div className={boxes}>
-                        <Contacts />
-
-                    </div>
-
-                </div>
-                <div className={boxes}>
-                    <Description />
-
-
-                </div>
-
-
-                <div>
+                <div className="flex col-span-1 row-span-1 w-full h-full">
                     <Social />
                 </div>
-                <div>
-                    <Share />
+                <div className="flex col-span-3 row-span-1 gap-3 w-auto h-max bg-zinc-800 rounded-xl border-green-800 flex-row border-2 p-3">
+                    <Description />
                 </div>
+                
 
             </div>
 

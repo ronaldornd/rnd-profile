@@ -1,4 +1,4 @@
-declare module 'react-typical';
+
 declare module 'react-step-progress-bar' {
     import React from 'react';
 
