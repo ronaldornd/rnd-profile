@@ -18,12 +18,8 @@ export default function Head() {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
-
             </nav >
         </div >
     )

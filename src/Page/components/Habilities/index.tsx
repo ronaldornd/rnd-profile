@@ -15,7 +15,6 @@ import logosvg from "../../../images/logo.svg";
 import exposvg from "../../../images/expo.svg";
 import typesvg from "../../../images/typescript.svg";
 import vitesvg from "../../../images/vite.svg";
-import icon from "../../../images/icon.png"
 
 import live1 from "../../../images/live1.jpg";
 import live2 from "../../../images/live2.jpg";
@@ -319,39 +318,39 @@ export default function Habilities() {
                     <span className="flex flex-col w-full h-max text-center xl:text-3xl text-2xl p-2">
                         Habilidades
                     </span>
-<div className="flex flex-col h-full justify-between my-3">
+                    <div className="flex flex-col h-full justify-between my-3">
 
-                    <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
-                        <CheckCircle color="#22ff59" />
-                        Facilidade no aprendizado
-                    </span>
-                    <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
-                        <CheckCircle color="#22ff59" />
-                        Desenvolvimento de bases de dados
-                    </span>
-                    <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
-                        <CheckCircle color="#22ff59" />
-                        Resolução de problemas e depuração
-                    </span>
-                    <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
-                        <CheckCircle color="#22ff59" />Gerenciamento de banco de dados
-                    </span>
-                    <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
-                        <CheckCircle color="#22ff59" /> Fundamentos de hardware
-                    </span>
-                    <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
-                        <CheckCircle color="#22ff59" /> Desenvolvimento de páginas web
-                    </span>
-                    <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
-                        <CheckCircle color="#22ff59" /> Implementação de JavaScript
-                    </span>
-                    <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
-                        <CheckCircle color="#22ff59" /> Gerenciamento de redes
-                    </span>
-                    <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
-                        <CheckCircle color="#22ff59" /> Engenharia de Software
-                    </span>
-</div>
+                        <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
+                            <CheckCircle color="#22ff59" />
+                            Facilidade no aprendizado
+                        </span>
+                        <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
+                            <CheckCircle color="#22ff59" />
+                            Desenvolvimento de bases de dados
+                        </span>
+                        <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
+                            <CheckCircle color="#22ff59" />
+                            Resolução de problemas e depuração
+                        </span>
+                        <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
+                            <CheckCircle color="#22ff59" />Gerenciamento de banco de dados
+                        </span>
+                        <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
+                            <CheckCircle color="#22ff59" /> Fundamentos de hardware
+                        </span>
+                        <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
+                            <CheckCircle color="#22ff59" /> Desenvolvimento de páginas web
+                        </span>
+                        <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
+                            <CheckCircle color="#22ff59" /> Implementação de JavaScript
+                        </span>
+                        <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
+                            <CheckCircle color="#22ff59" /> Gerenciamento de redes
+                        </span>
+                        <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
+                            <CheckCircle color="#22ff59" /> Engenharia de Software
+                        </span>
+                    </div>
                 </div>
 
             </Row>

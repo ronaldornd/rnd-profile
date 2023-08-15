@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import Info from "./components/Info";
 import icon from "../images/icon.png"
 import Academic from "./components/Academic";
@@ -80,11 +79,8 @@ export default function Page() {
                         clearInterval(timer)
                         break;
                 }
-
             }, 3000);
-
         }
-
     }, []);
 
 
@@ -100,8 +96,8 @@ export default function Page() {
                     (
                         <>
                             <ul className="flex xl:flex-col justify-start xl:justify-center    bg-green-600 items-center h-14 w-screen xl:w-40 2xl:w-52 xl:h-screen xl:left-0 ">
-                                <span className="h-14 w-14 xl:h-28 xl:w-28 2xl:w-40 xl:mt-3 left-0 xl:left-4 xl:top-4 xl:fixed justify-center">
 
+                                <span className="h-14 w-14 xl:h-28 xl:w-28 2xl:w-40 xl:mt-3 left-0 xl:left-4 xl:top-4 xl:fixed justify-center">
                                     <img src={icon} />
                                 </span>
 
@@ -120,8 +116,6 @@ export default function Page() {
                                     </div>
                                 </div>
 
-
-
                                 : activeTab === 'tab2' ?
                                     <div
 
@@ -133,11 +127,8 @@ export default function Page() {
                                         <Habilities />
                                     </div>
 
-
                             }
-
                         </>
-
                     )
                 }
             </div >

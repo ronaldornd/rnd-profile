@@ -1,9 +1,7 @@
 import ProgressBar from "@ramonak/react-progress-bar";
-
-
-
-import { Barricade, GraduationCap, MapPin } from "phosphor-react";
+import { GraduationCap, MapPin } from "phosphor-react";
 import rocket from "../../../images/rocket.svg";
+
 export default function Academic() {
     return (
         <>
