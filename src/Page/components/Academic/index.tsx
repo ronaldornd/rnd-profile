@@ -7,7 +7,7 @@ import rocket from "../../../images/rocket.svg";
 export default function Academic() {
     return (
         <>
-            <div className="grid p-3 lg:grid-cols-2 w-full h-full items-center  justify-center gap-3">
+            <div className="grid p-3 xl:grid-cols-2 w-full h-full items-center  justify-center gap-3">
                 <div className="flex flex-col w-full h-full bg-zinc-800 rounded-lg  border-green-800 border-2 ">
                     <div className=" flex flex-col bg-black w-full p-2 rounded-b-xl rounded-lg">
                         <div className="flex flex-row justify-between w-full items-center">
