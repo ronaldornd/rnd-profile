@@ -207,7 +207,7 @@ export default function Habilities() {
                 <span className="flex flex-col gap-3 grid-col-span-1 w-full h-full">
                     {/* habilidades com sistemas*/}
                     <span className="flex flex-col gap-2 w-full h-max bg-zinc-800 rounded-lg border-green-800 border-2 p-2 items-center justify-center">
-                        <h1 className="text-xl 2xl:p-3  2xl:text-2xl">Instalação de sistemas</h1>
+                        <h1 className="text-xl 2xl:p-1  2xl:text-2xl">Instalação de sistemas</h1>
                         <div className=" bg-zinc-900 rounded-lg w-full p-2">
                             <div className="w-full flex-row grid grid-flow-col grid-rows-2 grid-cols-2 gap-2 text-center items-justify-items-center" >
                                 <span className="col-span-1 flex xl:flex-col items-center justify-center flex-row 2xl:text-xl w-max">
@@ -231,7 +231,7 @@ export default function Habilities() {
 
                     {/* habilidades com celulares*/}
                     <span className="flex flex-col w-full h-max bg-zinc-800 rounded-lg sm:gap-2 border-green-800 border-2 p-2 items-center justify-center">
-                        <h1 className="text-xl 2xl:p-3  2xl:text-2xl">Celulares</h1>
+                        <h1 className="text-xl 2xl:p-1  2xl:text-2xl">Celulares</h1>
                         <div className=" bg-zinc-900 rounded-lg w-full p-2">
                             <div className="flex flex-col gap-2 " >
                                 <span className="flex flex-row items-center 2xl:text-xl w-max">
@@ -259,7 +259,7 @@ export default function Habilities() {
 
                     {/* habilidades com computadores*/}
                     <span className="flex flex-col w-full h-max bg-zinc-800 rounded-lg sm:gap-2 border-green-800 border-2 p-2 items-center text-center justify-center">
-                        <h1 className="text-xl 2xl:p-3  2xl:text-2xl">Manutenção de computadores</h1>
+                        <h1 className="text-xl 2xl:p-1  2xl:text-2xl">Manutenção de computadores</h1>
 
                         <span className="grid rounded-lg w-full grid-cols-2 p-2 bg-zinc-900 gap-2" >
                             <span className="flex flex-row col-span-1 justify-center items-center text-center 2xl:text-xl w-max">
@@ -289,7 +289,7 @@ export default function Habilities() {
 
                     {/* habilidades com sites*/}
                     <span className="flex flex-col w-full h-max bg-zinc-800 rounded-lg sm:gap-2 border-green-800 border-2 p-2 items-center text-center justify-center">
-                        <h1 className="flex flex-row text-xl 2xl:p-3  2xl:text-2xl">WEB <h2 className="text-lg ml-1 align-super">(React)</h2></h1>
+                        <h1 className="flex flex-row text-xl 2xl:p-1  2xl:text-2xl">WEB <h2 className="text-lg ml-1 align-super">(React)</h2></h1>
 
                         <span className="grid rounded-lg w-full grid-cols-2 p-2 bg-zinc-900 gap-2" >
                             <span className="flex flex-row justify-center items-center text-center 2xl:text-xl w-max">
@@ -316,10 +316,10 @@ export default function Habilities() {
                     </span>
                 </span>
                 <div className="flex flex-col col-span-1 row-span-1 w-full h-full gap-1">
-                    <span className="flex flex-col w-full h-max text-center xl:text-xl text-2xl p-2">
+                    <span className="flex flex-col w-full h-max text-center xl:text-3xl text-2xl p-2">
                         Habilidades
                     </span>
-<div className="flex flex-col h-full justify-between">
+<div className="flex flex-col h-full justify-between my-3">
 
                     <span className="flex flex-row gap-2 items-center xl:text-sm 2xl:text-xl w-full">
                         <CheckCircle color="#22ff59" />

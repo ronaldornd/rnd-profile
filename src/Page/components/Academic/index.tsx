@@ -82,7 +82,7 @@ export default function Academic() {
                         </span>
 
                     </div>
-                    <span className="flex text-justify 2xl:text-2xl m-2 p-2 rounded-lg bg-zinc-900">Esse foi o divisor de águas pra eu ter certeza que é nessa área que quero me especializar.  O foco era desenvolver para o mercado online, o que mais cresce atualmente. Como no anterior eu estava indo bem, e até fui monitor bolsista em uma matéria que tive excelência (WEB 2), mas antes do início do último período eu cedi á minha necessidade de ver meus familiares que não via há 6 anos e dessa vez fui mais esperto e tranquei a matricula para um possível retorno 😉.</span>
+                    <span className="flex text-justify 2xl:text-2xl m-2 p-2 rounded-lg bg-zinc-900">Esse foi o divisor de águas pra eu ter certeza que é nessa área que quero me especializar.  O foco era desenvolver para o mercado online. Fui monitor bolsista em uma matéria que tive excelência (WEB 2), mas antes do início do último período eu cedi á minha necessidade de ver meus familiares que não via há 6 anos e dessa vez fui mais esperto e tranquei a matricula para um possível retorno 😉.</span>
                 </div>
                 <div className="flex w-full h-full bg-zinc-800 rounded-lg  border-purple-800 flex-col border-2 items-center justify-center">
                     <div className=" flex flex-col bg-black w-full p-2 rounded-b-xl rounded-lg">
