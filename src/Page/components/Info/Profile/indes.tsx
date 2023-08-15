@@ -15,7 +15,7 @@ export default function Profile() {
                     <p className="w-full">25 anos</p><p className="w-full">Solteiro</p>
                     
                     </div>
-                    <div className="flex flex-col xl:flex-row w-full xl:text-2xl justify-between ">
+                    <div className="flex flex-col xl:flex-row w-full xl:text-2xl text-lg justify-between ">
 
                         <p className="flex w-max gap-1 self-center items-center"> <At  />ronaldo.s.barbosa@outlook.com</p>
                         <p className="flex w-max gap-1 self-center items-center"><Phone  /> (81)98291-4552</p>
