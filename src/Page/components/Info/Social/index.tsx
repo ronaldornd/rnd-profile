@@ -1,4 +1,4 @@
-import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo } from "phosphor-react";
+import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo } from "@phosphor-icons/react"
 // componente para links sociais
 export default function Social() {
     return (

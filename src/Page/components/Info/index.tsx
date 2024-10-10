@@ -1,5 +1,6 @@
 import Description from "./Description";
 import Profile from "./Profile/indes";
+import Projects from "./Projects";
 import Social from "./Social";
 
 export default function Info() {
@@ -14,6 +15,9 @@ export default function Info() {
                 </div>
                 <div className="flex col-span-3 row-span-1 gap-3 w-auto h-max bg-zinc-800 rounded-xl border-green-800 flex-row border-2 p-3">
                     <Description />
+                </div>
+                <div className="flex col-span-3 row-span-1 gap-2 w-auto h-max flex-row">
+                    <Projects />
                 </div>
             </div>
         </>

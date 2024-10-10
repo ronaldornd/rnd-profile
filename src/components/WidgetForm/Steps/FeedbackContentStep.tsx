@@ -1,4 +1,4 @@
-import { ArrowLeft } from "phosphor-react";
+import { ArrowLeft } from "@phosphor-icons/react"
 import { FormEvent, useState } from "react";
 import { FeedbackType, feedbackTypes } from "..";
 import { api } from "../../../libs/api";
