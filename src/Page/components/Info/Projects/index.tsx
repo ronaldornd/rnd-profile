@@ -69,8 +69,8 @@ export default function Projects() {
   }
 
   return (
-    <Row className="grid justify-items-center grid-cols-3 grid-rows-2 gap-2 h-max w-full">
-      <Row className="col-span-3 flex xl:text-3xl text-2xl w-full h-max justify-center text-center">
+    <Row className="grid justify-items-center grid-cols-4 grid-rows-2 gap-2 h-max w-full">
+      <Row className="col-span-5 flex xl:text-3xl text-2xl w-full h-max justify-center text-center">
         Projetos
       </Row>
 
@@ -389,7 +389,7 @@ export default function Projects() {
           </Dialog.Panel>
         </Dialog>
       </Col>
-      {/* 
+     
       <Col className="row-span-2 xl:row-span-1">
         <span className="flex gap-2 flex-col h-full items-center xl:flex-row animate-pulse">
           <span className="row-span-1 flex text-5xl text-center">+</span>
@@ -398,7 +398,7 @@ export default function Projects() {
           </span>
         </span>
       </Col>
-      */}
+      
     </Row>
   );
 }
