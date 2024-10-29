@@ -1,5 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "https://rnd-server-u8pb.onrender.com",
-})
+  baseURL: "https://rnd-assist.rj.r.appspot.com/",
+});
