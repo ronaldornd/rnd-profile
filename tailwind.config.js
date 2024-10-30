@@ -1,10 +1,11 @@
 module.exports = {
   content: ["./src/**/*.tsx"],
-    theme: {
-    extend: {},
+  theme: {
+    extend: {
+      animation: {
+        "spin-slow": "spin 3s linear infinite",
+      },
+    },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('tailwind-scrollbar'),
-  ],
-}
+  plugins: [require("@tailwindcss/forms"), require("tailwind-scrollbar")],
+};

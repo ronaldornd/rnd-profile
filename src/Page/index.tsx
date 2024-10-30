@@ -11,57 +11,52 @@ const variants = {
 };
 
 export default function Page() {
-  const [message, setMessage] = useState("");
-  const [alerting, setAlerting] = useState(true);
+  const [alerting, setAlerting] = useState(true); // Defina como true para testar
   const [activeTab, setActiveTab] = useState("tab1");
   const [isVisible1, setIsVisible1] = useState<boolean>(false);
   const [isVisible2, setIsVisible2] = useState<boolean>(false);
   const [isVisible3, setIsVisible3] = useState<boolean>(false);
 
   const handleTab1 = () => {
-    // update the state to tab1
     setIsVisible2(false);
     setIsVisible3(false);
     setActiveTab("tab1");
     setIsVisible1(true);
   };
   const handleTab2 = () => {
-    // update the state to tab1
     setIsVisible1(false);
     setIsVisible3(false);
     setActiveTab("tab2");
     setIsVisible2(true);
   };
   const handleTab3 = () => {
-    // update the state to tab1
     setIsVisible1(false);
     setIsVisible2(false);
     setActiveTab("tab3");
     setIsVisible3(true);
   };
 
-
   useEffect(() => {
     const alerted = localStorage.getItem("alerted");
+    console.log(alerted);
     if (alerted === "false" || alerted === null) {
       if (alerting) {
         let steps = 0;
         const timer = setInterval(() => {
           steps++;
           console.log(steps);
-          if (steps === 7) {
-            abort();
-            localStorage.setItem("alerted", "true");
-            clearInterval(timer); // Limpa o intervalo quando o alerta termina
+          if (steps === 8) {
+            setAlerting(false);
+            clearInterval(timer);
           }
           console.log(timer);
         }, 1000);
       }
     } else {
-      setAlerting(false); // Desativa o alerta se já foi exibido
+      setAlerting(false);
     }
   }, [alerting]);
-  
+
   function abort() {
     setAlerting(false);
     localStorage.setItem("alerted", "true");
@@ -72,7 +67,10 @@ export default function Page() {
       <div className="flex xl:flex-row flex-col h-sreen w-screen items-center justify-center self-center content-center">
         {alerting ? (
           <div className="flex flex-col gap-2 p-3  ease-out justify-center h-screen w-screen bg-green-300 rounded-xl border-4  border-black text-black text-center items-center text-5xl font-thin">
-            <X className="absolute top-5 right-5 hover:border-2 hover:bg-gray-400 border-black rounded-md" onClick={abort}/>
+            <X
+              className="absolute top-5 right-5 hover:border-2 hover:bg-gray-400 border-black rounded-md"
+              onClick={abort}
+            />
             <span>Olá,</span>
             <span>Seja bem vindo!</span>
             <span>Obrigado pelo interesse no meu perfil 🥰</span>
@@ -82,7 +80,7 @@ export default function Page() {
           </div>
         ) : (
           <>
-            <ul className="flex xl:flex-col justify-start xl:justify-center md:gap-2 bg-green-600 items-center h-14 w-screen xl:w-40 2xl:w-52 xl:h-screen xl:left-0 ">
+            <ul className="flex xl:flex-col justify-start xl:justify-center md:gap-3 bg-green-600 items-center h-14 w-screen xl:w-40 2xl:w-52 xl:h-screen xl:left-0 ">
               <span className="h-14 w-14 xl:h-28 xl:w-28 2xl:w-40 xl:mt-3 left-0 xl:left-4 xl:top-4 xl:fixed justify-center">
                 <img src={icon} />
               </span>

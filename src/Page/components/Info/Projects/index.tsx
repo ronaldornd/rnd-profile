@@ -86,7 +86,6 @@ export default function Projects() {
             <img src={logosvg} className="h-10  mx-1" />
             <h1 className="mx-1 xl:text-sm 2xl:text-xl flex flex-row">
               Messages
-              <Planet size={18} className="align-super ml-1" />
             </h1>
           </span>
           <Dialog
@@ -199,7 +198,6 @@ export default function Projects() {
             <img src={logosvg} className="h-10  mx-1" />
             <h1 className="mx-1 xl:text-sm 2xl:text-xl flex flex-row">
               Messages
-              <AndroidLogo size={18} className="align-super ml-1" />
             </h1>
           </span>
           <Dialog
@@ -314,7 +312,6 @@ export default function Projects() {
             <Link size={30} className="h-10 mx-1" color="#651ad6" />
             <h1 className="mx-1 xl:text-sm 2xl:text-xl flex flex-row">
               RND Links
-              <Planet size={32} className="self-center ml-1" />
             </h1>
           </span>
           <Dialog
