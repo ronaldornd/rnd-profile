@@ -50,7 +50,7 @@ export default function Page() {
             clearInterval(timer);
           }
           console.log(timer);
-        }, 1000);
+        }, 500);
       }
     } else {
       setAlerting(false);
