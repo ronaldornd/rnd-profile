@@ -11,22 +11,33 @@ export function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   useEffect(() => {
-    
     // Função para registrar o acesso
     const registerAccess = async () => {
       try {
+        // Verifica se o acesso já foi registrado
+        const accessRegistered = localStorage.getItem("accessRegistered");
+        if (accessRegistered) {
+          console.log("Acesso já registrado anteriormente.");
+          return;
+        }
+
         // Obtém o endereço IP do usuário
         const ipResponse = await axios.get("https://api.ipify.org?format=json");
         const ipAddress = ipResponse.data.ip;
 
-        const { error } = await supabase
+        const { data, error } = await supabase
           .from("accesslog")
-          .insert([{ ip_address: ipAddress, user_agent: navigator.userAgent }]);
+          .insert([{ ip_address: ipAddress, user_agent: navigator.userAgent }])
+          .select("id");
 
         if (error) {
           console.error("Erro ao registrar acesso:", error);
         } else {
-          console.log("Acesso registrado com sucesso");
+          console.log("Acesso registrado com sucesso:", data);
+          // Armazena o id do registro de acesso no localStorage
+          localStorage.setItem("accessId", data[0].id);
+          // Marca o acesso como registrado
+          localStorage.setItem("accessRegistered", "true");
         }
       } catch (error) {
         console.error("Erro ao registrar acesso:", error);
