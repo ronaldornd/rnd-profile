@@ -33,7 +33,7 @@ export function App() {
   return isLoading ? (
     // Se a página ainda estiver carregando, exibe a splash screen
     <div className="flex bg-black flex-col items-center justify-center h-screen">
-      <img src={logo} alt="Logo" className="mb-4 animate-pulse" />
+      <img src={logo} alt="Logo" className="mb-4 h-60 animate-pulse" />
       <ProgressBar
         completed={progress}
         baseBgColor="white"
