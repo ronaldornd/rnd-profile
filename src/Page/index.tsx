@@ -5,7 +5,6 @@ import icon from "../images/icon.png";
 import Academic from "./components/Academic";
 import Habilities from "./components/Habilities";
 import { X } from "@phosphor-icons/react";
-import { supabase } from "../../supabaseClient";
 
 const variants = {
   visible: { opacity: 1, transition: { duration: 1 } },
@@ -58,29 +57,6 @@ export default function Page() {
       setAlerting(false);
     }
 
-    // Função para registrar o acesso
-    const registerAccess = async () => {
-      try {
-        // Obtém o endereço IP do usuário
-        const ipResponse = await axios.get("https://api.ipify.org?format=json");
-        const ipAddress = ipResponse.data.ip;
-
-        const { data, error } = await supabase
-          .from("accesslog")
-          .insert([{ ip_address: ipAddress, user_agent: navigator.userAgent }]);
-
-        if (error) {
-          console.error("Erro ao registrar acesso:", error);
-        } else {
-          console.log("Acesso registrado com sucesso:", data);
-        }
-      } catch (error) {
-        console.error("Erro ao registrar acesso:", error);
-      }
-    };
-
-    // Chama a função para registrar o acesso
-    registerAccess();
   }, [alerting]);
 
   function abort() {
