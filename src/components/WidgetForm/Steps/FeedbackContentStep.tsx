@@ -1,9 +1,10 @@
-import { ArrowLeft } from "@phosphor-icons/react"
+import { ArrowLeft } from "@phosphor-icons/react";
 import { FormEvent, useState } from "react";
 import { FeedbackType, feedbackTypes } from "..";
-import { api } from "../../../libs/api";
+import { supabase } from "../../../../supabaseClient"
 import { CloseButton } from "../../CloseButton";
 import { Loading } from "../Loading";
+
 interface FeedbackContentStepProps {
     feedbackType: FeedbackType;
     onFeedbackRestartRequested: () => void;
@@ -14,15 +15,23 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, 
     const feedbackTypeInfo = feedbackTypes[feedbackType];
     const [comment, setComment] = useState<string | null>();
     const [isSendingFeedback, setIsSendingFeedback] = useState(false);
+
     async function handleSubmitFeedback(event: FormEvent) {
         event.preventDefault();
         setIsSendingFeedback(true);
-        await api.post('/feedbacks', {
-            type: feedbackType,
-            comment,
-        })
-        onFeedbackSent();
-        setIsSendingFeedback(false)
+
+        const { data, error } = await supabase
+            .from('feedbacks')
+            .insert([{ type: feedbackType, comment }]);
+
+        if (error) {
+            console.error('Erro ao enviar feedback:', error);
+        } else {
+            console.log('Feedback enviado com sucesso:', data);
+            onFeedbackSent();
+        }
+
+        setIsSendingFeedback(false);
     }
 
     return (
@@ -46,10 +55,8 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, 
                     placeholder="Conte mais sobre o que está acontecendo:"
                     onChange={event => setComment(event.target.value)}
                 >
-
                 </textarea>
                 <footer className="flex flex-row gap-2">
-
                     <button
                         type="submit"
                         disabled={comment?.length === 0 || isSendingFeedback}
@@ -60,5 +67,5 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, 
                 </footer>
             </form>
         </>
-    )
+    );
 }
