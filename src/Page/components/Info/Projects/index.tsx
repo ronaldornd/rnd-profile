@@ -381,9 +381,10 @@ export default function Projects() {
                   </span>
                 </span>
                 <span className="h-10vh mx-4 flex xl:h-32 2xl:h-56 self-end p-3 xl:m-16 text-lg md:text-2xl 2xl:text-5xl rounded-xl border-2 border-purple-900 bg-zinc-900 font-thin">
-                  O RND Links é um agregador de links para usar como cartão de
-                  visitas online. E para mim, uma forma de direcionar os
-                  interessados ao meu portfólio como Dev{" "}
+                {carouselIndex == 0
+                    ? "O RND Links é um agregador de links para usar como cartão de visitas online."
+                    : "E para mim, uma forma de direcionar os interessados ao meu portfólio como Dev                    "
+                }
                 </span>
               </Dialog.Description>
             </Dialog.Panel>
