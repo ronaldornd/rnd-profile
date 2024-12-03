@@ -39,18 +39,15 @@ export default function Page() {
 
   useEffect(() => {
     const alerted = localStorage.getItem("alerted");
-    console.log(alerted);
     if (alerted === "false" || alerted === null) {
       if (alerting) {
         let steps = 0;
         const timer = setInterval(() => {
           steps++;
-          console.log(steps);
           if (steps === 8) {
             setAlerting(false);
             clearInterval(timer);
           }
-          console.log(timer);
         }, 500);
       }
     } else {

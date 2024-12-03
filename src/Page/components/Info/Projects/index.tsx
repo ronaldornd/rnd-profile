@@ -43,18 +43,15 @@ export default function Projects() {
       if (isOpen3 && index === 2) {
         index = 0;
       }
-      console.log(isOpen);
       if (index === 2) {
         index = 0;
       }
 
       switch (index) {
         case 0:
-          console.log("1");
           setCarouselIndex(index);
           break;
         case 1:
-          console.log("2");
           setCarouselIndex(index);
           break;
       }
@@ -64,7 +61,6 @@ export default function Projects() {
   }, [isOpen3]);
 
   function handleDialog() {
-    console.log(isOpen);
     index = 0;
     setCarouselIndex(index);
   }

@@ -10,16 +10,14 @@ import axios from "axios";
 export function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+
   useEffect(() => {
     // Função para registrar o acesso
     const registerAccess = async () => {
       try {
-        // Verifica se o acesso já foi registrado
-        const accessRegistered = localStorage.getItem("accessRegistered");
-        if (accessRegistered) {
-          console.log("Acesso já registrado anteriormente.");
-          return;
-        }
+        // Remove o registro de acesso anterior
+        localStorage.removeItem("accessRegistered");
+        localStorage.removeItem("accessId");
 
         // Obtém o endereço IP do usuário
         const ipResponse = await axios.get("https://api.ipify.org?format=json");
@@ -67,6 +65,7 @@ export function App() {
     // Limpa o timer quando o componente desmonta
     return () => clearInterval(timer);
   }, []);
+
   return isLoading ? (
     // Se a página ainda estiver carregando, exibe a splash screen
     <div className="flex bg-black flex-col items-center justify-center h-screen">
