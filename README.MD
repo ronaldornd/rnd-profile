@@ -35,7 +35,3 @@ A estrutura do projeto segue um padrão comum para aplicativos React.js:
 - components/: Componentes React reutilizáveis.
 - pages/: Páginas React que são renderizadas em diferentes rotas.
 - public/: Contém arquivos estáticos, como imagens ou fontes.
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para obter mais detalhes.
