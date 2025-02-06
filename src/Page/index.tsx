@@ -80,7 +80,7 @@ export default function Page() {
         ) : (
           <>
             <ul className="flex xl:flex-col justify-start xl:justify-center md:gap-3 bg-green-600 items-center h-14 w-screen xl:w-40 2xl:w-52 xl:h-screen xl:left-0 ">
-              <span className="h-14 w-14 xl:h-28 xl:w-28 2xl:w-40 xl:mt-3 left-0 xl:left-4 xl:top-4 xl:fixed justify-center">
+              <span className="h-14 w-14 xl:h-28 xl:w-28 2xl:w-40 xl:mt-3 left-0 xl:left-4 xl:top-4 xl:fixed justify-center p-1">
                 <img src={icon} />
               </span>
 
