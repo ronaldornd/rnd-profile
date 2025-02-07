@@ -6,6 +6,12 @@ import {
   ArrowsClockwise,
 } from "@phosphor-icons/react";
 import rocket from "../../../images/rocket.svg";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function Academic() {
   return (
@@ -50,12 +56,20 @@ export default function Academic() {
               />
             </span>
           </div>
-          <span className="flex text-justify 2xl:text-2xl m-2 p-2 rounded-lg bg-zinc-900">
-            Não temos muito o que falar do ensino médio né? O diferencial do meu
-            foi que no 3° ano nós fizemos um trabalho voluntário, onde íamos a
-            um asilo da cidade para levarmos a ajuda que podíamos, seja numa
-            necessidade, ou apenas para alegrar e tornar o dia deles melhor.
-          </span>
+          <Accordion type="single" collapsible className="">
+            <AccordionItem value="item-1" className="border-b-0">
+              <AccordionTrigger className="flex text-justify border-green-400 2xl:text-2xl m-2 p-2 border-1 animate-pulse duration-700 rounded-lg  bg-zinc-900">
+                Mais detalhes
+              </AccordionTrigger>
+              <AccordionContent className="flex text-justify 2xl:text-2xl m-2 p-2 rounded-lg bg-zinc-900">
+                Não temos muito o que falar do ensino médio né? O diferencial do
+                meu foi que no 3° ano nós fizemos um trabalho voluntário, onde
+                íamos a um asilo da cidade para levarmos a ajuda que podíamos,
+                seja numa necessidade, ou apenas para alegrar e tornar o dia
+                deles melhor.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
         <div className="flex flex-col w-full h-full bg-zinc-800 rounded-lg  border-green-800 border-2 ">
           <div className=" flex flex-col bg-black w-full p-2 rounded-b-xl rounded-lg">
@@ -91,14 +105,21 @@ export default function Academic() {
               />
             </span>
           </div>
-          <span className="flex text-justify 2xl:text-2xl  m-2 p-2 rounded-lg bg-zinc-900">
-            Meu "primeiro" técnico oficial foi onde despertei a paixão por
-            programação. Nós éramos estimulados a criar soluções para empresas
-            de forma a atender suas necessidades. Estava me saindo muito bem, e
-            desenvolvi muito minha lógica que já era bem trabalhada, só que em
-            jogos rsrs. Mas por motivos familiares eu tive que abandonar o
-            curso.
-          </span>
+          <Accordion type="single" collapsible className="">
+            <AccordionItem value="item-1" className="border-b-0">
+              <AccordionTrigger className="flex text-justify border-green-400 2xl:text-2xl m-2 p-2 border-1 animate-pulse duration-700 rounded-lg  bg-zinc-900">
+                Mais detalhes
+              </AccordionTrigger>
+              <AccordionContent className="flex text-justify 2xl:text-2xl m-2 p-2 rounded-lg bg-zinc-900">
+                Meu "primeiro" técnico oficial foi onde despertei a paixão por
+                programação. Nós éramos estimulados a criar soluções para
+                empresas de forma a atender suas necessidades. Estava me saindo
+                muito bem, e desenvolvi muito minha lógica que já era bem
+                trabalhada, só que em jogos rsrs. Mas por motivos familiares eu
+                tive que abandonar o curso.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
         <div className="w-auto h-full bg-zinc-800 rounded-lg  border-green-800 flex-row border-2  items-center justify-center">
           <div className=" flex flex-col bg-black w-full p-2 rounded-b-xl rounded-lg">
@@ -142,14 +163,22 @@ export default function Academic() {
               />
             </span>
           </div>
-          <span className="flex text-justify 2xl:text-2xl m-2 p-2 rounded-lg bg-zinc-900">
-            Esse foi o divisor de águas pra eu ter certeza que é nessa área que
-            quero me especializar. O foco era desenvolver para o mercado online.
-            Fui monitor bolsista em uma matéria que tive excelência (WEB 2), mas
-            antes do início do último período eu cedi á minha necessidade de ver
-            meus familiares que não via há 6 anos e dessa vez fui mais esperto e
-            tranquei a matricula para um possível retorno 😉.
-          </span>
+          <Accordion type="single" collapsible className="">
+            <AccordionItem value="item-1" className="border-b-0">
+              <AccordionTrigger className="flex text-justify border-green-400 2xl:text-2xl m-2 p-2 border-1 animate-pulse duration-700 rounded-lg  bg-zinc-900">
+                Mais detalhes
+              </AccordionTrigger>
+              <AccordionContent className="flex text-justify 2xl:text-2xl m-2 p-2 rounded-lg bg-zinc-900">
+                Esse foi o divisor de águas pra eu ter certeza que é nessa área
+                que quero me especializar. O foco era desenvolver para o mercado
+                online. Fui monitor bolsista em uma matéria que tive excelência
+                (WEB 2), mas antes do início do último período eu cedi á minha
+                necessidade de ver meus familiares que não via há 6 anos e dessa
+                vez fui mais esperto e tranquei a matricula para um possível
+                retorno 😉.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
         <div className="flex w-full h-full bg-zinc-800 rounded-lg  border-cyan-800 flex-col border-2 items-center justify-center">
           <div className=" flex flex-col bg-black w-full p-2 rounded-b-xl rounded-lg">
