@@ -54,13 +54,14 @@ export default function Page() {
         {alerting ? (
           <div className="flex flex-col gap-2 p-3  ease-out justify-center h-screen w-screen bg-green-300 rounded-xl border-4  border-black text-black text-center items-center text-5xl font-thin">
             <X
-              className="absolute top-5 right-5 hover:border-2 hover:bg-gray-400 border-black rounded-md"
-              onClick={abort}
+              className="absolute animate-pulse border-2 top-5 right-5 hover:border-2 hover:bg-gray-400 border-black rounded-md"
+              onClick={handleViewProfile}
             />
             <span>Olá,</span>
             <span>Seja bem vindo!</span>
             <span>Obrigado pelo interesse no meu perfil 🥰</span>
             
+            {/*
             <div className="flex flex-col gap-4 mt-4">
               <span>O que você deseja?</span>
               <div className="flex flex-row gap-2 justify-around">
@@ -77,11 +78,12 @@ export default function Page() {
                   Agendar Atendimento
                 </button>
               </div>
+              */}
               <span>
               Fique a vontade para deixar um feedback no icone abaixo 👇
             </span>
             </div>
-          </div>
+          
         ) : (
           <>
           {option === "profile" ? (
