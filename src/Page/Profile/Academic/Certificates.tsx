@@ -52,7 +52,7 @@ export default function Certificates() {
               <span className="text-small md:text-base font-semibold">
                 <a
                   target="_blank"
-                  href="https://hermes.dio.me/certificates/K3AHI5BX.pdf"
+                  href="https://www.dio.me/certificate/KQXA6YIT/share"
                   className="flex h-14 w-full md:h-14 md:w-full flex-col rounded-md border-2 animate-pulse justify-center items-center bg-black "
                 >
                   <span className="flex items-center flex-col p-1 h-full justify-between">
