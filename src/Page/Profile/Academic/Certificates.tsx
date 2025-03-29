@@ -12,7 +12,7 @@ export default function Certificates() {
         <div className=" flex flex-col bg-black w-full p-2 rounded-b-xl rounded-lg">
           <div className="flex flex-row justify-between w-full items-center">
             <img
-              src="https://assets.dio.me/VTgUqMiPAIgvsFdSvgSnVAB5lrqnNxY_N8h8LknnQys/f:webp/q:80/w:120/L2Fzc2V0cy9kaW9tZS9sb2dvLWZ1bGwuc3Zn"
+              src="https://hermes.dio.me/certificates/K3AHI5BX.pdf"
               className="h-6 w-8 2xl:w-16 2xl:h-10 m-1"
             />
             <span className="m-1 flex-col w-full">
