@@ -12,7 +12,7 @@ export default function Certificates() {
         <div className=" flex flex-col bg-black w-full p-2 rounded-b-xl rounded-lg">
           <div className="flex flex-row justify-between w-full items-center">
             <img
-              src="https://hermes.dio.me/certificates/K3AHI5BX.pdf"
+              src="https://assets.dio.me/VTgUqMiPAIgvsFdSvgSnVAB5lrqnNxY_N8h8LknnQys/f:webp/q:80/w:120/L2Fzc2V0cy9kaW9tZS9sb2dvLWZ1bGwuc3Zn"
               className="h-6 w-8 2xl:w-16 2xl:h-10 m-1"
             />
             <span className="m-1 flex-col w-full">
@@ -52,7 +52,7 @@ export default function Certificates() {
               <span className="text-small md:text-base font-semibold">
                 <a
                   target="_blank"
-                  href="https://drive.google.com/file/d/1SlvFmNhTK5RyGSxTk3IMVqW7FVuN10or/view?usp=sharing"
+                  href="https://hermes.dio.me/certificates/K3AHI5BX.pdf"
                   className="flex h-14 w-full md:h-14 md:w-full flex-col rounded-md border-2 animate-pulse justify-center items-center bg-black "
                 >
                   <span className="flex items-center flex-col p-1 h-full justify-between">
