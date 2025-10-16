@@ -39,7 +39,7 @@ const Contact = () => {
         {
             icon: <FaWhatsapp className="text-3xl" />,
             title: 'WhatsApp',
-            value: '+55 (XX) XXXXX-XXXX',
+            value: '+55 (81) 98291-4552',
             link: 'https://wa.me/5581982914552',
             color: 'from-green-500 to-teal-500',
         },

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp, FaDownload } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 
 const Hero = () => {
@@ -126,10 +126,6 @@ const Hero = () => {
                 >
                     <a href="#projects" className="btn-primary">
                         Ver meus projetos
-                    </a>
-                    <a href="#" className="btn-secondary flex items-center gap-2">
-                        <FaDownload />
-                        Baixar currículo
                     </a>
                     <a href="#contact" className="btn-secondary">
                         Entrar em contato
