@@ -242,7 +242,7 @@ Procure e substitua em TODOS os componentes:
 
 - `https://github.com/ronaldornd` → Seu GitHub
 - `https://linkedin.com/in/ronaldosbarbosaa` → Seu LinkedIn
-- `ronaldo.f.barbosa@outlook.com` → Seu email
+- `ronaldo.s.barbosa@outlook.com` → Seu email
 - `https://wa.me/5581982914552` → Seu WhatsApp
 
 ### Verificação Rápida
@@ -250,7 +250,7 @@ Procure e substitua em TODOS os componentes:
 Use a busca do VS Code (Ctrl+Shift+F) e procure por:
 - `ronaldornd`
 - `ronaldosbarbosaa`
-- `ronaldo.f.barbosa`
+- `ronaldo.s.barbosa`
 - `yourphone`
 
 ## 📊 Estatísticas do GitHub

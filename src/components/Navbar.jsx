@@ -25,10 +25,15 @@ const Navbar = () => {
                     {/* Logo */}
                     <motion.a
                         href="#home"
-                        className="text-2xl font-bold gradient-text"
+                        className="flex items-center gap-2"
                         whileHover={{ scale: 1.05 }}
                     >
-                        Ronaldx
+                        <img
+                            src="/fav.png"
+                            alt="Ronaldx Logo"
+                            className="h-10 w-10"
+                        />
+                        <span className="text-2xl font-bold gradient-text">Ronaldx</span>
                     </motion.a>
 
                     {/* Navigation Links - Desktop */}

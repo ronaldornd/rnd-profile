@@ -152,7 +152,7 @@ Substitua os avatars com emojis por fotos reais nos componentes Hero e About.
 
 ### Cores do Tema
 
-- Email: ronaldo.f.barbosa@outlook.com
+- Email: ronaldo.s.barbosa@outlook.com
 
 - GitHub: [ronaldornd](https://github.com/ronaldornd)Edite `tailwind.config.js` para personalizar as cores.
 

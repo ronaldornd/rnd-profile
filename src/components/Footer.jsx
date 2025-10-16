@@ -19,12 +19,19 @@ const Footer = () => {
                 <div className="grid md:grid-cols-3 gap-8 mb-8">
                     {/* Brand */}
                     <div>
-                        <motion.h3
-                            className="text-2xl font-bold gradient-text mb-4"
+                        <motion.div
+                            className="flex items-center gap-2 mb-4"
                             whileHover={{ scale: 1.05 }}
                         >
-                            Ronaldx
-                        </motion.h3>
+                            <img
+                                src="/fav.png"
+                                alt="Ronaldx Logo"
+                                className="h-8 w-8"
+                            />
+                            <h3 className="text-2xl font-bold gradient-text">
+                                Ronaldx
+                            </h3>
+                        </motion.div>
                         <p className="text-gray-400 mb-4">
                             Transformando ideias em código e conexões em soluções.
                         </p>
@@ -48,7 +55,7 @@ const Footer = () => {
                                 <FaLinkedin size={24} />
                             </motion.a>
                             <motion.a
-                                href="mailto:ronaldo.f.barbosa@outlook.com"
+                                href="mailto:ronaldo.s.barbosa@outlook.com"
                                 className="text-gray-400 hover:text-primary-400 transition-colors"
                                 whileHover={{ scale: 1.2, rotate: 5 }}
                             >

@@ -32,8 +32,8 @@ const Contact = () => {
         {
             icon: <FaEnvelope className="text-3xl" />,
             title: 'E-mail',
-            value: 'ronaldo.f.barbosa@outlook.com',
-            link: 'mailto:ronaldo.f.barbosa@outlook.com',
+            value: 'ronaldo.s.barbosa@outlook.com',
+            link: 'mailto:ronaldo.s.barbosa@outlook.com',
             color: 'from-red-500 to-orange-500',
         },
         {
@@ -230,7 +230,7 @@ const Contact = () => {
                         adoraria conversar!
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
-                        <a href="mailto:ronaldo.f.barbosa@outlook.com" className="btn-primary">
+                        <a href="mailto:ronaldo.s.barbosa@outlook.com" className="btn-primary">
                             Enviar E-mail
                         </a>
                         <a href="https://wa.me/5581982914552" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">

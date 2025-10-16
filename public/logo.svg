@@ -1,0 +1,31 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- R Letter -->
+  <path d="M160 150 L160 650 L260 650 L260 450 L360 450 L460 650 L580 650 L460 420 C520 400 560 340 560 270 C560 180 500 150 420 150 L160 150 Z M260 230 L400 230 C450 230 460 250 460 270 C460 290 450 310 400 310 L260 310 L260 230 Z" 
+        fill="none" 
+        stroke="url(#gradient)" 
+        stroke-width="8" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  
+  <!-- Lightning bolts -->
+  <path d="M380 520 L340 640 L400 580 L360 700" 
+        stroke="url(#gradient)" 
+        stroke-width="8" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+  <path d="M480 520 L520 640 L460 580 L540 700" 
+        stroke="url(#gradient)" 
+        stroke-width="8" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#86efac;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4ade80;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
