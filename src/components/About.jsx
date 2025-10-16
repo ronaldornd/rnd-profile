@@ -10,7 +10,7 @@ const About = () => {
     const interests = [
         { icon: <FaCode />, text: 'Desenvolvimento' },
         { icon: <FaCoffee />, text: 'Café' },
-        { icon: <FaMusic />, text: 'Música Eletrônica' },
+        { icon: <FaMusic />, text: 'Música' },
         { icon: <FaLaptopCode />, text: 'Design' },
     ];
 
@@ -43,7 +43,11 @@ const About = () => {
                                 transition={{ duration: 0.3 }}
                             >
                                 <div className="w-full h-full rounded-2xl bg-gray-200 dark:bg-dark-card flex items-center justify-center text-8xl font-bold gradient-text">
-                                    R
+                                    <img
+                                        src="https://github.com/ronaldornd.png"
+                                        alt="Ronaldx"
+                                        className="w-full h-full rounded-full object-cover"
+                                    />
                                 </div>
                             </motion.div>
                             {/* Floating elements */}
@@ -137,7 +141,7 @@ const About = () => {
                         </div>
                         <div className="card-glass p-6 hover:shadow-2xl transition-shadow">
                             <p className="text-gray-700 dark:text-gray-300">
-                                ☕ Combustível oficial: <span className="font-bold text-primary-500">café</span> e música eletrônica.
+                                ☕ Combustível oficial: <span className="font-bold text-primary-500">café</span> e música.
                             </p>
                         </div>
                     </div>

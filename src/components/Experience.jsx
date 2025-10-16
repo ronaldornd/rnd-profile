@@ -134,37 +134,6 @@ const Experience = () => {
                     </div>
                 </motion.div>
 
-                {/* Certifications Preview */}
-                <motion.div className="max-w-4xl mx-auto mb-12" variants={fadeInUp}>
-                    <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                        <FaCertificate className="text-primary-500" />
-                        Certificações
-                    </h3>
-                    <div className="grid md:grid-cols-2 gap-4">
-                        {[
-                            { name: 'Formação Fullstack', platform: 'DIO', year: '2024' },
-                            { name: 'Inteligência Artificial', platform: 'DIO', year: '2024' },
-                            { name: 'React Avançado', platform: 'Online', year: '2024' },
-                            { name: 'PostgreSQL & Prisma', platform: 'Online', year: '2024' },
-                        ].map((cert, index) => (
-                            <motion.div
-                                key={index}
-                                className="card-glass p-4 hover:shadow-lg transition-shadow"
-                                whileHover={{ scale: 1.03 }}
-                            >
-                                <h4 className="font-bold text-lg mb-1">{cert.name}</h4>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">
-                                    {cert.platform} • {cert.year}
-                                </p>
-                            </motion.div>
-                        ))}
-                    </div>
-                    <div className="text-center mt-6">
-                        <a href="#certifications" className="text-primary-500 hover:text-primary-600 font-semibold">
-                            Ver todas as certificações →
-                        </a>
-                    </div>
-                </motion.div>
 
                 {/* Languages */}
                 <motion.div className="max-w-4xl mx-auto" variants={fadeInUp}>

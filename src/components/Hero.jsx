@@ -73,7 +73,11 @@ const Hero = () => {
                             }}
                         >
                             <div className="w-full h-full rounded-full bg-gray-200 dark:bg-dark-card flex items-center justify-center text-6xl font-bold gradient-text">
-                                R
+                                <img
+                                    src="https://github.com/ronaldornd.png"
+                                    alt="Ronaldx"
+                                    className="w-full h-full rounded-full object-cover"
+                                />
                             </div>
                         </motion.div>
                         <motion.div
@@ -166,7 +170,7 @@ const Hero = () => {
                         <FaEnvelope size={28} />
                     </motion.a>
                     <motion.a
-                        href="https://wa.me/yourphone"
+                        href="https://wa.me/5581982914552"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"

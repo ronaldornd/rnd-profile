@@ -22,7 +22,7 @@
 **Opção 2: Usar Gravatar ou URL externa**
 ```jsx
 <img 
-  src="https://avatars.githubusercontent.com/u/ronaldornd" 
+  src="https://github.com/ronaldornd.png" 
   alt="Ronaldx" 
   className="w-full h-full rounded-full object-cover"
 />
@@ -30,7 +30,7 @@
 
 ### 2. Atualizar Número de WhatsApp
 
-Procure por `https://wa.me/yourphone` em:
+Procure por `https://wa.me/5581982914552` em:
 - `Hero.jsx`
 - `Contact.jsx`
 - `Footer.jsx`
@@ -127,8 +127,26 @@ const certifications = [
     link: 'https://link-do-certificado.com', // ou '#'
     icon: '🎓',
   },
+  // Para certificados com detalhes de competências (aparece destaque especial):
+  {
+    name: 'Cybersecurity Essentials',
+    platform: 'Cisco Networking Academy',
+    date: '02/04/2024',
+    description: 'Descrição do curso',
+    link: '#',
+    icon: '🔒',
+    hours: '30 horas', // Opcional - aparece como badge
+    grade: '7,9', // Opcional - aparece como badge
+    skills: [ // Opcional - cria layout especial em destaque
+      'Competência 1',
+      'Competência 2',
+      'Competência 3'
+    ]
+  },
 ];
 ```
+
+**Dica:** Certificados com o campo `skills` aparecem em destaque maior com layout de duas colunas!
 
 ### 8. Depoimentos
 
@@ -225,7 +243,7 @@ Procure e substitua em TODOS os componentes:
 - `https://github.com/ronaldornd` → Seu GitHub
 - `https://linkedin.com/in/ronaldosbarbosaa` → Seu LinkedIn
 - `ronaldo.f.barbosa@outlook.com` → Seu email
-- `https://wa.me/yourphone` → Seu WhatsApp
+- `https://wa.me/5581982914552` → Seu WhatsApp
 
 ### Verificação Rápida
 

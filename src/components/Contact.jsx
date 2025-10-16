@@ -40,7 +40,7 @@ const Contact = () => {
             icon: <FaWhatsapp className="text-3xl" />,
             title: 'WhatsApp',
             value: '+55 (XX) XXXXX-XXXX',
-            link: 'https://wa.me/yourphone',
+            link: 'https://wa.me/5581982914552',
             color: 'from-green-500 to-teal-500',
         },
         {
@@ -233,7 +233,7 @@ const Contact = () => {
                         <a href="mailto:ronaldo.f.barbosa@outlook.com" className="btn-primary">
                             Enviar E-mail
                         </a>
-                        <a href="https://wa.me/yourphone" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">
+                        <a href="https://wa.me/5581982914552" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">
                             <FaWhatsapp />
                             WhatsApp
                         </a>
