@@ -18,7 +18,6 @@ function App() {
                     <Hero />
                     <About />
                     <Experience />
-                    <Projects />
                     <Skills />
                     <CertificationsAndHighlights />
                     <Contact />
