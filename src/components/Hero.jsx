@@ -75,7 +75,7 @@ const Hero = () => {
                             <div className="w-full h-full rounded-full bg-gray-200 dark:bg-dark-card flex items-center justify-center text-6xl font-bold gradient-text">
                                 <img
                                     src="https://github.com/ronaldornd.png"
-                                    alt="Ronaldx"
+                                    alt="Ronaldo"
                                     className="w-full h-full rounded-full object-cover"
                                 />
                             </div>
@@ -98,7 +98,7 @@ const Hero = () => {
                     className="text-5xl md:text-7xl font-bold mb-6"
                     variants={itemVariants}
                 >
-                    Sou <span className="gradient-text">Ronaldx</span>
+                    Sou <span className="gradient-text">Ronaldo</span>
                 </motion.h1>
 
                 {/* Typing Effect */}
@@ -124,9 +124,7 @@ const Hero = () => {
                     className="flex flex-wrap justify-center gap-4 mb-12"
                     variants={itemVariants}
                 >
-                    <a href="#projects" className="btn-primary">
-                        Ver meus projetos
-                    </a>
+
                     <a href="#contact" className="btn-secondary">
                         Entrar em contato
                     </a>

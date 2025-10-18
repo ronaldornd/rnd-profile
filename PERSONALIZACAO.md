@@ -1,4 +1,4 @@
-# 📝 Guia de Personalização - Landing Page Ronaldx
+# 📝 Guia de Personalização - Landing Page Ronaldo
 
 ## 🎯 Primeiros Passos
 
@@ -14,7 +14,7 @@
 // Por:
 <img 
   src="/images/sua-foto.jpg" 
-  alt="Ronaldx" 
+  alt="Ronaldo" 
   className="w-full h-full rounded-full object-cover"
 />
 ```
@@ -23,7 +23,7 @@
 ```jsx
 <img 
   src="https://github.com/ronaldornd.png" 
-  alt="Ronaldx" 
+  alt="Ronaldo" 
   className="w-full h-full rounded-full object-cover"
 />
 ```
@@ -314,12 +314,12 @@ Em `index.html`:
 
 ```html
 <head>
-  <title>Ronaldx - Desenvolvedor Web Júnior</title>
-  <meta name="description" content="Portfólio de Ronaldx, desenvolvedor júnior especializado em React, Node.js e PostgreSQL">
+  <title>Ronaldo - Desenvolvedor Web Júnior</title>
+  <meta name="description" content="Portfólio de Ronaldo, desenvolvedor júnior especializado em React, Node.js e PostgreSQL">
   <meta name="keywords" content="desenvolvedor, react, nodejs, portfolio">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="Ronaldx - Desenvolvedor Web">
+  <meta property="og:title" content="Ronaldo - Desenvolvedor Web">
   <meta property="og:description" content="Transformo ideias em código">
   <meta property="og:image" content="/og-image.jpg">
 </head>

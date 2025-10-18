@@ -1,4 +1,4 @@
-# 🚀 Landing Page Profissional - Ronaldx# 🚀 Landing Page Profissional - Ronaldx# 🚀 Landing Page Profissional - Ronaldx# React + Vite
+# 🚀 Landing Page Profissional - Ronaldo# 🚀 Landing Page Profissional - Ronaldo# 🚀 Landing Page Profissional - Ronaldo# React + Vite
 
 
 
@@ -300,7 +300,7 @@ Substitua os avatars com emojis por fotos reais nos componentes Hero e About.
 
 ## 📞 Contato
 
-Desenvolvido com 💚 por Ronaldx
+Desenvolvido com 💚 por Ronaldo
 
 ### Cores do Tema
 
@@ -316,7 +316,7 @@ Desenvolvido com 💚 por Ronaldx
 
 Recomendado: **Vercel** ou **Netlify**
 
-**Desenvolvido com ❤️ por Ronaldx**
+**Desenvolvido com ❤️ por Ronaldo**
 
 ```bash
 npm run build
@@ -335,4 +335,4 @@ Antes de publicar:
 
 ---
 
-**Desenvolvido com ❤️ por Ronaldx**
+**Desenvolvido com ❤️ por Ronaldo**

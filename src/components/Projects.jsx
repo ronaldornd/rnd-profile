@@ -102,8 +102,8 @@ const Projects = () => {
                             key={f.id}
                             onClick={() => setFilter(f.id)}
                             className={`px-6 py-2 rounded-lg font-semibold transition-all ${filter === f.id
-                                    ? 'bg-gradient-to-r from-primary-500 to-blue-600 text-white shadow-lg'
-                                    : 'bg-white dark:bg-dark-card text-gray-700 dark:text-gray-300 hover:shadow-md'
+                                ? 'bg-gradient-to-r from-primary-500 to-blue-600 text-white shadow-lg'
+                                : 'bg-white dark:bg-dark-card text-gray-700 dark:text-gray-300 hover:shadow-md'
                                 }`}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}

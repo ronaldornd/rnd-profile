@@ -24,7 +24,7 @@ const About = () => {
                 className="max-w-4xl mx-auto"
             >
                 <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-                    Quem é <span className="gradient-text">Ronaldx</span>?
+                    Quem é <span className="gradient-text">Ronaldo</span>?
                 </h2>
                 <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
                     Um pouco sobre minha jornada
@@ -45,7 +45,7 @@ const About = () => {
                                 <div className="w-full h-full rounded-2xl bg-gray-200 dark:bg-dark-card flex items-center justify-center text-8xl font-bold gradient-text">
                                     <img
                                         src="https://github.com/ronaldornd.png"
-                                        alt="Ronaldx"
+                                        alt="Ronaldo"
                                         className="w-full h-full rounded-full object-cover"
                                     />
                                 </div>

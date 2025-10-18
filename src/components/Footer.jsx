@@ -25,11 +25,11 @@ const Footer = () => {
                         >
                             <img
                                 src="/fav.png"
-                                alt="Ronaldx Logo"
+                                alt="Ronaldo Logo"
                                 className="h-8 w-8"
                             />
                             <h3 className="text-2xl font-bold gradient-text">
-                                Ronaldx
+                                Ronaldo
                             </h3>
                         </motion.div>
                         <p className="text-gray-400 mb-4">
@@ -124,7 +124,7 @@ const Footer = () => {
                     >
                         <p className="font-bold">🎉 Você encontrou o Easter Egg!</p>
                         <p className="text-sm mt-1">
-                            "A curiosidade é o primeiro passo para a inovação" - Ronaldx
+                            "A curiosidade é o primeiro passo para a inovação" - Ronaldo
                         </p>
                     </motion.div>
                 )}
@@ -135,7 +135,7 @@ const Footer = () => {
                 {/* Copyright */}
                 <div className="text-center">
                     <p className="text-gray-400 mb-2">
-                        © {currentYear} Ronaldx. Todos os direitos reservados.
+                        © {currentYear} Ronaldo. Todos os direitos reservados.
                     </p>
                     <motion.p
                         className="text-gray-500 text-sm flex items-center justify-center gap-2"
@@ -143,7 +143,7 @@ const Footer = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
                     >
-                        Desenvolvido com <FaHeart className="text-red-500 animate-pulse" /> por Ronaldx
+                        Desenvolvido com <FaHeart className="text-red-500 animate-pulse" /> por Ronaldo
                     </motion.p>
                     <p className="text-xs text-gray-600 mt-2">
                         Feito com React, TailwindCSS & Framer Motion
