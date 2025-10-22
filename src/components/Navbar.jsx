@@ -56,6 +56,8 @@ const Navbar = () => {
                         className="p-2 rounded-lg bg-gray-200 dark:bg-dark-border hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
                         whileHover={{ rotate: 180 }}
                         whileTap={{ scale: 0.9 }}
+                        aria-label={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
+                        title={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
                     >
                         {theme === 'light' ? (
                             <FaMoon className="w-5 h-5 text-gray-700" />
