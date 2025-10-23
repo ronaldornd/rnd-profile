@@ -282,15 +282,15 @@ const CertificationsAndHighlights = () => {
                         </div>
                         <div className="grid grid-cols-3 gap-4 text-center">
                             <div className="p-4 bg-gray-100 dark:bg-dark-border rounded-lg">
-                                <div className="text-3xl font-bold text-primary-500 mb-1">15+</div>
+                                <div className="text-3xl font-bold text-primary-500 mb-1">8</div>
                                 <div className="text-sm text-gray-600 dark:text-gray-400">Repositórios</div>
                             </div>
                             <div className="p-4 bg-gray-100 dark:bg-dark-border rounded-lg">
-                                <div className="text-3xl font-bold text-primary-500 mb-1">200+</div>
+                                <div className="text-3xl font-bold text-primary-500 mb-1">50+</div>
                                 <div className="text-sm text-gray-600 dark:text-gray-400">Commits</div>
                             </div>
                             <div className="p-4 bg-gray-100 dark:bg-dark-border rounded-lg">
-                                <div className="text-3xl font-bold text-primary-500 mb-1">10+</div>
+                                <div className="text-3xl font-bold text-primary-500 mb-1">8</div>
                                 <div className="text-sm text-gray-600 dark:text-gray-400">Projetos</div>
                             </div>
                         </div>
