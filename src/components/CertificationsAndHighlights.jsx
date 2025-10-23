@@ -22,7 +22,7 @@ const CertificationsAndHighlights = () => {
             platform: 'Cisco Networking Academy – IFPE',
             date: '02/04/2024',
             description: 'Fundamentos de cibersegurança: CIA Triad, TTPs de cibercriminosos, contramedidas, defesa de redes e legislação em cibersegurança. 30 horas - Nota: 7,9',
-            link: '#',
+            link: 'https://drive.google.com/file/d/1aWhWIyiVpQ6VsMlWgWp2n49cwYYEexqz/view?usp=drive_link',
             icon: '🔒',
             hours: '30 horas',
             grade: '7,9',
