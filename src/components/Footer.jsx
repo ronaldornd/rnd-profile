@@ -26,7 +26,7 @@ const Footer = () => {
                             <img
                                 src="/fav.png"
                                 alt="Ronaldo Logo"
-                                className="h-8 w-8"
+                                className="h-8 w-8 border-green-500 border-2 rounded-2xl"
                             />
                             <h3 className="text-2xl font-bold gradient-text">
                                 Ronaldo

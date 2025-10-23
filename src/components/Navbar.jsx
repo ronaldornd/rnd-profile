@@ -31,9 +31,8 @@ const Navbar = () => {
                         <img
                             src="/fav.png"
                             alt="Ronaldo Logo"
-                            className="h-10 w-10"
+                            className="h-10 w-10 border-2 border-green-500 rounded-2xl"
                         />
-                        <span className="text-2xl font-bold gradient-text">Ronaldo</span>
                     </motion.a>
 
                     {/* Navigation Links - Desktop */}
