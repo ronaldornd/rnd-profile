@@ -1,4 +1,5 @@
 import { ThemeProvider } from './contexts/ThemeContext';
+import useVisitTracker from './hooks/useVisitTracker';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,6 +11,9 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
+    // Rastreia visitas e envia notificação no WhatsApp
+    useVisitTracker();
+
     return (
         <ThemeProvider>
             <div className="min-h-screen">
