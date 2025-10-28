@@ -13,7 +13,7 @@ import emailjs from '@emailjs/browser';
 // Inicializa o EmailJS com sua Public Key
 const initEmailJS = () => {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-    
+
     if (publicKey) {
         emailjs.init(publicKey);
     } else {

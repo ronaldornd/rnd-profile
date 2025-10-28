@@ -269,8 +269,8 @@ const Contact = () => {
                                     onBlur={handleBlur}
                                     required
                                     className={`w-full px-4 py-3 rounded-lg border ${errors.name && touched.name
-                                            ? 'border-red-500 focus:ring-red-500'
-                                            : 'border-gray-300 dark:border-dark-border focus:ring-primary-500'
+                                        ? 'border-red-500 focus:ring-red-500'
+                                        : 'border-gray-300 dark:border-dark-border focus:ring-primary-500'
                                         } bg-white dark:bg-dark-card text-gray-900 dark:text-gray-100 focus:ring-2 focus:border-transparent transition-all`}
                                     placeholder="Seu nome completo"
                                 />
@@ -292,8 +292,8 @@ const Contact = () => {
                                     onBlur={handleBlur}
                                     required
                                     className={`w-full px-4 py-3 rounded-lg border ${errors.email && touched.email
-                                            ? 'border-red-500 focus:ring-red-500'
-                                            : 'border-gray-300 dark:border-dark-border focus:ring-primary-500'
+                                        ? 'border-red-500 focus:ring-red-500'
+                                        : 'border-gray-300 dark:border-dark-border focus:ring-primary-500'
                                         } bg-white dark:bg-dark-card text-gray-900 dark:text-gray-100 focus:ring-2 focus:border-transparent transition-all`}
                                     placeholder="seu@email.com"
                                 />
@@ -315,8 +315,8 @@ const Contact = () => {
                                     required
                                     rows={5}
                                     className={`w-full px-4 py-3 rounded-lg border ${errors.message && touched.message
-                                            ? 'border-red-500 focus:ring-red-500'
-                                            : 'border-gray-300 dark:border-dark-border focus:ring-primary-500'
+                                        ? 'border-red-500 focus:ring-red-500'
+                                        : 'border-gray-300 dark:border-dark-border focus:ring-primary-500'
                                         } bg-white dark:bg-dark-card text-gray-900 dark:text-gray-100 focus:ring-2 focus:border-transparent transition-all resize-none`}
                                     placeholder="Conte-me sobre seu projeto ou oportunidade..."
                                 />
