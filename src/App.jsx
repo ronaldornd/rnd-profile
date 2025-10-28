@@ -9,6 +9,7 @@ import Skills from './components/Skills';
 import CertificationsAndHighlights from './components/CertificationsAndHighlights';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
     // Rastreia visitas e envia notificação no WhatsApp
@@ -23,10 +24,12 @@ function App() {
                     <About />
                     <Experience />
                     <Skills />
+                    <Projects />
                     <CertificationsAndHighlights />
                     <Contact />
                 </main>
                 <Footer />
+                <ScrollToTop />
             </div>
         </ThemeProvider>
     );

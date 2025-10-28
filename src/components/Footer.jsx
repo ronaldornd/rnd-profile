@@ -150,22 +150,7 @@ const Footer = () => {
                     </p>
                 </div>
 
-                {/* Back to Top Button */}
-                <motion.div
-                    className="mt-8 text-center"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
-                >
-                    <motion.a
-                        href="#home"
-                        className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors"
-                        whileHover={{ y: -5 }}
-                    >
-                        <span>↑</span>
-                        <span>Voltar ao topo</span>
-                    </motion.a>
-                </motion.div>
+
             </div>
         </footer>
     );
