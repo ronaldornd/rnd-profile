@@ -49,3 +49,126 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary-600;
 }
+
+/* Swiper Carousel Custom Styles */
+.projects-swiper {
+  padding: 20px 0 !important;
+  width: 100% !important;
+  max-width: 100%;
+  overflow: hidden !important;
+}
+
+.projects-swiper .swiper-wrapper {
+  padding-bottom: 20px;
+}
+
+.projects-swiper .swiper-slide {
+  height: auto !important;
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* Botões de navegação - esconder no mobile */
+.projects-swiper .swiper-button-next,
+.projects-swiper .swiper-button-prev {
+  @apply text-primary-500 hover:text-primary-600 transition-colors;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+@media (min-width: 768px) {
+
+  .projects-swiper .swiper-button-next,
+  .projects-swiper .swiper-button-prev {
+    display: flex;
+  }
+}
+
+.dark .projects-swiper .swiper-button-next,
+.dark .projects-swiper .swiper-button-prev {
+  background: rgba(31, 41, 55, 0.9);
+  @apply text-primary-400 hover:text-primary-300;
+}
+
+.projects-swiper .swiper-button-next:after,
+.projects-swiper .swiper-button-prev:after {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Paginação */
+.projects-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.projects-swiper .swiper-pagination-bullet {
+  @apply bg-primary-500;
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+  margin: 0 4px !important;
+}
+
+.projects-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  @apply bg-primary-600;
+  width: 24px;
+  border-radius: 5px;
+  transition: width 0.3s;
+}
+
+.dark .projects-swiper .swiper-pagination-bullet {
+  @apply bg-primary-400;
+}
+
+.dark .projects-swiper .swiper-pagination-bullet-active {
+  @apply bg-primary-300;
+}
+
+/* Ajustes mobile */
+@media (max-width: 639px) {
+  .projects-swiper {
+    padding: 10px 0 !important;
+    margin: 0 !important;
+  }
+
+  .projects-swiper .swiper-slide {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  .projects-swiper .swiper-slide > div {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  #projects {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .projects-swiper .swiper-slide {
+    padding: 0 8px;
+    width: calc(100% - 16px) !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .projects-swiper .swiper-slide {
+    padding: 0 12px;
+    width: calc(50% - 24px) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-swiper .swiper-slide {
+    padding: 0 15px;
+  }
+}

@@ -2,6 +2,12 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { FaGithub, FaExternalLinkAlt, FaReact, FaNode, FaDatabase, FaJava, FaHtml5, FaCss3Alt, FaMagic } from 'react-icons/fa';
 import { SiPrisma, SiTailwindcss, SiJavascript, SiTypescript, SiSpringboot } from 'react-icons/si';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
 
 const Projects = () => {
     const [filter, setFilter] = useState('all');
@@ -21,18 +27,6 @@ const Projects = () => {
         },
         {
             id: 2,
-            name: 'RND Reset',
-            category: 'frontend',
-            description: 'Aplicação desenvolvida com TypeScript para reset de dados',
-            problem: 'Criar uma ferramenta eficiente para gerenciamento de dados',
-            learning: 'Aprofundei conhecimentos em TypeScript e boas práticas de desenvolvimento',
-            image: '🔄',
-            technologies: ['TypeScript', 'React'],
-            github: 'https://github.com/ronaldornd/rnd-reset',
-            demo: null,
-        },
-        {
-            id: 3,
             name: 'Live Backend (NLW HEAT)',
             category: 'backend',
             description: 'Backend do projeto NLW-HEAT - Sistema de mensagens em tempo real',
@@ -44,7 +38,7 @@ const Projects = () => {
             demo: null,
         },
         {
-            id: 4,
+            id: 3,
             name: 'Live Web (NLW HEAT)',
             category: 'frontend',
             description: 'Frontend do projeto NLW-HEAT - Interface web para mensagens em tempo real',
@@ -56,7 +50,7 @@ const Projects = () => {
             demo: null,
         },
         {
-            id: 5,
+            id: 4,
             name: 'Live Native (NLW HEAT)',
             category: 'frontend',
             description: 'Aplicativo mobile do projeto NLW-HEAT desenvolvido com React Native',
@@ -68,7 +62,7 @@ const Projects = () => {
             demo: null,
         },
         {
-            id: 6,
+            id: 5,
             name: 'OxeFood API',
             category: 'backend',
             description: 'Projeto utilizado como exemplo para a disciplina Desenvolvimento WEB no IFPE Campus Jaboatão dos Guararapes',
@@ -80,7 +74,7 @@ const Projects = () => {
             demo: null,
         },
         {
-            id: 7,
+            id: 6,
             name: 'OxeFood Web',
             category: 'fullstack',
             description: 'Interface web para o sistema OxeFood - Projeto acadêmico de delivery',
@@ -92,7 +86,7 @@ const Projects = () => {
             demo: null,
         },
         {
-            id: 8,
+            id: 7,
             name: 'RND Links',
             category: 'frontend',
             description: 'Página de links estilo Linktree personalizada',
@@ -136,12 +130,13 @@ const Projects = () => {
         : projects.filter(p => p.category === filter);
 
     return (
-        <section id="projects" className="section-container bg-gray-50 dark:bg-dark-card/30">
+        <section id="projects" className="bg-gray-50 dark:bg-dark-card/30 py-16 md:py-20 overflow-hidden">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}
+                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
             >
                 <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
                     Meus <span className="gradient-text">Projetos</span>
@@ -168,80 +163,128 @@ const Projects = () => {
                     ))}
                 </div>
 
-                {/* Projects Grid */}
-                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    {filteredProjects.map((project, index) => (
-                        <motion.div
-                            key={project.id}
-                            className="card-glass overflow-hidden group"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -10 }}
-                        >
-                            {/* Project Image/Icon */}
-                            <div className="relative h-48 bg-gradient-to-br from-primary-500 to-blue-600 flex items-center justify-center text-8xl">
-                                {project.image}
-                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                                    {project.github && (
-                                        <motion.a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="p-3 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
-                                            whileHover={{ rotate: 360 }}
-                                            transition={{ duration: 0.3 }}
-                                        >
-                                            <FaGithub size={24} />
-                                        </motion.a>
-                                    )}
-                                    {project.demo && (
-                                        <motion.a
-                                            href={project.demo}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="p-3 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
-                                            whileHover={{ rotate: 360 }}
-                                            transition={{ duration: 0.3 }}
-                                        >
-                                            <FaExternalLinkAlt size={20} />
-                                        </motion.a>
-                                    )}
-                                </div>
-                            </div>
-
-                            {/* Project Content */}
-                            <div className="p-6">
-                                <h3 className="text-2xl font-bold mb-2 gradient-text">{project.name}</h3>
-                                <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
-
-                                {/* Problem & Learning */}
-                                <div className="space-y-2 mb-4">
-                                    <div className="text-sm">
-                                        <span className="font-semibold text-primary-500">🎯 Problema:</span>
-                                        <p className="text-gray-600 dark:text-gray-400 mt-1">{project.problem}</p>
-                                    </div>
-                                    <div className="text-sm">
-                                        <span className="font-semibold text-primary-500">💡 Aprendizado:</span>
-                                        <p className="text-gray-600 dark:text-gray-400 mt-1">{project.learning}</p>
-                                    </div>
-                                </div>
-
-                                {/* Technologies */}
-                                <div className="flex flex-wrap gap-2">
-                                    {project.technologies.map((tech, i) => (
-                                        <div
-                                            key={i}
-                                            className="flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-dark-border rounded-full text-sm"
-                                        >
-                                            {getTechIcon(tech)}
-                                            <span>{tech}</span>
+                {/* Projects Carousel */}
+                <div className="w-full -mx-4 px-4 sm:mx-0 sm:px-0">
+                    <Swiper
+                        modules={[Navigation, Pagination, Autoplay]}
+                        grabCursor={true}
+                        centeredSlides={false}
+                        slidesPerView={1}
+                        spaceBetween={16}
+                        navigation={{
+                            enabled: true,
+                        }}
+                        pagination={{
+                            clickable: true,
+                            dynamicBullets: true
+                        }}
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true,
+                        }}
+                        loop={filteredProjects.length > 1}
+                        className="projects-swiper !pb-16"
+                        breakpoints={{
+                            320: {
+                                slidesPerView: 1,
+                                spaceBetween: 16,
+                                centeredSlides: false,
+                            },
+                            640: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                                centeredSlides: false,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 24,
+                                centeredSlides: false,
+                            },
+                            1024: {
+                                slidesPerView: 2.5,
+                                spaceBetween: 30,
+                                centeredSlides: true,
+                            },
+                            1280: {
+                                slidesPerView: 3,
+                                spaceBetween: 30,
+                                centeredSlides: true,
+                            },
+                        }}
+                    >
+                        {filteredProjects.map((project) => (
+                            <SwiperSlide key={project.id} className="!h-auto">
+                                <motion.div
+                                    className="card-glass overflow-hidden group h-full flex flex-col w-full mx-auto"
+                                    whileHover={{ y: -10 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    {/* Project Image/Icon */}
+                                    <div className="relative h-48 bg-gradient-to-br from-primary-500 to-blue-600 flex items-center justify-center text-8xl">
+                                        {project.image}
+                                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                                            {project.github && (
+                                                <motion.a
+                                                    href={project.github}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="p-3 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
+                                                    whileHover={{ rotate: 360 }}
+                                                    transition={{ duration: 0.3 }}
+                                                >
+                                                    <FaGithub size={24} />
+                                                </motion.a>
+                                            )}
+                                            {project.demo && (
+                                                <motion.a
+                                                    href={project.demo}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="p-3 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
+                                                    whileHover={{ rotate: 360 }}
+                                                    transition={{ duration: 0.3 }}
+                                                >
+                                                    <FaExternalLinkAlt size={20} />
+                                                </motion.a>
+                                            )}
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                                    </div>
+
+                                    {/* Project Content */}
+                                    <div className="p-6 flex-1 flex flex-col">
+                                        <h3 className="text-2xl font-bold mb-2 gradient-text">{project.name}</h3>
+                                        <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
+
+                                        {/* Problem & Learning */}
+                                        <div className="space-y-2 mb-4 flex-1">
+                                            <div className="text-sm">
+                                                <span className="font-semibold text-primary-500">🎯 Problema:</span>
+                                                <p className="text-gray-600 dark:text-gray-400 mt-1">{project.problem}</p>
+                                            </div>
+                                            <div className="text-sm">
+                                                <span className="font-semibold text-primary-500">💡 Aprendizado:</span>
+                                                <p className="text-gray-600 dark:text-gray-400 mt-1">{project.learning}</p>
+                                            </div>
+                                        </div>
+
+                                        {/* Technologies */}
+                                        <div className="flex flex-wrap gap-2">
+                                            {project.technologies.map((tech, i) => (
+                                                <div
+                                                    key={i}
+                                                    className="flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-dark-border rounded-full text-sm"
+                                                >
+                                                    {getTechIcon(tech)}
+                                                    <span>{tech}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
 
                 {/* CTA */}

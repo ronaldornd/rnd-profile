@@ -17,7 +17,7 @@ function App() {
 
     return (
         <ThemeProvider>
-            <div className="min-h-screen">
+            <div className="min-h-100vh">
                 <Navbar />
                 <main>
                     <Hero />
