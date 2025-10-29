@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import { MdKeyboardDoubleArrowDown } from 'react-icons/md';
 
 const Hero = () => {
     const [text, setText] = useState('');
@@ -125,9 +126,7 @@ const Hero = () => {
                     variants={itemVariants}
                 >
 
-                    <a href="#contact" className="btn-secondary">
-                        Entrar em contato
-                    </a>
+                    <MdKeyboardDoubleArrowDown size={24} className="animate-bounce text-gray-600 dark:text-gray-400" />
                 </motion.div>
 
                 {/* Social Links */}
@@ -177,7 +176,7 @@ const Hero = () => {
 
                 {/* Scroll Indicator */}
                 <motion.div
-                    className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+                    className="fixed top-1/2 right-6 transform -translate-x-1/2 -translate-y-1/2"
                     animate={{ y: [0, 10, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                 >

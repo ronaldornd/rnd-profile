@@ -51,7 +51,6 @@ ${deviceType}
                 // Marca como notificado nesta sessão
                 sessionStorage.setItem('visit_notified', 'true');
 
-                console.log('✅ Notificação de visita enviada com sucesso!');
             } catch (error) {
                 console.error('❌ Erro ao enviar notificação:', error);
             }
