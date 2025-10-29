@@ -90,8 +90,8 @@ const Navbar = () => {
                                 key={item.name}
                                 href={item.href}
                                 className={`transition-colors ${activeSection === item.name
-                                        ? 'text-primary-500 dark:text-primary-400 font-semibold'
-                                        : 'text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400'
+                                    ? 'text-primary-500 dark:text-primary-400 font-semibold'
+                                    : 'text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400'
                                     }`}
                                 whileHover={{ y: -2 }}
                             >
