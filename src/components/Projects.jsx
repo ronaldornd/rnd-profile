@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaGithub, FaExternalLinkAlt, FaReact, FaNode, FaDatabase, FaJava, FaHtml5, FaCss3Alt } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaReact, FaNode, FaDatabase, FaJava, FaHtml5, FaCss3Alt, FaMagic } from 'react-icons/fa';
 import { SiPrisma, SiTailwindcss, SiJavascript, SiTypescript, SiSpringboot } from 'react-icons/si';
 
 const Projects = () => {
@@ -126,7 +126,7 @@ const Projects = () => {
             'Spring Boot': <SiSpringboot className="text-green-600" />,
             'HTML': <FaHtml5 className="text-orange-500" />,
             'CSS': <FaCss3Alt className="text-blue-500" />,
-            'Framer Motion': <FaReact className="text-purple-500" />,
+            'Framer Motion': <FaMagic className="text-purple-500" />,
         };
         return icons[tech] || <FaReact />;
     };
