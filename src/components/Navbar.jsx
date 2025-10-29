@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { useTheme } from '../contexts/ThemeContext';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
+    const [activeSection, setActiveSection] = useState('Início');
 
     const navItems = [
         { name: 'Início', href: '#home' },
@@ -12,6 +14,46 @@ const Navbar = () => {
         { name: 'Habilidades', href: '#skills' },
         { name: 'Contato', href: '#contact' },
     ];
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                // Encontrar a seção com maior visibilidade
+                let maxRatio = 0;
+                let mostVisibleSection = null;
+
+                entries.forEach((entry) => {
+                    if (entry.intersectionRatio > maxRatio) {
+                        maxRatio = entry.intersectionRatio;
+                        mostVisibleSection = entry.target.id;
+                    }
+                });
+
+                // Atualizar apenas se houver uma seção visível
+                if (mostVisibleSection && maxRatio > 0.1) {
+                    const navItem = navItems.find(item => item.href === `#${mostVisibleSection}`);
+                    if (navItem) {
+                        setActiveSection(navItem.name);
+                    }
+                }
+            },
+            {
+                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+                rootMargin: '-80px 0px -20% 0px'
+            }
+        );
+
+        // Observar todas as seções
+        const sections = ['home', 'about', 'experience', 'skills', 'contact'];
+        sections.forEach((sectionId) => {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                observer.observe(element);
+            }
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <motion.nav
@@ -34,13 +76,23 @@ const Navbar = () => {
                         />
                     </motion.a>
 
+                    {/* Active Section Name - Mobile Only */}
+                    <div className="md:hidden flex-1 text-center">
+                        <span className="text-gray-700 dark:text-gray-300 font-medium">
+                            {activeSection}
+                        </span>
+                    </div>
+
                     {/* Navigation Links - Desktop */}
                     <div className="hidden md:flex space-x-8">
                         {navItems.map((item) => (
                             <motion.a
                                 key={item.name}
                                 href={item.href}
-                                className="text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+                                className={`transition-colors ${activeSection === item.name
+                                        ? 'text-primary-500 dark:text-primary-400 font-semibold'
+                                        : 'text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400'
+                                    }`}
                                 whileHover={{ y: -2 }}
                             >
                                 {item.name}
