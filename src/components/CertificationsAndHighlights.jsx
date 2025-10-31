@@ -67,6 +67,21 @@ const CertificationsAndHighlights = () => {
                 'Automação e integração com GitHub Actions'
             ]
         },
+        {
+            name: 'Introdução ao Mundo da Inteligência Artificial (IA) Generativa',
+            platform: 'DIO (Digital Innovation One)',
+            date: '30/10/2025',
+            description: 'Módulo introdutório sobre Inteligência Artificial Generativa, explorando conceitos fundamentais, aplicações práticas e o impacto da IA no mundo atual.',
+            link: 'https://drive.google.com/file/d/1Wu8VrGN67wJSsJo3J1X3_RFGcutiZrt3/view?usp=drive_link',
+            icon: '🤖',
+            hours: '6 horas',
+            skills: [
+                'Fundamentos de Inteligência Artificial Generativa',
+                'Compreensão de modelos de linguagem',
+                'Aplicações práticas de IA',
+                'Impacto e ética da IA no mundo moderno'
+            ]
+        },
 
     ];
 
