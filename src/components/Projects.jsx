@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { FaGithub, FaExternalLinkAlt, FaReact, FaNode, FaDatabase, FaJava, FaHtml5, FaCss3Alt, FaMagic } from 'react-icons/fa';
 import { SiPrisma, SiTailwindcss, SiJavascript, SiTypescript, SiSpringboot } from 'react-icons/si';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
+import ScrollReveal from './ScrollReveal';
 
 const Projects = () => {
     const [filter, setFilter] = useState('all');
@@ -131,22 +132,18 @@ const Projects = () => {
 
     return (
         <section id="projects" className="bg-gray-50 dark:bg-dark-card/30 py-16 md:py-20 overflow-hidden">
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-            >
-                <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-                    Meus <span className="gradient-text">Projetos</span>
-                </h2>
-                <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
-                    Onde ideias ganham vida através do código
-                </p>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <ScrollReveal variant="slideUp" once={true}>
+                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+                        Meus <span className="gradient-text">Projetos</span>
+                    </h2>
+                    <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
+                        Onde ideias ganham vida através do código
+                    </p>
+                </ScrollReveal>
 
                 {/* Filter Buttons */}
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                <ScrollReveal variant="fadeIn" once={true} className="flex flex-wrap justify-center gap-4 mb-12">
                     {filters.map((f) => (
                         <motion.button
                             key={f.id}
@@ -161,10 +158,10 @@ const Projects = () => {
                             {f.name}
                         </motion.button>
                     ))}
-                </div>
+                </ScrollReveal>
 
                 {/* Projects Carousel */}
-                <div className="w-full -mx-4 px-4 sm:mx-0 sm:px-0">
+                <ScrollReveal variant="fadeIn" className="w-full">
                     <Swiper
                         modules={[Navigation, Pagination, Autoplay]}
                         grabCursor={true}
@@ -285,15 +282,10 @@ const Projects = () => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                </div>
+                </ScrollReveal>
 
                 {/* CTA */}
-                <motion.div
-                    className="text-center mt-12"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
+                <ScrollReveal variant="fadeIn" once={true} className="text-center mt-12">
                     <p className="text-gray-600 dark:text-gray-400 mb-4">
                         Quer ver mais projetos?
                     </p>
@@ -306,8 +298,8 @@ const Projects = () => {
                         <FaGithub />
                         Visitar meu GitHub
                     </a>
-                </motion.div>
-            </motion.div>
+                </ScrollReveal>
+            </div>
         </section>
     );
 };

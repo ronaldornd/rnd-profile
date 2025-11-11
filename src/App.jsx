@@ -17,9 +17,9 @@ function App() {
 
     return (
         <ThemeProvider>
-            <div className="min-h-100vh">
+            <div className="flex flex-col max-w-100vw min-h-100vh bg-white dark:bg-dark-bg text-gray-800 dark:text-gray-200">
                 <Navbar />
-                <main>
+                <main className="flex-grow">
                     <Hero />
                     <About />
                     <Experience />

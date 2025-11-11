@@ -43,7 +43,7 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-white dark:bg-dark-bg">
             {/* Background Effects */}
             <div className="absolute inset-0 -z-10">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-float"></div>
@@ -65,12 +65,19 @@ const Hero = () => {
                         <motion.div
                             className="w-40 h-40 rounded-full bg-gradient-to-r from-primary-500 to-blue-600 p-1"
                             animate={{
-                                rotate: 360,
+                                rotate: [0, 3, -3, 0],
+                                scale: [1, 1.03, 1.03, 1],
+                                y: [0, -8, 0],
+                                boxShadow: [
+                                    "0px 10px 30px rgba(54, 247, 16, 0.17)",
+                                    "0px 20px 40px rgba(24, 245, 116, 0.42)",
+                                    "0px 10px 30px rgba(2, 247, 124, 0.47)"
+                                ]
                             }}
                             transition={{
-                                duration: 20,
+                                duration: 4,
                                 repeat: Infinity,
-                                ease: "linear",
+                                ease: "easeInOut",
                             }}
                         >
                             <div className="w-full h-full rounded-full bg-gray-200 dark:bg-dark-card flex items-center justify-center text-6xl font-bold gradient-text">
@@ -82,7 +89,7 @@ const Hero = () => {
                             </div>
                         </motion.div>
                         <motion.div
-                            className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white dark:border-dark-bg"
+                            className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white dark:border-green-700"
                             animate={{
                                 scale: [1, 1.2, 1],
                             }}

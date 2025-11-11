@@ -134,9 +134,7 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <div className="text-center">
-                    <p className="text-gray-400 mb-2">
-                        © {currentYear} Ronaldo. Todos os direitos reservados.
-                    </p>
+
                     <motion.p
                         className="text-gray-500 text-sm flex items-center justify-center gap-2"
                         initial={{ opacity: 0 }}

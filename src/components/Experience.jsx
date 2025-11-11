@@ -1,12 +1,7 @@
-import { motion } from 'framer-motion';
-import { FaBriefcase, FaGraduationCap, FaLanguage, FaCertificate } from 'react-icons/fa';
+import { FaBriefcase, FaGraduationCap, FaLanguage } from 'react-icons/fa';
+import ScrollReveal from './ScrollReveal';
 
 const Experience = () => {
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-    };
-
     const experiences = [
         {
             title: 'Monitor de Disciplina',
@@ -36,129 +31,73 @@ const Experience = () => {
 
     return (
         <section id="experience" className="section-container">
-            <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeInUp}
-            >
+            <ScrollReveal variant="slideUp" once={true}>
                 <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
                     Experiência & <span className="gradient-text">Formação</span>
                 </h2>
                 <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
                     Meu histórico profissional e acadêmico
                 </p>
+            </ScrollReveal>
 
-                {/* Professional Summary */}
-                <motion.div
-                    className="card-glass p-8 mb-12 max-w-3xl mx-auto"
-                    variants={fadeInUp}
-                >
-                    <div className="flex items-start gap-4">
-                        <div className="text-4xl">👨‍💻</div>
-                        <div>
-                            <h3 className="text-2xl font-bold mb-3 gradient-text">Resumo Profissional</h3>
-                            <p className="text-lg text-gray-700 dark:text-gray-300">
-                                Técnico em Informática com experiência em manutenção de computadores,
-                                suporte remoto e desenvolvimento web com React, Prisma e PostgreSQL.
-                                Apaixonado por resolver problemas e criar soluções eficientes.
-                            </p>
-                        </div>
+            {/* Professional Summary */}
+            <ScrollReveal variant="fadeIn" once={true} className="card-glass p-8 mb-12 max-w-3xl mx-auto">
+                <div className="flex items-start gap-4">
+                    <div className="text-4xl">👨‍💻</div>
+                    <div>
+                        <h3 className="text-2xl font-bold mb-3 gradient-text">Resumo Profissional</h3>
+                        <p className="text-lg text-gray-700 dark:text-gray-300">
+                            Técnico em Informática com experiência em manutenção de computadores,
+                            suporte remoto e desenvolvimento web com React, Prisma e PostgreSQL.
+                            Apaixonado por resolver problemas e criar soluções eficientes.
+                        </p>
                     </div>
-                </motion.div>
+                </div>
+            </ScrollReveal>
 
-                {/* Experience Timeline */}
-                <div className="max-w-4xl mx-auto mb-12">
+            {/* Experience Timeline */}
+            <div className="max-w-4xl mx-auto mb-12">
+                <ScrollReveal variant="slideLeft" once={true}>
                     <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
                         <FaBriefcase className="text-primary-500" />
                         Experiências Relevantes
                     </h3>
-                    <div className="relative">
-                        {/* Timeline Line */}
-                        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-blue-600"></div>
+                </ScrollReveal>
+                <div className="relative">
+                    {/* Timeline Line */}
+                    <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-blue-600"></div>
 
-                        {experiences.map((exp, index) => (
-                            <motion.div
-                                key={index}
-                                className="relative pl-20 pb-12 last:pb-0"
-                                initial={{ opacity: 0, x: -50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.2 }}
-                            >
-                                {/* Timeline Dot */}
-                                <motion.div
-                                    className="absolute left-6 top-0 w-5 h-5 bg-primary-500 rounded-full border-4 border-white dark:border-dark-bg"
-                                    whileHover={{ scale: 1.5 }}
-                                />
+                    {experiences.map((exp, index) => (
+                        <ScrollReveal
+                            key={index}
+                            variant="slideLeft"
+                            delay={index * 0.15}
+                            className="relative pl-20 pb-12 last:pb-0"
+                        >
+                            {/* Timeline Dot */}
+                            <div
+                                className="absolute left-6 top-0 w-5 h-5 bg-primary-500 rounded-full border-4 border-white dark:border-dark-bg"
+                            />
 
-                                <div className="card-glass p-6 hover:shadow-2xl transition-all">
-                                    <div className="flex items-start gap-4">
-                                        <div className="text-4xl">{exp.icon}</div>
-                                        <div className="flex-1">
-                                            <h4 className="text-xl font-bold text-primary-500 mb-1">{exp.title}</h4>
-                                            <p className="text-gray-600 dark:text-gray-400 mb-2">
-                                                {exp.organization} • {exp.period}
-                                            </p>
-                                            <p className="text-gray-700 dark:text-gray-300 mb-3">{exp.description}</p>
-                                            <div className="inline-block bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 px-3 py-1 rounded-full text-sm font-semibold">
-                                                ⭐ {exp.achievement}
-                                            </div>
+                            <div className="card-glass p-6 transition-all">
+                                <div className="flex items-start gap-4">
+                                    <div className="text-4xl">{exp.icon}</div>
+                                    <div className="flex-1">
+                                        <h4 className="text-xl font-bold text-primary-500 mb-1">{exp.title}</h4>
+                                        <p className="text-gray-600 dark:text-gray-400 mb-2">
+                                            {exp.organization} • {exp.period}
+                                        </p>
+                                        <p className="text-gray-700 dark:text-gray-300 mb-3">{exp.description}</p>
+                                        <div className="text-sm font-semibold text-green-600 dark:text-green-400">
+                                            🏆 {exp.achievement}
                                         </div>
                                     </div>
                                 </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                            </div>
+                        </ScrollReveal>
+                    ))}
                 </div>
-
-                {/* Education */}
-                <motion.div className="max-w-4xl mx-auto mb-12" variants={fadeInUp}>
-                    <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                        <FaGraduationCap className="text-primary-500" />
-                        Educação
-                    </h3>
-                    <div className="card-glass p-8">
-                        <div className="flex items-start gap-4">
-                            <div className="text-5xl">🎓</div>
-                            <div className="flex-1">
-                                <h4 className="text-2xl font-bold mb-2">Técnico em Informática para Internet</h4>
-                                <p className="text-xl text-primary-500 mb-2">Instituto Federal de Pernambuco (IFPE)</p>
-                                <p className="text-gray-600 dark:text-gray-400 mb-4">2021 - 2024</p>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    Formação completa em desenvolvimento web, banco de dados, redes e manutenção de sistemas.
-                                    Destaque em programação e projetos práticos.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
-
-                {/* Languages */}
-                <motion.div className="max-w-4xl mx-auto" variants={fadeInUp}>
-                    <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                        <FaLanguage className="text-primary-500" />
-                        Idiomas
-                    </h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="card-glass p-6">
-                            <h4 className="text-xl font-bold mb-3">Português</h4>
-                            <div className="w-full bg-gray-200 dark:bg-dark-border rounded-full h-3">
-                                <div className="bg-gradient-to-r from-primary-500 to-blue-600 h-3 rounded-full" style={{ width: '100%' }}></div>
-                            </div>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Nativo</p>
-                        </div>
-                        <div className="card-glass p-6">
-                            <h4 className="text-xl font-bold mb-3">Inglês</h4>
-                            <div className="w-full bg-gray-200 dark:bg-dark-border rounded-full h-3">
-                                <div className="bg-gradient-to-r from-primary-500 to-blue-600 h-3 rounded-full" style={{ width: '65%' }}></div>
-                            </div>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Intermediário Técnico</p>
-                        </div>
-                    </div>
-                </motion.div>
-            </motion.div>
+            </div>
         </section>
     );
 };

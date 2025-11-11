@@ -22,7 +22,7 @@
   }
 
   .card-glass {
-    @apply bg-white/80 dark:bg-dark-card/80 backdrop-blur-lg border border-gray-200 dark:border-dark-border rounded-xl shadow-xl;
+    @apply bg-white/80 dark:bg-dark-card/80 backdrop-blur-lg border border-green-400 rounded-xl shadow-xl;
   }
 
   .btn-primary {
@@ -78,7 +78,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(2, 245, 22, 0.13);
   display: none;
 }
 

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import ScrollReveal from './ScrollReveal';
 import { FaCertificate, FaExternalLinkAlt, FaTrophy, FaStar, FaGithub } from 'react-icons/fa';
 
 const CertificationsAndHighlights = () => {
@@ -113,216 +113,101 @@ const CertificationsAndHighlights = () => {
     ];
 
     return (
-        <section id="certifications" className="section-container bg-gray-50 dark:bg-dark-card/30">
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-            >
-                {/* Certifications Section */}
-                <div className="mb-20">
+        <section id="certifications" className="bg-gray-50 dark:bg-dark-card/30 py-16 md:py-20 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <ScrollReveal variant="slideUp" once={true}>
                     <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-                        Certificações & <span className="gradient-text">Cursos</span>
+                        Certificações & <span className="gradient-text">Destaques</span>
                     </h2>
                     <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
-                        Meu compromisso com o aprendizado contínuo
+                        Minhas conquistas e reconhecimentos
                     </p>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                        {certifications.map((cert, index) => (
-                            <motion.div
-                                key={index}
-                                className={`card-glass p-6 hover:shadow-2xl transition-all group ${cert.skills ? 'md:col-span-2 lg:col-span-3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10' : ''
-                                    }`}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                whileHover={{ y: -5 }}
-                            >
-                                {/* Layout especial para certificados com competências */}
-                                {cert.skills ? (
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        {/* Coluna esquerda - Informações principais */}
-                                        <div>
-                                            <div className="flex items-start justify-between mb-4">
-                                                <span className="text-5xl">{cert.icon}</span>
-                                                {cert.link && (
-                                                    <motion.a
-                                                        href={cert.link}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="text-primary-500 hover:text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity"
-                                                        whileHover={{ scale: 1.2 }}
-                                                    >
-                                                        <FaExternalLinkAlt />
-                                                    </motion.a>
-                                                )}
-                                            </div>
-                                            <h3 className="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-200">
-                                                {cert.name}
-                                            </h3>
-                                            <p className="text-base text-primary-500 font-semibold mb-3">
-                                                {cert.platform}
-                                            </p>
-                                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                                                {cert.description}
-                                            </p>
-
-                                            {/* Informações extras */}
-                                            <div className="flex gap-3 mb-3">
-                                                {cert.hours && (
-                                                    <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-2 rounded-lg text-sm font-semibold">
-                                                        ⏱️ {cert.hours}
-                                                    </span>
-                                                )}
-                                                {cert.grade && (
-                                                    <span className="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-3 py-2 rounded-lg text-sm font-semibold">
-                                                        ⭐ Nota: {cert.grade}
-                                                    </span>
-                                                )}
-                                            </div>
-
-                                            <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-500 mt-4">
-                                                <span className="flex items-center gap-1">
-                                                    <FaCertificate />
-                                                    Certificado
-                                                </span>
-                                                <span>{cert.date}</span>
-                                            </div>
-                                        </div>
-
-                                        {/* Coluna direita - Competências */}
-                                        <div className="bg-white/50 dark:bg-dark-bg/50 p-6 rounded-lg">
-                                            <p className="text-sm font-bold text-primary-600 dark:text-primary-400 mb-4 flex items-center gap-2">
-                                                <span className="text-xl">💡</span>
-                                                Competências Adquiridas
-                                            </p>
-                                            <ul className="space-y-3">
-                                                {cert.skills.map((skill, idx) => (
-                                                    <li key={idx} className="text-sm text-gray-700 dark:text-gray-300 flex items-start">
-                                                        <span className="text-primary-500 mr-2 text-lg">✓</span>
-                                                        <span>{skill}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    /* Layout normal para outros certificados */
-                                    <>
-                                        <div className="flex items-start justify-between mb-4">
-                                            <span className="text-4xl">{cert.icon}</span>
-                                            {cert.link && (
-                                                <motion.a
-                                                    href={cert.link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="text-primary-500 hover:text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity"
-                                                    whileHover={{ scale: 1.2 }}
-                                                >
-                                                    <FaExternalLinkAlt />
-                                                </motion.a>
-                                            )}
-                                        </div>
-                                        <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-gray-200">
-                                            {cert.name}
-                                        </h3>
-                                        <p className="text-sm text-primary-500 font-semibold mb-2">
-                                            {cert.platform}
-                                        </p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                                            {cert.description}
-                                        </p>
-
-                                        <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-500">
-                                            <span className="flex items-center gap-1">
-                                                <FaCertificate />
-                                                Certificado
-                                            </span>
-                                            <span>{cert.date}</span>
-                                        </div>
-                                    </>
-                                )}
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
+                </ScrollReveal>
 
                 {/* Highlights Section */}
-                <div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-                        Destaques & <span className="gradient-text">Conquistas</span>
-                    </h2>
-                    <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
-                        Marcos importantes da minha jornada
-                    </p>
+                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                    {highlights.map((highlight, index) => (
+                        <ScrollReveal
+                            key={index}
+                            variant="scale"
+                            delay={index * 0.1}
+                            className={`card-glass p-8 text-center flex flex-col items-center justify-center bg-gradient-to-br ${highlight.color}`}
+                        >
+                            <div className="text-6xl text-white mb-4">{highlight.icon}</div>
+                            <h3 className="text-2xl font-bold text-white mb-2">{highlight.title}</h3>
+                            <p className="text-white/90">{highlight.description}</p>
+                        </ScrollReveal>
+                    ))}
+                </div>
 
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-                        {highlights.map((highlight, index) => (
-                            <motion.div
-                                key={index}
-                                className="card-glass p-8 relative overflow-hidden"
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                whileHover={{ scale: 1.05 }}
-                            >
-                                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${highlight.color} opacity-10 rounded-full -mr-16 -mt-16`}></div>
-                                <div className="relative">
-                                    <div className="text-5xl mb-4">{highlight.icon}</div>
-                                    <h3 className="text-2xl font-bold mb-3 gradient-text">
-                                        {highlight.title}
-                                    </h3>
-                                    <p className="text-gray-700 dark:text-gray-300">
-                                        {highlight.description}
+                {/* Certifications Section */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {certifications.map((cert, index) => (
+                        <ScrollReveal
+                            key={index}
+                            variant="rotateScale"
+                            delay={index * 0.1}
+                            className="card-glass p-6 flex flex-col group"
+                        >
+                            <div className="flex items-start gap-4 mb-4">
+                                <div className="text-4xl">{cert.icon}</div>
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-bold gradient-text mb-1">{cert.name}</h3>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                                        {cert.platform} • {cert.date}
                                     </p>
                                 </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                            </div>
+                            <p className="text-gray-700 dark:text-gray-300 mb-4 flex-1">{cert.description}</p>
 
-                    {/* GitHub Stats Card */}
-                    <motion.div
-                        className="card-glass p-8 max-w-2xl mx-auto"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <div className="flex items-center justify-center gap-4 mb-6">
-                            <FaGithub className="text-5xl text-gray-800 dark:text-gray-200" />
-                            <h3 className="text-2xl font-bold gradient-text">GitHub Activity</h3>
-                        </div>
-                        <div className="grid grid-cols-3 gap-4 text-center">
-                            <div className="p-4 bg-gray-100 dark:bg-dark-border rounded-lg">
-                                <div className="text-3xl font-bold text-primary-500 mb-1">8</div>
-                                <div className="text-xs text-gray-600 dark:text-gray-400">Repositórios</div>
+                            {/* Skills */}
+                            <div className="mb-4">
+                                <h4 className="font-semibold mb-2 text-primary-500">Habilidades Adquiridas:</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {cert.skills.map((skill, i) => (
+                                        <span key={i} className="px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs rounded-full">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
-                            <div className="p-4 bg-gray-100 dark:bg-dark-border rounded-lg">
-                                <div className="text-3xl font-bold text-primary-500 mb-1">50+</div>
-                                <div className="text-xs text-gray-600 dark:text-gray-400">Commits</div>
+
+                            <div className="mt-auto pt-4 border-t border-gray-200 dark:border-dark-border flex justify-between items-center">
+                                <div className="text-sm text-gray-500 dark:text-gray-400">
+                                    {cert.hours && <span>{cert.hours}</span>}
+                                    {cert.grade && <span className="ml-2">| Nota: {cert.grade}</span>}
+                                </div>
+                                {cert.link && cert.link !== '#' && (
+                                    <a
+                                        href={cert.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn-secondary text-sm inline-flex items-center gap-2"
+                                    >
+                                        Ver <FaExternalLinkAlt size={12} />
+                                    </a>
+                                )}
                             </div>
-                            <div className="p-4 bg-gray-100 dark:bg-dark-border rounded-lg">
-                                <div className="text-3xl font-bold text-primary-500 mb-1">8</div>
-                                <div className="text-xs text-gray-600 dark:text-gray-400">Projetos</div>
-                            </div>
-                        </div>
-                        <div className="text-center mt-6">
-                            <a
-                                href="https://github.com/ronaldornd"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-primary-500 hover:text-primary-600 font-semibold inline-flex items-center gap-2"
-                            >
-                                Ver perfil completo no GitHub
-                                <FaExternalLinkAlt />
-                            </a>
-                        </div>
-                    </motion.div>
+                        </ScrollReveal>
+                    ))}
                 </div>
-            </motion.div>
+
+                {/* CTA */}
+                <ScrollReveal variant="fadeIn" once={true} className="text-center mt-16">
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">
+                        Interessado em saber mais sobre minhas qualificações?
+                    </p>
+                    <a
+                        href="https://www.linkedin.com/in/ronaldornd/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary inline-flex items-center gap-2"
+                    >
+                        <FaGithub />
+                        Visitar meu LinkedIn
+                    </a>
+                </ScrollReveal>
+            </div>
         </section>
     );
 };
