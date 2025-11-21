@@ -115,7 +115,7 @@ const CertificationsAndHighlights = () => {
     return (
         <section id="certifications" className="bg-gray-50 dark:bg-dark-card/30 py-16 md:py-20 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <ScrollReveal variant="slideUp" once={true}>
+                <ScrollReveal variant="slideUp" once={true} trackingName="Certifications">
                     <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
                         Certificações & <span className="gradient-text">Destaques</span>
                     </h2>

@@ -31,7 +31,7 @@ const Experience = () => {
 
     return (
         <section id="experience" className="section-container">
-            <ScrollReveal variant="slideUp" once={true}>
+            <ScrollReveal variant="slideUp" once={true} trackingName="Experience">
                 <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
                     Experiência & <span className="gradient-text">Formação</span>
                 </h2>

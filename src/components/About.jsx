@@ -37,7 +37,7 @@ const About = () => {
         <section id="about" className="section-container bg-gray-50 dark:bg-dark-card/30">
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
-                <ScrollReveal variant="slideUp">
+                <ScrollReveal variant="slideUp" trackingName="About">
                     <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
                         Quem é <span className="gradient-text">Ronaldo</span>?
                     </h2>
