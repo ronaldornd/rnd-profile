@@ -8,11 +8,11 @@ const Navbar = () => {
     const [activeSection, setActiveSection] = useState('Início');
 
     const navItems = [
-        { name: 'Início', href: '#home' },
-        { name: 'Sobre', href: '#about' },
-        { name: 'Experiência', href: '#experience' },
-        { name: 'Habilidades', href: '#skills' },
-        { name: 'Contato', href: '#contact' },
+        { name: 'Início', href: '#home', trackingId: 'navbar-home' },
+        { name: 'Sobre', href: '#about', trackingId: 'navbar-about' },
+        { name: 'Experiência', href: '#experience', trackingId: 'navbar-experience' },
+        { name: 'Habilidades', href: '#skills', trackingId: 'navbar-skills' },
+        { name: 'Contato', href: '#contact', trackingId: 'navbar-contact' },
     ];
 
     useEffect(() => {
@@ -68,6 +68,7 @@ const Navbar = () => {
                         href="#home"
                         className="flex items-center gap-2"
                         whileHover={{ scale: 1.05 }}
+                        data-tracking-id="navbar-logo"
                     >
                         <img
                             src="/fav.png"
@@ -89,6 +90,7 @@ const Navbar = () => {
                             <motion.a
                                 key={item.name}
                                 href={item.href}
+                                data-tracking-id={item.trackingId}
                                 className={`transition-colors ${activeSection === item.name
                                     ? 'text-primary-500 dark:text-primary-400 font-semibold'
                                     : 'text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400'

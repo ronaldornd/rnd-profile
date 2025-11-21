@@ -40,6 +40,7 @@ const Footer = () => {
                                 href="https://github.com/ronaldornd"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                data-tracking-id="footer_github"
                                 className="text-gray-400 hover:text-primary-400 transition-colors"
                                 whileHover={{ scale: 1.2, rotate: 5 }}
                             >
@@ -49,6 +50,7 @@ const Footer = () => {
                                 href="https://linkedin.com/in/ronaldosbarbosaa"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                data-tracking-id="footer_linkedin"
                                 className="text-gray-400 hover:text-primary-400 transition-colors"
                                 whileHover={{ scale: 1.2, rotate: 5 }}
                             >
@@ -56,6 +58,7 @@ const Footer = () => {
                             </motion.a>
                             <motion.a
                                 href="mailto:ronaldo.s.barbosa@outlook.com"
+                                data-tracking-id="footer_email"
                                 className="text-gray-400 hover:text-primary-400 transition-colors"
                                 whileHover={{ scale: 1.2, rotate: 5 }}
                             >

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
-import useVisitTracker from './hooks/useVisitTracker';
 import { trackEvent, trackEventWithBeacon } from './services/trackingService';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -14,44 +13,43 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-    // Rastreia visitas e envia notificação no WhatsApp
-    useVisitTracker();
-
-    // Rastreia o ciclo de vida da sessão do usuário
+    // Rastreia o ciclo de vida da sessão e interações do usuário
     useEffect(() => {
-        // Rastreia o início da sessão quando o App é montado
+        // Rastreia o início da sessão
         trackEvent('SESSION_START', { page: window.location.pathname });
 
-        // Função para rastrear o fim da sessão
+        // Função para rastrear o fim da sessão ao sair da página
         const handleBeforeUnload = () => {
             trackEventWithBeacon('SESSION_END', { lastPage: window.location.pathname });
         };
-
-        // Adiciona o listener para o evento de saída da página
         window.addEventListener('beforeunload', handleBeforeUnload);
 
-        // Função de limpeza para remover o listener
+        // Função para rastrear cliques em elementos com `data-tracking-id`
+        const handleInteraction = (event) => {
+            const element = event.target.closest('[data-tracking-id]');
+            if (element) {
+                const trackingId = element.getAttribute('data-tracking-id');
+                trackEvent('INTERACTION', {
+                    id: trackingId,
+                    tag: element.tagName,
+                    text: element.innerText.trim(),
+                });
+            }
+        };
+        document.addEventListener('click', handleInteraction);
+
+
+        // Função de limpeza para remover os listeners
         return () => {
             window.removeEventListener('beforeunload', handleBeforeUnload);
+            document.removeEventListener('click', handleInteraction);
         };
     }, []); // O array vazio garante que o efeito rode apenas uma vez
-
-    // Rastreia cliques em links
-    const handleLinkClick = (event) => {
-        const linkElement = event.target.closest('a');
-        if (linkElement) {
-            trackEvent('LINK_CLICK', {
-                href: linkElement.href,
-                text: linkElement.innerText.trim(),
-            });
-        }
-    };
 
     return (
         <ThemeProvider>
             <div
                 className="flex flex-col max-w-100vw min-h-100vh bg-white dark:bg-dark-bg text-gray-800 dark:text-gray-200"
-                onClick={handleLinkClick}
             >
                 <Navbar />
                 <main className="flex-grow">

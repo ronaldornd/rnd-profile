@@ -178,15 +178,15 @@ const CertificationsAndHighlights = () => {
                                     {cert.grade && <span className="ml-2">| Nota: {cert.grade}</span>}
                                 </div>
                                 {cert.link && cert.link !== '#' && (
-                                    <a
-                                        href={cert.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn-secondary text-sm inline-flex items-center gap-2"
-                                    >
-                                        Ver <FaExternalLinkAlt size={12} />
-                                    </a>
-                                )}
+                                                                         <a
+                                                                            data-tracking-id={`certificate-${cert.name}`}
+                                                                            href={cert.link}
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer"
+                                                                            className="btn-secondary text-sm inline-flex items-center gap-2"
+                                                                        >
+                                                                            Ver <FaExternalLinkAlt size={12} />
+                                                                        </a>                                )}
                             </div>
                         </ScrollReveal>
                     ))}

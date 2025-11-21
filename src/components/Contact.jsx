@@ -191,6 +191,7 @@ const Contact = () => {
                                     href={method.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    data-tracking-id={`contact_method_${method.title.toLowerCase()}`}
                                     className="card-glass p-4 flex items-center gap-4 hover:shadow-xl transition-all group"
                                     initial={{ opacity: 0, x: -30 }}
                                     whileInView={{ opacity: 1, x: 0 }}
@@ -405,10 +406,10 @@ const Contact = () => {
                         adoraria conversar!
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
-                        <a href="mailto:ronaldo.s.barbosa@outlook.com" className="btn-primary">
+                        <a href="mailto:ronaldo.s.barbosa@outlook.com" data-tracking-id="contact_cta_email" className="btn-primary">
                             Enviar E-mail
                         </a>
-                        <a href="https://wa.me/5581982914552" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">
+                        <a href="https://wa.me/5581982914552" target="_blank" rel="noopener noreferrer" data-tracking-id="contact_cta_whatsapp" className="btn-secondary flex items-center gap-2">
                             <FaWhatsapp />
                             WhatsApp
                         </a>
