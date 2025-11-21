@@ -56,7 +56,7 @@ const Skills = () => {
 
     return (
         <section id="skills" className="section-container">
-            <ScrollReveal variant="slideUp" once={true} trackingName="Skills">
+            <ScrollReveal variant="slideUp" once={true}>
                 <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
                     Habilidades <span className="gradient-text">Técnicas</span>
                 </h2>
