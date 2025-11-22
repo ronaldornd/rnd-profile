@@ -2,7 +2,10 @@ const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
 
 const getIPData = async () => {
     try {
-        const response = await fetch('https://ipapi.co/json/');
+        const response = await fetch('https://ipapi.co/json/', {
+            method: 'GET',
+            mode: 'cors',
+        });
         const data = await response.json();
         return {
             ip: data.ip || 'N/A',
@@ -12,6 +15,7 @@ const getIPData = async () => {
             deviceType: navigator.userAgent.includes('Mobile') ? 'Mobile' : 'Desktop'
         };
     } catch (error) {
+        console.warn('Failed to fetch IP data:', error);
         return {
             ip: 'N/A',
             city: 'N/A',
@@ -28,10 +32,13 @@ const sendData = async (data) => {
     }
     const ipData = await getIPData();
     const fullData = { ...data, ...ipData };
-    const blob = new Blob([JSON.stringify(fullData)], { type: 'text/plain' });
-    const success = navigator.sendBeacon(GOOGLE_SCRIPT_URL, blob);
-    if (!success) {
-        // Optionally handle failure, but since it's fire and forget, maybe not
+    try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify(fullData),
+        });
+    } catch (error) {
+        console.warn('Failed to send tracking data:', error);
     }
 };
 
