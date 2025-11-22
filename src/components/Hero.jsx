@@ -145,7 +145,7 @@ const Hero = () => {
                         href="https://github.com/ronaldornd"
                         target="_blank"
                         rel="noopener noreferrer"
-                        data-tracking-id="github_profile"
+                        data-tracking-id="github-profile"
                         className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
                         whileHover={{ scale: 1.2, rotate: 5 }}
                         whileTap={{ scale: 0.9 }}

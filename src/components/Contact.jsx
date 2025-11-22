@@ -191,7 +191,7 @@ const Contact = () => {
                                     href={method.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    data-tracking-id={`contact_method_${method.title.toLowerCase()}`}
+                                    data-tracking-id={`contact-method-${method.title.toLowerCase()}`}
                                     className="card-glass p-4 flex items-center gap-4 hover:shadow-xl transition-all group"
                                     initial={{ opacity: 0, x: -30 }}
                                     whileInView={{ opacity: 1, x: 0 }}

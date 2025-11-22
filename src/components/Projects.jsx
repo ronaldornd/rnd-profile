@@ -226,7 +226,7 @@ const Projects = () => {
                                                     href={project.github}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    data-tracking-id={`project_github_${project.name.toLowerCase().replace(/ /g, '_')}`}
+                                                    data-tracking-id={`project-${project.name.toLowerCase().replace(/\s+/g, '-')}`}
                                                     className="p-3 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
                                                     whileHover={{ rotate: 360 }}
                                                     transition={{ duration: 0.3 }}
@@ -239,7 +239,7 @@ const Projects = () => {
                                                     href={project.demo}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    data-tracking-id={`project_demo_${project.name.toLowerCase().replace(/ /g, '_')}`}
+                                                    data-tracking-id={`project-demo-${project.name.toLowerCase().replace(/\s+/g, '-')}`}
                                                     className="p-3 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
                                                     whileHover={{ rotate: 360 }}
                                                     transition={{ duration: 0.3 }}
@@ -295,7 +295,7 @@ const Projects = () => {
                         href="https://github.com/ronaldornd"
                         target="_blank"
                         rel="noopener noreferrer"
-                        data-tracking-id="projects_github_cta"
+                        data-tracking-id="github-profile"
                         className="btn-primary inline-flex items-center gap-2"
                     >
                         <FaGithub />

@@ -40,7 +40,7 @@ const Footer = () => {
                                 href="https://github.com/ronaldornd"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                data-tracking-id="footer_github"
+                                data-tracking-id="github-profile"
                                 className="text-gray-400 hover:text-primary-400 transition-colors"
                                 whileHover={{ scale: 1.2, rotate: 5 }}
                             >
@@ -144,7 +144,7 @@ const Footer = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
                     >
-                        Desenvolvido com <FaHeart className="text-red-500 animate-pulse" /> por Ronaldo
+                        &copy; {currentYear} Desenvolvido com <FaHeart className="text-red-500 animate-pulse" /> por Ronaldo
                     </motion.p>
                     <p className="text-xs text-gray-600 mt-2">
                         Feito com React, TailwindCSS & Framer Motion

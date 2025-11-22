@@ -23,6 +23,7 @@ const CertificationsAndHighlights = () => {
             date: '02/04/2024',
             description: 'Fundamentos de cibersegurança: CIA Triad, TTPs de cibercriminosos, contramedidas, defesa de redes e legislação em cibersegurança. 30 horas - Nota: 7,9',
             link: 'https://drive.google.com/file/d/1aWhWIyiVpQ6VsMlWgWp2n49cwYYEexqz/view?usp=drive_link',
+            trackingId: 'certificate-cybersecurity',
             icon: '🔒',
             hours: '30 horas',
             grade: '7,9',
@@ -178,15 +179,16 @@ const CertificationsAndHighlights = () => {
                                     {cert.grade && <span className="ml-2">| Nota: {cert.grade}</span>}
                                 </div>
                                 {cert.link && cert.link !== '#' && (
-                                                                         <a
-                                                                            data-tracking-id={`certificate-${cert.name}`}
-                                                                            href={cert.link}
-                                                                            target="_blank"
-                                                                            rel="noopener noreferrer"
-                                                                            className="btn-secondary text-sm inline-flex items-center gap-2"
-                                                                        >
-                                                                            Ver <FaExternalLinkAlt size={12} />
-                                                                        </a>                                )}
+                                    <a
+                                        data-tracking-id={cert.trackingId || `certificate-${cert.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                        href={cert.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn-secondary text-sm inline-flex items-center gap-2"
+                                    >
+                                        Ver <FaExternalLinkAlt size={12} />
+                                    </a>
+                                )}
                             </div>
                         </ScrollReveal>
                     ))}

@@ -1,12 +1,16 @@
 import { useEffect } from 'react';
-import { trackClick } from '../services/trackingService';
+import { trackEvent } from '../services/trackingService';
 
 const useVisitTracker = () => {
     useEffect(() => {
         const handleClick = (event) => {
             const anchor = event.target.closest('a');
             if (anchor && anchor.dataset.trackingId) {
-                trackClick(anchor.dataset.trackingId);
+                trackEvent('LINK_CLICK', {
+                    trackingId: anchor.dataset.trackingId,
+                    href: anchor.href,
+                    text: anchor.innerText.trim(),
+                });
             }
         };
 

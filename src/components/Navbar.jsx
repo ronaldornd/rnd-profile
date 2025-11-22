@@ -1,19 +1,21 @@
 import { motion } from 'framer-motion';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { useTheme } from '../contexts/ThemeContext';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { trackEvent } from '../services/trackingService';
+
+const navItems = [
+    { name: 'Início', href: '#home', trackingId: 'navbar-home' },
+    { name: 'Sobre', href: '#about', trackingId: 'navbar-about' },
+    { name: 'Experiência', href: '#experience', trackingId: 'navbar-experience' },
+    { name: 'Habilidades', href: '#skills', trackingId: 'navbar-skills' },
+    { name: 'Contato', href: '#contact', trackingId: 'navbar-contact' },
+];
 
 const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
     const [activeSection, setActiveSection] = useState('Início');
-
-    const navItems = [
-        { name: 'Início', href: '#home', trackingId: 'navbar-home' },
-        { name: 'Sobre', href: '#about', trackingId: 'navbar-about' },
-        { name: 'Experiência', href: '#experience', trackingId: 'navbar-experience' },
-        { name: 'Habilidades', href: '#skills', trackingId: 'navbar-skills' },
-        { name: 'Contato', href: '#contact', trackingId: 'navbar-contact' },
-    ];
+    const currentSection = useRef('home');
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -29,11 +31,13 @@ const Navbar = () => {
                     }
                 });
 
-                // Atualizar apenas se houver uma seção visível
-                if (mostVisibleSection && maxRatio > 0.1) {
+                // Atualizar apenas se houver uma seção visível e diferente da atual
+                if (mostVisibleSection && maxRatio > 0.1 && mostVisibleSection !== currentSection.current) {
                     const navItem = navItems.find(item => item.href === `#${mostVisibleSection}`);
                     if (navItem) {
                         setActiveSection(navItem.name);
+                        trackEvent('SESSION_VIEW', { section: mostVisibleSection });
+                        currentSection.current = mostVisibleSection;
                     }
                 }
             },
