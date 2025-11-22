@@ -1,4 +1,3 @@
-import ScrollReveal from './ScrollReveal';
 import { FaCertificate, FaExternalLinkAlt, FaTrophy, FaStar, FaGithub } from 'react-icons/fa';
 
 const CertificationsAndHighlights = () => {
@@ -116,38 +115,34 @@ const CertificationsAndHighlights = () => {
     return (
         <section id="certifications" className="bg-gray-50 dark:bg-dark-card/30 py-16 md:py-20 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <ScrollReveal variant="slideUp" once={true}>
+                <div>
                     <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
                         Certificações & <span className="gradient-text">Destaques</span>
                     </h2>
                     <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
                         Minhas conquistas e reconhecimentos
                     </p>
-                </ScrollReveal>
+                </div>
 
                 {/* Highlights Section */}
                 <div className="grid md:grid-cols-3 gap-8 mb-16">
                     {highlights.map((highlight, index) => (
-                        <ScrollReveal
+                        <div
                             key={index}
-                            variant="scale"
-                            delay={index * 0.1}
                             className={`card-glass p-8 text-center flex flex-col items-center justify-center bg-gradient-to-br ${highlight.color}`}
                         >
                             <div className="text-6xl text-white mb-4">{highlight.icon}</div>
                             <h3 className="text-2xl font-bold text-white mb-2">{highlight.title}</h3>
                             <p className="text-white/90">{highlight.description}</p>
-                        </ScrollReveal>
+                        </div>
                     ))}
                 </div>
 
                 {/* Certifications Section */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {certifications.map((cert, index) => (
-                        <ScrollReveal
+                        <div
                             key={index}
-                            variant="rotateScale"
-                            delay={index * 0.1}
                             className="card-glass p-6 flex flex-col group"
                         >
                             <div className="flex items-start gap-4 mb-4">
@@ -190,12 +185,12 @@ const CertificationsAndHighlights = () => {
                                     </a>
                                 )}
                             </div>
-                        </ScrollReveal>
+                        </div>
                     ))}
                 </div>
 
                 {/* CTA */}
-                <ScrollReveal variant="fadeIn" once={true} className="text-center mt-16">
+                <div className="text-center mt-16">
                     <p className="text-gray-600 dark:text-gray-400 mb-4">
                         Interessado em saber mais sobre minhas qualificações?
                     </p>
@@ -208,7 +203,7 @@ const CertificationsAndHighlights = () => {
                         <FaGithub />
                         Visitar meu LinkedIn
                     </a>
-                </ScrollReveal>
+                </div>
             </div>
         </section>
     );

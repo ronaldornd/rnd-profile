@@ -132,8 +132,17 @@ const Footer = () => {
                     </motion.div>
                 )}
 
-                {/* Divider */}
-                <div className="border-t border-gray-800 my-8"></div>
+                {/* Privacy Notice */}
+                <div className="border-t border-gray-800 my-8 pt-8 text-center">
+                    <motion.p
+                        className="text-xs text-gray-500 max-w-2xl mx-auto"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.7 }}
+                    >
+                        🔒 Este site coleta dados de navegação anônimos (como cliques, visualizações de seções e tempo na página) para melhorar a experiência do usuário e analisar o desempenho. Nenhum dado pessoal identificável é armazenado. Ao continuar navegando, você concorda com essa coleta de dados.
+                    </motion.p>
+                </div>
 
                 {/* Copyright */}
                 <div className="text-center">
