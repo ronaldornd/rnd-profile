@@ -23,7 +23,7 @@ Portfolio pessoal moderno e interativo desenvolvido com React + Vite + TailwindC
 ## 📂 Estrutura do Projeto
 
 ```
-landing/
+rnd-profile/
 ├── public/
 │   └── fav.png           # Favicon
 ├── src/
@@ -60,10 +60,10 @@ landing/
 
 ```bash
 # Clone o repositório
-git clone https://github.com/ronaldornd/landing.git
+git clone https://github.com/ronaldornd/rnd-profile.git
 
 # Entre na pasta
-cd landing
+cd rnd-profile
 
 # Instale as dependências
 npm install
@@ -163,7 +163,7 @@ Antes de publicar:
 
 ## 📄 Licença
 
-Este projeto é de uso pessoal.
+Este projeto está sob a licença [MIT](./LICENSE).
 
 ## 🤝 Contribuições
 
