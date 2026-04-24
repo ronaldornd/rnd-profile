@@ -31,6 +31,9 @@ export default {
                 'float': 'float 6s ease-in-out infinite',
                 'glow': 'glow 2s ease-in-out infinite alternate',
                 'typing': 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite',
+                'shimmer': 'shimmer 2s ease-in-out infinite',
+                'progress-fill': 'progressFill 1s ease-out forwards',
+                'particle': 'particle 8s ease-in-out infinite',
             },
             keyframes: {
                 gradient: {
@@ -62,7 +65,21 @@ export default {
                 'blink-caret': {
                     'from, to': { 'border-color': 'transparent' },
                     '50%': { 'border-color': '#0ea5e9' },
-                }
+                },
+                shimmer: {
+                    '0%': { 'background-position': '-200% 0' },
+                    '100%': { 'background-position': '200% 0' },
+                },
+                progressFill: {
+                    'from': { transform: 'scaleX(0)' },
+                    'to': { transform: 'scaleX(1)' },
+                },
+                particle: {
+                    '0%, 100%': { transform: 'translate(0, 0) scale(1)', opacity: '0.3' },
+                    '25%': { transform: 'translate(30px, -50px) scale(1.2)', opacity: '0.6' },
+                    '50%': { transform: 'translate(-20px, -100px) scale(0.8)', opacity: '0.4' },
+                    '75%': { transform: 'translate(50px, -50px) scale(1.1)', opacity: '0.5' },
+                },
             },
         },
     },
