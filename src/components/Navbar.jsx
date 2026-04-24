@@ -9,13 +9,23 @@ const navItems = [
     { name: 'Sobre', href: '#about', trackingId: 'navbar-about' },
     { name: 'Experiência', href: '#experience', trackingId: 'navbar-experience' },
     { name: 'Habilidades', href: '#skills', trackingId: 'navbar-skills' },
+    { name: 'Projetos', href: '#projects', trackingId: 'navbar-projects' },
     { name: 'Contato', href: '#contact', trackingId: 'navbar-contact' },
 ];
 
 const Navbar = () => {
     const { theme, toggleTheme } = useTheme();
     const [activeSection, setActiveSection] = useState('Início');
+    const [scrolled, setScrolled] = useState(false);
     const currentSection = useRef('home');
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -48,7 +58,7 @@ const Navbar = () => {
         );
 
         // Observar todas as seções
-        const sections = ['home', 'about', 'experience', 'skills', 'contact'];
+        const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
         sections.forEach((sectionId) => {
             const element = document.getElementById(sectionId);
             if (element) {
@@ -63,9 +73,13 @@ const Navbar = () => {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className="sticky top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-card/80 backdrop-blur-lg border-b border-gray-200 dark:border-dark-border"
+            className={`sticky top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-card/80 backdrop-blur-lg border-b transition-shadow duration-300 ${
+                scrolled
+                    ? 'border-gray-200 dark:border-dark-border shadow-lg shadow-black/5 dark:shadow-black/20'
+                    : 'border-transparent'
+            }`}
         >
-            <div className="max-w-7xl mx-auto px-4  lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <motion.a
@@ -89,19 +103,27 @@ const Navbar = () => {
                     </div>
 
                     {/* Navigation Links - Desktop */}
-                    <div className="hidden md:flex space-x-8">
+                    <div className="hidden md:flex space-x-1">
                         {navItems.map((item) => (
                             <motion.a
                                 key={item.name}
                                 href={item.href}
                                 data-tracking-id={item.trackingId}
-                                className={`transition-colors ${activeSection === item.name
-                                    ? 'text-primary-500 dark:text-primary-400 font-semibold'
-                                    : 'text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400'
+                                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === item.name
+                                    ? 'text-primary-600 dark:text-primary-400'
+                                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                                     }`}
-                                whileHover={{ y: -2 }}
+                                whileHover={{ y: -1 }}
+                                whileTap={{ scale: 0.97 }}
                             >
                                 {item.name}
+                                {activeSection === item.name && (
+                                    <motion.div
+                                        layoutId="navbar-indicator"
+                                        className="absolute bottom-0 left-2 right-2 h-0.5 bg-primary-500 rounded-full"
+                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                    />
+                                )}
                             </motion.a>
                         ))}
                     </div>
