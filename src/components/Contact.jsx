@@ -145,8 +145,8 @@ const Contact = () => {
         {
             icon: <FaWhatsapp className="text-3xl" />,
             title: 'WhatsApp',
-            value: '+55 (81) 98291-4552',
-            link: 'https://wa.me/5581982914552',
+            value: '+55 (81) 99799-9249',
+            link: 'https://wa.me/5581997999249',
             color: 'from-green-500 to-teal-500',
         },
         {
@@ -409,7 +409,7 @@ const Contact = () => {
                         <a href="mailto:ronaldo.s.barbosa@outlook.com" data-tracking-id="contact_cta_email" className="btn-primary">
                             Enviar E-mail
                         </a>
-                        <a href="https://wa.me/5581982914552" target="_blank" rel="noopener noreferrer" data-tracking-id="contact_cta_whatsapp" className="btn-secondary flex items-center gap-2">
+                        <a href="https://wa.me/5581997999249" target="_blank" rel="noopener noreferrer" data-tracking-id="contact_cta_whatsapp" className="btn-secondary flex items-center gap-2">
                             <FaWhatsapp />
                             WhatsApp
                         </a>

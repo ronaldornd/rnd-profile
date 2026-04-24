@@ -149,7 +149,7 @@ Consulte o arquivo [PERSONALIZACAO.md](./PERSONALIZACAO.md) para instruções de
 - **GitHub**: [ronaldornd](https://github.com/ronaldornd)
 - **LinkedIn**: [ronaldosbarbosaa](https://linkedin.com/in/ronaldosbarbosaa)
 - **Email**: ronaldo.s.barbosa@outlook.com
-- **WhatsApp**: +55 (81) 98291-4552
+- **WhatsApp**: +55 (81) 99799-9249
 
 ## 📝 Lista de Tarefas
 

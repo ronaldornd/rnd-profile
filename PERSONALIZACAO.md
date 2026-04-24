@@ -30,12 +30,12 @@
 
 ### 2. Atualizar Número de WhatsApp
 
-Procure por `https://wa.me/5581982914552` em:
+Procure por `https://wa.me/5581997999249` em:
 - `Hero.jsx`
 - `Contact.jsx`
 - `Footer.jsx`
 
-Substitua por: `https://wa.me/5581999999999` (seu número com DDI + DDD)
+Substitua por: `https://wa.me/5581997999249` (seu número com DDI + DDD)
 
 ### 3. Adicionar Imagens dos Projetos
 
@@ -243,7 +243,7 @@ Procure e substitua em TODOS os componentes:
 - `https://github.com/ronaldornd` → Seu GitHub
 - `https://linkedin.com/in/ronaldosbarbosaa` → Seu LinkedIn
 - `ronaldo.s.barbosa@outlook.com` → Seu email
-- `https://wa.me/5581982914552` → Seu WhatsApp
+- `https://wa.me/5581997999249` → Seu WhatsApp
 
 ### Verificação Rápida
 
