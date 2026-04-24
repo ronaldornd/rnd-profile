@@ -1,7 +1,26 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { MdKeyboardDoubleArrowDown } from 'react-icons/md';
+
+const Particle = ({ delay, x, y, size }) => (
+    <motion.div
+        className="absolute rounded-full bg-primary-500/20 dark:bg-primary-400/15"
+        style={{ width: size, height: size, left: `${x}%`, top: `${y}%` }}
+        animate={{
+            y: [0, -60, -30, -80, 0],
+            x: [0, 20, -15, 30, 0],
+            opacity: [0.15, 0.4, 0.25, 0.35, 0.15],
+            scale: [1, 1.3, 0.9, 1.15, 1],
+        }}
+        transition={{
+            duration: 10 + Math.random() * 6,
+            repeat: Infinity,
+            delay,
+            ease: "easeInOut",
+        }}
+    />
+);
 
 const Hero = () => {
     const [text, setText] = useState('');
@@ -21,26 +40,44 @@ const Hero = () => {
         return () => clearInterval(timer);
     }, []);
 
+    const particles = useMemo(() =>
+        Array.from({ length: 12 }, (_, i) => ({
+            id: i,
+            delay: i * 0.8,
+            x: Math.random() * 90 + 5,
+            y: Math.random() * 80 + 10,
+            size: Math.random() * 12 + 6,
+        })), []);
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.2,
+                staggerChildren: 0.15,
+                delayChildren: 0.2,
             },
         },
     };
 
     const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
+        hidden: { y: 30, opacity: 0 },
         visible: {
             y: 0,
             opacity: 1,
             transition: {
-                duration: 0.5,
+                duration: 0.6,
+                ease: [0.25, 0.46, 0.45, 0.94],
             },
         },
     };
+
+    const socialLinks = [
+        { href: 'https://github.com/ronaldornd', icon: FaGithub, label: 'GitHub', trackingId: 'github-profile' },
+        { href: 'https://linkedin.com/in/ronaldosbarbosaa', icon: FaLinkedin, label: 'LinkedIn', trackingId: 'linkedin_profile' },
+        { href: 'mailto:ronaldo.s.barbosa@outlook.com', icon: FaEnvelope, label: 'E-mail', trackingId: 'email_contact', noTarget: true },
+        { href: 'https://wa.me/5581997999249', icon: FaWhatsapp, label: 'WhatsApp', trackingId: 'whatsapp_contact' },
+    ];
 
     return (
         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-white dark:bg-dark-bg">
@@ -48,6 +85,11 @@ const Hero = () => {
             <div className="absolute inset-0 -z-10">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-float"></div>
                 <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+
+                {/* Floating Particles */}
+                {particles.map(p => (
+                    <Particle key={p.id} {...p} />
+                ))}
             </div>
 
             <motion.div
@@ -103,7 +145,7 @@ const Hero = () => {
 
                 {/* Main Heading */}
                 <motion.h1
-                    className="text-5xl md:text-7xl font-bold mb-6"
+                    className="text-5xl md:text-7xl font-bold mb-6 text-balance"
                     variants={itemVariants}
                 >
                     Sou <span className="gradient-text">Ronaldo</span>
@@ -115,12 +157,16 @@ const Hero = () => {
                     variants={itemVariants}
                 >
                     <span>{text}</span>
-                    <span className="animate-pulse">|</span>
+                    <motion.span
+                        className="inline-block w-0.5 h-6 bg-primary-500 ml-1 align-middle"
+                        animate={{ opacity: [1, 0, 1] }}
+                        transition={{ duration: 0.8, repeat: Infinity, ease: "steps(2)" }}
+                    />
                 </motion.div>
 
                 {/* Description */}
                 <motion.p
-                    className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8"
+                    className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8 text-pretty"
                     variants={itemVariants}
                 >
                     Técnico em Informática formado pelo IFPE, com foco em desenvolvimento web, React e PostgreSQL.
@@ -141,48 +187,24 @@ const Hero = () => {
                     className="flex justify-center gap-6"
                     variants={itemVariants}
                 >
-                    <motion.a
-                        href="https://github.com/ronaldornd"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tracking-id="github-profile"
-                        className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                        whileHover={{ scale: 1.2, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        <FaGithub size={28} />
-                    </motion.a>
-                    <motion.a
-                        href="https://linkedin.com/in/ronaldosbarbosaa"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tracking-id="linkedin_profile"
-                        className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                        whileHover={{ scale: 1.2, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        <FaLinkedin size={28} />
-                    </motion.a>
-                    <motion.a
-                        href="mailto:ronaldo.s.barbosa@outlook.com"
-                        data-tracking-id="email_contact"
-                        className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                        whileHover={{ scale: 1.2, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        <FaEnvelope size={28} />
-                    </motion.a>
-                    <motion.a
-                        href="https://wa.me/5581982914552"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tracking-id="whatsapp_contact"
-                        className="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                        whileHover={{ scale: 1.2, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        <FaWhatsapp size={28} />
-                    </motion.a>
+                    {socialLinks.map((link) => (
+                        <motion.a
+                            key={link.trackingId}
+                            href={link.href}
+                            target={link.noTarget ? undefined : "_blank"}
+                            rel={link.noTarget ? undefined : "noopener noreferrer"}
+                            data-tracking-id={link.trackingId}
+                            className="relative group text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+                            whileHover={{ scale: 1.2, y: -3 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            <link.icon size={28} />
+                            {/* Tooltip */}
+                            <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-500 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                                {link.label}
+                            </span>
+                        </motion.a>
+                    ))}
                 </motion.div>
 
                 {/* Scroll Indicator */}
