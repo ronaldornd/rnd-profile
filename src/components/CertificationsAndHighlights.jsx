@@ -1,4 +1,6 @@
-import { FaCertificate, FaExternalLinkAlt, FaTrophy, FaStar, FaGithub } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaCertificate, FaExternalLinkAlt, FaTrophy, FaStar, FaGithub, FaLinkedin } from 'react-icons/fa';
+import ScrollReveal from './ScrollReveal';
 
 const CertificationsAndHighlights = () => {
     const certifications = [
@@ -108,102 +110,120 @@ const CertificationsAndHighlights = () => {
             title: 'Resolução de Problemas',
             description: 'Experiência prática em suporte técnico e debugging',
             icon: '🔧',
-            color: 'from-purple-400 to-pink-500',
+            color: 'from-rose-400 to-pink-500',
         },
     ];
 
     return (
         <section id="certifications" className="bg-gray-50 dark:bg-dark-card/30 py-16 md:py-20 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+                <ScrollReveal variant="slideUp" once={true}>
+                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-balance">
                         Certificações & <span className="gradient-text">Destaques</span>
                     </h2>
-                    <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
+                    <p className="text-center text-gray-600 dark:text-gray-400 mb-12 text-pretty">
                         Minhas conquistas e reconhecimentos
                     </p>
-                </div>
+                </ScrollReveal>
 
                 {/* Highlights Section */}
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mb-16">
                     {highlights.map((highlight, index) => (
-                        <div
+                        <ScrollReveal
                             key={index}
-                            className={`card-glass p-8 text-center flex flex-col items-center justify-center bg-gradient-to-br ${highlight.color}`}
+                            variant="scale"
+                            delay={index * 0.1}
+                            once={true}
                         >
-                            <div className="text-6xl text-white mb-4">{highlight.icon}</div>
-                            <h3 className="text-2xl font-bold text-white mb-2">{highlight.title}</h3>
-                            <p className="text-white/90">{highlight.description}</p>
-                        </div>
+                            <motion.div
+                                className={`card-glass p-8 text-center flex flex-col items-center justify-center bg-gradient-to-br ${highlight.color} h-full`}
+                                whileHover={{ y: -6, scale: 1.02 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <div className="text-5xl text-white mb-4">{highlight.icon}</div>
+                                <h3 className="text-xl font-bold text-white mb-2 text-balance">{highlight.title}</h3>
+                                <p className="text-white/90 text-sm text-pretty">{highlight.description}</p>
+                            </motion.div>
+                        </ScrollReveal>
                     ))}
                 </div>
 
                 {/* Certifications Section */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {certifications.map((cert, index) => (
-                        <div
+                        <ScrollReveal
                             key={index}
-                            className="card-glass p-6 flex flex-col group"
+                            variant="slideUp"
+                            delay={index * 0.08}
+                            once={true}
                         >
-                            <div className="flex items-start gap-4 mb-4">
-                                <div className="text-4xl">{cert.icon}</div>
-                                <div className="flex-1">
-                                    <h3 className="text-xl font-bold gradient-text mb-1">{cert.name}</h3>
-                                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                                        {cert.platform} • {cert.date}
-                                    </p>
+                            <motion.div
+                                className="card-glass p-6 flex flex-col group h-full"
+                                whileHover={{ y: -4 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <div className="flex items-start gap-4 mb-4">
+                                    <div className="text-4xl">{cert.icon}</div>
+                                    <div className="flex-1">
+                                        <h3 className="text-xl font-bold gradient-text mb-1 text-balance">{cert.name}</h3>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                                            {cert.platform} • {cert.date}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <p className="text-gray-700 dark:text-gray-300 mb-4 flex-1">{cert.description}</p>
+                                <p className="text-gray-700 dark:text-gray-300 mb-4 flex-1 text-pretty">{cert.description}</p>
 
-                            {/* Skills */}
-                            <div className="mb-4">
-                                <h4 className="font-semibold mb-2 text-primary-500">Habilidades Adquiridas:</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {cert.skills.map((skill, i) => (
-                                        <span key={i} className="px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs rounded-full">
-                                            {skill}
-                                        </span>
-                                    ))}
+                                {/* Skills */}
+                                <div className="mb-4">
+                                    <h4 className="font-semibold mb-2 text-primary-500">Habilidades Adquiridas:</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {cert.skills.map((skill, i) => (
+                                            <span key={i} className="px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs rounded-full">
+                                                {skill}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="mt-auto pt-4 border-t border-gray-200 dark:border-dark-border flex justify-between items-center">
-                                <div className="text-sm text-gray-500 dark:text-gray-400">
-                                    {cert.hours && <span>{cert.hours}</span>}
-                                    {cert.grade && <span className="ml-2">| Nota: {cert.grade}</span>}
+                                <div className="mt-auto pt-4 border-t border-gray-200 dark:border-dark-border flex justify-between items-center">
+                                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                                        {cert.hours && <span>{cert.hours}</span>}
+                                        {cert.grade && <span className="ml-2">| Nota: {cert.grade}</span>}
+                                    </div>
+                                    {cert.link && cert.link !== '#' && (
+                                        <motion.a
+                                            data-tracking-id={cert.trackingId || `certificate-${cert.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                            href={cert.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn-secondary text-sm inline-flex items-center gap-2"
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                        >
+                                            Ver <FaExternalLinkAlt size={12} />
+                                        </motion.a>
+                                    )}
                                 </div>
-                                {cert.link && cert.link !== '#' && (
-                                    <a
-                                        data-tracking-id={cert.trackingId || `certificate-${cert.name.toLowerCase().replace(/\s+/g, '-')}`}
-                                        href={cert.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn-secondary text-sm inline-flex items-center gap-2"
-                                    >
-                                        Ver <FaExternalLinkAlt size={12} />
-                                    </a>
-                                )}
-                            </div>
-                        </div>
+                            </motion.div>
+                        </ScrollReveal>
                     ))}
                 </div>
 
                 {/* CTA */}
-                <div className="text-center mt-16">
+                <ScrollReveal variant="fadeIn" once={true} className="text-center mt-16">
                     <p className="text-gray-600 dark:text-gray-400 mb-4">
                         Interessado em saber mais sobre minhas qualificações?
                     </p>
                     <a
-                        href="https://www.linkedin.com/in/ronaldornd/"
+                        href="https://www.linkedin.com/in/ronaldosbarbosaa/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-primary inline-flex items-center gap-2"
                     >
-                        <FaGithub />
+                        <FaLinkedin />
                         Visitar meu LinkedIn
                     </a>
-                </div>
+                </ScrollReveal>
             </div>
         </section>
     );
