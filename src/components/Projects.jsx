@@ -253,11 +253,10 @@ const ProjectCard = ({ project }) => {
         <div className="card-glass overflow-hidden h-full flex flex-col md:flex-row">
 
             {/* LEFT — Visual card (40%) */}
-            <div className={`relative md:w-2/5 flex-shrink-0 flex flex-col items-center justify-center ${
-                project.featured
+            <div className={`relative md:w-2/5 flex-shrink-0 flex flex-col items-center justify-center ${project.featured
                     ? 'bg-gradient-to-br from-primary-600 via-emerald-500 to-blue-600'
                     : 'bg-gradient-to-br from-primary-500 to-blue-600'
-            } p-6 min-h-48`}>
+                } p-6 min-h-48`}>
 
                 {/* Badges top-left */}
                 <div className="absolute top-3 left-3 flex flex-col gap-1.5">
@@ -441,11 +440,10 @@ const Projects = () => {
                             <motion.button
                                 key={f.id}
                                 onClick={() => setFilter(f.id)}
-                                className={`px-3 py-1 rounded-lg font-semibold text-xs transition-all flex items-center gap-1 ${
-                                    filter === f.id
+                                className={`px-3 py-1 rounded-lg font-semibold text-xs transition-all flex items-center gap-1 ${filter === f.id
                                         ? 'bg-gradient-to-r from-primary-500 to-blue-600 text-white shadow-lg shadow-primary-500/25'
                                         : 'bg-white dark:bg-dark-card text-gray-700 dark:text-gray-300 hover:shadow-md border border-gray-200 dark:border-dark-border'
-                                }`}
+                                    }`}
                                 whileHover={{ scale: 1.04, y: -1 }}
                                 whileTap={{ scale: 0.95 }}
                             >
