@@ -1,103 +1,143 @@
-import { FaBriefcase, FaGraduationCap, FaLanguage } from 'react-icons/fa';
-import ScrollReveal from './ScrollReveal';
+import { motion } from 'framer-motion';
+import { FaBriefcase, FaGraduationCap, FaAward } from 'react-icons/fa';
 
 const Experience = () => {
     const experiences = [
-        {
-            title: 'Monitor de Disciplina',
-            organization: 'IFPE',
-            period: '2023 - 2024',
-            description: 'Auxiliei estudantes em disciplinas técnicas, desenvolvendo habilidades de ensino e comunicação.',
-            achievement: 'Nota 9.5 de avaliação',
-            icon: '👨‍🏫',
-        },
-        {
-            title: 'Freelancer - Suporte Técnico',
-            organization: 'Autônomo',
-            period: '2022 - 2024',
-            description: 'Manutenção de computadores, suporte remoto e resolução de problemas técnicos.',
-            achievement: 'Múltiplos clientes satisfeitos',
-            icon: '🔧',
-        },
-        {
-            title: 'Projetos Pessoais - Desenvolvimento',
-            organization: 'Autônomo',
-            period: '2023 - Presente',
-            description: 'Desenvolvimento de aplicações web com React, Node.js, Prisma e PostgreSQL.',
-            achievement: 'Portfólio em crescimento',
-            icon: '💻',
-        },
+        { icon: '👨‍🏫', title: 'Monitor de Disciplina', org: 'IFPE', period: '2023–2024', desc: 'Auxiliei estudantes em disciplinas técnicas.', badge: '⭐ 9.5', color: 'from-yellow-500 to-orange-500' },
+        { icon: '🔧', title: 'Freelancer – Suporte', org: 'Autônomo', period: '2022–2024', desc: 'Manutenção, suporte remoto e resolução de problemas técnicos.', badge: 'Múltiplos clientes', color: 'from-blue-500 to-indigo-500' },
+        { icon: '💻', title: 'Dev – Projetos Pessoais', org: 'Autônomo', period: '2023–Atual', desc: 'React, Node.js, Prisma e PostgreSQL em produção.', badge: '9+ projetos', color: 'from-primary-500 to-teal-500' },
     ];
 
+    const education = [
+        { icon: '🎓', title: 'Técnico em Informática', org: 'IFPE – Campus Jaboatão', period: '2022–2024', hours: '150h', grade: '7.3' },
+        { icon: '📚', title: 'Ensino Médio', org: 'E.E. Cel. Benedito Ramos', period: '2013–2015', note: 'Voluntariado em asilo' },
+    ];
+
+    const certs = [
+        { icon: '🐙', name: 'GitHub Certification', platform: 'DIO', date: 'Mar 2025' },
+        { icon: '🔒', name: 'Cybersecurity Essentials', platform: 'Cisco / IFPE', date: 'Abr 2024' },
+        { icon: '🤖', name: 'IA Generativa', platform: 'DIO', date: 'Out 2025' },
+    ];
+
+    const containerAnim = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08 } } };
+    const item = { hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
+
     return (
-        <section id="experience" className="section-container">
-            <ScrollReveal variant="slideUp" once={true}>
-                <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-                    Experiência & <span className="gradient-text">Formação</span>
-                </h2>
-                <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
-                    Meu histórico profissional e acadêmico
-                </p>
-            </ScrollReveal>
+        <section id="experience" className="h-full flex flex-col justify-center px-4 md:px-8 py-4 overflow-hidden">
+            <motion.div
+                className="max-w-6xl mx-auto w-full"
+                variants={containerAnim}
+                initial="hidden"
+                animate="visible"
+            >
+                {/* Header row */}
+                <motion.div variants={item} className="mb-5">
+                    <p className="text-xs text-primary-500 font-bold uppercase tracking-widest mb-1">Histórico</p>
+                    <h2 className="text-2xl md:text-3xl font-bold">
+                        Experiência & <span className="gradient-text">Formação</span>
+                    </h2>
+                </motion.div>
 
-            {/* Professional Summary */}
-            <ScrollReveal variant="fadeIn" once={true} className="card-glass p-8 mb-12 max-w-3xl mx-auto">
-                <div className="flex items-start gap-4">
-                    <div className="text-4xl">👨‍💻</div>
-                    <div>
-                        <h3 className="text-2xl font-bold mb-3 gradient-text">Resumo Profissional</h3>
-                        <p className="text-lg text-gray-700 dark:text-gray-300">
-                            Técnico em Informática com experiência em manutenção de computadores,
-                            suporte remoto e desenvolvimento web com React, Prisma e PostgreSQL.
-                            Apaixonado por resolver problemas e criar soluções eficientes.
-                        </p>
-                    </div>
-                </div>
-            </ScrollReveal>
+                {/* 3-column grid */}
+                <div className="grid md:grid-cols-3 gap-5">
 
-            {/* Experience Timeline */}
-            <div className="max-w-4xl mx-auto mb-12">
-                <ScrollReveal variant="slideLeft" once={true}>
-                    <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                        <FaBriefcase className="text-primary-500" />
-                        Experiências Relevantes
-                    </h3>
-                </ScrollReveal>
-                <div className="relative">
-                    {/* Timeline Line */}
-                    <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-blue-600"></div>
-
-                    {experiences.map((exp, index) => (
-                        <ScrollReveal
-                            key={index}
-                            variant="slideLeft"
-                            delay={index * 0.15}
-                            className="relative pl-20 pb-12 last:pb-0"
-                        >
-                            {/* Timeline Dot */}
-                            <div
-                                className="absolute left-6 top-0 w-5 h-5 bg-primary-500 rounded-full border-4 border-white dark:border-dark-bg"
-                            />
-
-                            <div className="card-glass p-6 transition-all">
-                                <div className="flex items-start gap-4">
-                                    <div className="text-4xl">{exp.icon}</div>
-                                    <div className="flex-1">
-                                        <h4 className="text-xl font-bold text-primary-500 mb-1">{exp.title}</h4>
-                                        <p className="text-gray-600 dark:text-gray-400 mb-2">
-                                            {exp.organization} • {exp.period}
-                                        </p>
-                                        <p className="text-gray-700 dark:text-gray-300 mb-3">{exp.description}</p>
-                                        <div className="text-sm font-semibold text-green-600 dark:text-green-400">
-                                            🏆 {exp.achievement}
-                                        </div>
-                                    </div>
-                                </div>
+                    {/* COL 1: Resumo profissional + Experiências */}
+                    <motion.div variants={item} className="md:col-span-2 flex flex-col gap-3">
+                        {/* Resumo card */}
+                        <div className="card-glass p-4 flex items-start gap-3">
+                            <span className="text-2xl">👨‍💻</span>
+                            <div>
+                                <p className="text-sm font-bold text-primary-500 mb-1">Resumo Profissional</p>
+                                <p className="text-xs text-gray-600 dark:text-gray-400">
+                                    Técnico em Informática com experiência em manutenção, suporte remoto e desenvolvimento web com React, Prisma e PostgreSQL. Apaixonado por resolver problemas e criar soluções eficientes.
+                                </p>
                             </div>
-                        </ScrollReveal>
-                    ))}
+                        </div>
+
+                        {/* Experience cards */}
+                        <p className="text-xs text-gray-500 font-bold uppercase tracking-wider flex items-center gap-2">
+                            <FaBriefcase className="text-primary-500" size={11} />Experiências Relevantes
+                        </p>
+                        <div className="grid sm:grid-cols-3 gap-3">
+                            {experiences.map((exp, i) => (
+                                <motion.div
+                                    key={i}
+                                    className="card-glass p-3 flex flex-col gap-2 group"
+                                    whileHover={{ y: -3 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${exp.color} flex items-center justify-center text-sm`}>
+                                        {exp.icon}
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-bold text-gray-800 dark:text-gray-200 leading-tight">{exp.title}</p>
+                                        <p className="text-xs text-gray-500">{exp.org} · {exp.period}</p>
+                                    </div>
+                                    <p className="text-xs text-gray-600 dark:text-gray-400 flex-1">{exp.desc}</p>
+                                    <span className="text-xs font-bold text-primary-500 bg-primary-500/10 px-2 py-0.5 rounded-full self-start">{exp.badge}</span>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* COL 2: Formação + Certificações destaque */}
+                    <motion.div variants={item} className="flex flex-col gap-3">
+                        {/* Formação */}
+                        <div>
+                            <p className="text-xs text-gray-500 font-bold uppercase tracking-wider flex items-center gap-2 mb-2">
+                                <FaGraduationCap className="text-primary-500" size={11} />Formação
+                            </p>
+                            <div className="space-y-2">
+                                {education.map((edu, i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="card-glass p-3 flex items-start gap-2"
+                                        whileHover={{ x: 3 }}
+                                        transition={{ duration: 0.15 }}
+                                    >
+                                        <span className="text-xl">{edu.icon}</span>
+                                        <div>
+                                            <p className="text-xs font-bold text-gray-800 dark:text-gray-200">{edu.title}</p>
+                                            <p className="text-xs text-gray-500">{edu.org}</p>
+                                            <div className="flex gap-2 mt-0.5">
+                                                <span className="text-xs text-primary-500 font-semibold">{edu.period}</span>
+                                                {edu.grade && <span className="text-xs text-gray-400">· Nota {edu.grade}</span>}
+                                                {edu.note && <span className="text-xs text-gray-400">· {edu.note}</span>}
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Certificações destaque */}
+                        <div>
+                            <p className="text-xs text-gray-500 font-bold uppercase tracking-wider flex items-center gap-2 mb-2">
+                                <FaAward className="text-primary-500" size={11} />Certificações Recentes
+                            </p>
+                            <div className="space-y-2">
+                                {certs.map((cert, i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="card-glass p-2.5 flex items-center gap-2.5"
+                                        whileHover={{ x: 3 }}
+                                        transition={{ duration: 0.15 }}
+                                    >
+                                        <span className="text-lg">{cert.icon}</span>
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-xs font-bold text-gray-800 dark:text-gray-200 truncate">{cert.name}</p>
+                                            <p className="text-xs text-gray-500">{cert.platform} · {cert.date}</p>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                            <p className="text-xs text-gray-500 mt-2 text-center">
+                                → Ver todas em <span className="text-primary-500 font-semibold cursor-default">Certificações</span>
+                            </p>
+                        </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 };

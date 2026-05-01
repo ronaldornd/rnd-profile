@@ -1,149 +1,99 @@
 import { motion } from 'framer-motion';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FaSun, FaMoon, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useTheme } from '../contexts/ThemeContext';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { trackEvent } from '../services/trackingService';
 
-const navItems = [
-    { name: 'Início', href: '#home', trackingId: 'navbar-home' },
-    { name: 'Sobre', href: '#about', trackingId: 'navbar-about' },
-    { name: 'Experiência', href: '#experience', trackingId: 'navbar-experience' },
-    { name: 'Habilidades', href: '#skills', trackingId: 'navbar-skills' },
-    { name: 'Projetos', href: '#projects', trackingId: 'navbar-projects' },
-    { name: 'Contato', href: '#contact', trackingId: 'navbar-contact' },
-];
-
-const Navbar = () => {
+const Navbar = ({ activePanel, panels, activeIndex, onNavigate }) => {
     const { theme, toggleTheme } = useTheme();
-    const [activeSection, setActiveSection] = useState('Início');
-    const [scrolled, setScrolled] = useState(false);
-    const currentSection = useRef('home');
+    const [hoverDot, setHoverDot] = useState(null);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                // Encontrar a seção com maior visibilidade
-                let maxRatio = 0;
-                let mostVisibleSection = null;
-
-                entries.forEach((entry) => {
-                    if (entry.intersectionRatio > maxRatio) {
-                        maxRatio = entry.intersectionRatio;
-                        mostVisibleSection = entry.target.id;
-                    }
-                });
-
-                // Atualizar apenas se houver uma seção visível e diferente da atual
-                if (mostVisibleSection && maxRatio > 0.1 && mostVisibleSection !== currentSection.current) {
-                    const navItem = navItems.find(item => item.href === `#${mostVisibleSection}`);
-                    if (navItem) {
-                        setActiveSection(navItem.name);
-                        trackEvent('SESSION_VIEW', { section: mostVisibleSection });
-                        currentSection.current = mostVisibleSection;
-                    }
-                }
-            },
-            {
-                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
-                rootMargin: '-80px 0px -20% 0px'
-            }
-        );
-
-        // Observar todas as seções
-        const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
-        sections.forEach((sectionId) => {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                observer.observe(element);
-            }
-        });
-
-        return () => observer.disconnect();
-    }, []);
+    const canGoBack = activeIndex > 0;
+    const canGoForward = activeIndex < panels.length - 1;
 
     return (
         <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            className={`sticky top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-card/80 backdrop-blur-lg border-b transition-shadow duration-300 ${
-                scrolled
-                    ? 'border-gray-200 dark:border-dark-border shadow-lg shadow-black/5 dark:shadow-black/20'
-                    : 'border-transparent'
-            }`}
+            initial={{ y: -60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="dashboard-navbar bg-white/90 dark:bg-dark-card/90 backdrop-blur-xl border-b border-gray-200 dark:border-dark-border"
         >
-            <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                <div className="flex justify-between items-center h-16">
-                    {/* Logo */}
-                    <motion.a
-                        href="#home"
-                        className="flex items-center gap-2"
-                        whileHover={{ scale: 1.05 }}
-                        data-tracking-id="navbar-logo"
+            {/* LEFT: Logo + breadcrumb */}
+            <div className="flex items-center gap-3 min-w-0">
+                <motion.a
+                    href="#"
+                    onClick={(e) => { e.preventDefault(); onNavigate(0); }}
+                    data-tracking-id="navbar-logo"
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-shrink-0"
+                >
+                    <img src="/fav.png" alt="RND" className="h-8 w-8 border-2 border-primary-500 rounded-xl" />
+                </motion.a>
+                <span className="text-gray-300 dark:text-gray-600 text-sm select-none">/</span>
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 truncate">
+                    {activePanel.name}
+                </span>
+
+                {/* Arrow navigation (desktop) */}
+                <div className="hidden md:flex items-center gap-1 ml-2">
+                    <button
+                        onClick={() => onNavigate(activeIndex - 1)}
+                        disabled={!canGoBack}
+                        className={`p-1 rounded-md transition-colors ${canGoBack ? 'text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-dark-border' : 'text-gray-300 dark:text-gray-700 cursor-not-allowed'}`}
+                        title="Painel anterior (←)"
                     >
-                        <img
-                            src="/fav.png"
-                            alt="Ronaldo Logo"
-                            className="h-10 w-10 border-2 border-green-500 rounded-2xl"
-                        />
-                    </motion.a>
-
-                    {/* Active Section Name - Mobile Only */}
-                    <div className="md:hidden flex-1 text-center">
-                        <span className="text-gray-700 dark:text-gray-300 font-medium">
-                            {activeSection}
-                        </span>
-                    </div>
-
-                    {/* Navigation Links - Desktop */}
-                    <div className="hidden md:flex space-x-1">
-                        {navItems.map((item) => (
-                            <motion.a
-                                key={item.name}
-                                href={item.href}
-                                data-tracking-id={item.trackingId}
-                                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === item.name
-                                    ? 'text-primary-600 dark:text-primary-400'
-                                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
-                                    }`}
-                                whileHover={{ y: -1 }}
-                                whileTap={{ scale: 0.97 }}
-                            >
-                                {item.name}
-                                {activeSection === item.name && (
-                                    <motion.div
-                                        layoutId="navbar-indicator"
-                                        className="absolute bottom-0 left-2 right-2 h-0.5 bg-primary-500 rounded-full"
-                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                    />
-                                )}
-                            </motion.a>
-                        ))}
-                    </div>
-
-                    {/* Theme Toggle */}
-                    <motion.button
-                        onClick={toggleTheme}
-                        className="p-2 rounded-lg bg-gray-200 dark:bg-dark-border hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
-                        whileHover={{ rotate: 180 }}
-                        whileTap={{ scale: 0.9 }}
-                        aria-label={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
-                        title={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
+                        <FaChevronLeft size={12} />
+                    </button>
+                    <button
+                        onClick={() => onNavigate(activeIndex + 1)}
+                        disabled={!canGoForward}
+                        className={`p-1 rounded-md transition-colors ${canGoForward ? 'text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-dark-border' : 'text-gray-300 dark:text-gray-700 cursor-not-allowed'}`}
+                        title="Próximo painel (→)"
                     >
-                        {theme === 'light' ? (
-                            <FaMoon className="w-5 h-5 text-gray-700" />
-                        ) : (
-                            <FaSun className="w-5 h-5 text-yellow-400" />
-                        )}
-                    </motion.button>
+                        <FaChevronRight size={12} />
+                    </button>
                 </div>
+            </div>
+
+            {/* CENTER: Progress dots */}
+            <div className="progress-dots hidden sm:flex absolute left-1/2 -translate-x-1/2">
+                {panels.map((panel, i) => (
+                    <button
+                        key={panel.id}
+                        onClick={() => onNavigate(i)}
+                        onMouseEnter={() => setHoverDot(i)}
+                        onMouseLeave={() => setHoverDot(null)}
+                        className={`progress-dot transition-all ${i === activeIndex
+                            ? 'active bg-primary-500'
+                            : 'bg-gray-300 dark:bg-gray-600 hover:bg-primary-400 dark:hover:bg-primary-500'
+                        }`}
+                        title={panel.name}
+                        data-tracking-id={`navbar-dot-${panel.id}`}
+                    />
+                ))}
+            </div>
+
+            {/* RIGHT: Availability + Theme toggle */}
+            <div className="flex items-center gap-3">
+                <div className="availability-badge bg-primary-500/10 dark:bg-primary-500/15 text-primary-700 dark:text-primary-400 border border-primary-500/20 hidden sm:flex">
+                    <span className="pulse-dot" />
+                    Disponível
+                </div>
+
+                <motion.button
+                    onClick={() => { toggleTheme(); trackEvent('THEME_TOGGLE', { to: theme === 'light' ? 'dark' : 'light' }); }}
+                    className="p-2 rounded-lg bg-gray-100 dark:bg-dark-border hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    whileHover={{ rotate: 180 }}
+                    whileTap={{ scale: 0.9 }}
+                    aria-label={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
+                    transition={{ duration: 0.3 }}
+                >
+                    {theme === 'light'
+                        ? <FaMoon className="w-4 h-4 text-gray-700" />
+                        : <FaSun className="w-4 h-4 text-yellow-400" />
+                    }
+                </motion.button>
             </div>
         </motion.nav>
     );

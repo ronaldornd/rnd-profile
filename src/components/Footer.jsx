@@ -4,163 +4,30 @@ import { useState } from 'react';
 
 const Footer = () => {
     const [easterEggFound, setEasterEggFound] = useState(false);
-
-    const handleEasterEgg = () => {
-        setEasterEggFound(true);
-        setTimeout(() => setEasterEggFound(false), 3000);
-    };
-
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-gray-900 dark:bg-black text-gray-300 py-12">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Main Footer Content */}
-                <div className="grid md:grid-cols-3 gap-8 mb-8">
-                    {/* Brand */}
-                    <div>
-                        <motion.div
-                            className="flex items-center gap-2 mb-4"
-                            whileHover={{ scale: 1.05 }}
-                        >
-                            <img
-                                src="/fav.png"
-                                alt="Ronaldo Logo"
-                                className="h-8 w-8 border-green-500 border-2 rounded-2xl"
-                            />
-                            <h3 className="text-2xl font-bold gradient-text">
-                                Ronaldo
-                            </h3>
-                        </motion.div>
-                        <p className="text-gray-400 mb-4">
-                            Transformando ideias em código e conexões em soluções.
-                        </p>
-                        <div className="flex gap-4">
-                            <motion.a
-                                href="https://github.com/ronaldornd"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                data-tracking-id="github-profile"
-                                className="text-gray-400 hover:text-primary-400 transition-colors"
-                                whileHover={{ scale: 1.2, rotate: 5 }}
-                            >
-                                <FaGithub size={24} />
-                            </motion.a>
-                            <motion.a
-                                href="https://linkedin.com/in/ronaldosbarbosaa"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                data-tracking-id="footer_linkedin"
-                                className="text-gray-400 hover:text-primary-400 transition-colors"
-                                whileHover={{ scale: 1.2, rotate: 5 }}
-                            >
-                                <FaLinkedin size={24} />
-                            </motion.a>
-                            <motion.a
-                                href="mailto:ronaldo.s.barbosa@outlook.com"
-                                data-tracking-id="footer_email"
-                                className="text-gray-400 hover:text-primary-400 transition-colors"
-                                whileHover={{ scale: 1.2, rotate: 5 }}
-                            >
-                                <FaEnvelope size={24} />
-                            </motion.a>
-                        </div>
+        <footer className="border-t border-gray-200 dark:border-dark-border mt-8 py-6 px-4">
+            <div className="max-w-6xl mx-auto">
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <img src="/fav.png" alt="RND" className="h-7 w-7 border-2 border-primary-500 rounded-xl" />
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Transformando ideias em código.</p>
                     </div>
-
-                    {/* Quick Links */}
-                    <div>
-                        <h4 className="text-lg font-bold mb-4 text-white">Links Rápidos</h4>
-                        <ul className="space-y-2">
-                            {[
-                                { name: 'Início', href: '#home' },
-                                { name: 'Sobre', href: '#about' },
-                                { name: 'Projetos', href: '#projects' },
-                                { name: 'Habilidades', href: '#skills' },
-                                { name: 'Contato', href: '#contact' },
-                            ].map((link, index) => (
-                                <motion.li key={index} whileHover={{ x: 5 }}>
-                                    <a
-                                        href={link.href}
-                                        className="text-gray-400 hover:text-primary-400 transition-colors"
-                                    >
-                                        {link.name}
-                                    </a>
-                                </motion.li>
-                            ))}
-                        </ul>
+                    <div className="flex items-center gap-4">
+                        <a href="https://github.com/ronaldornd" target="_blank" rel="noopener noreferrer" data-tracking-id="footer_github" className="text-gray-400 hover:text-primary-500 transition-colors"><FaGithub size={20} /></a>
+                        <a href="https://linkedin.com/in/ronaldosbarbosaa" target="_blank" rel="noopener noreferrer" data-tracking-id="footer_linkedin" className="text-gray-400 hover:text-primary-500 transition-colors"><FaLinkedin size={20} /></a>
+                        <a href="mailto:ronaldo.s.barbosa@outlook.com" data-tracking-id="footer_email" className="text-gray-400 hover:text-primary-500 transition-colors"><FaEnvelope size={20} /></a>
                     </div>
-
-                    {/* Status & Easter Egg */}
-                    <div>
-                        <h4 className="text-lg font-bold mb-4 text-white">Status</h4>
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-2">
-                                <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                                <span className="text-gray-400">Disponível para trabalho</span>
-                            </div>
-                            <div className="text-gray-400">
-                                <p>📚 Estudando: IA & Machine Learning</p>
-                                <p className="text-sm mt-2">☕ Alimentado por café</p>
-                            </div>
-
-                            {/* Easter Egg */}
-                            <motion.div
-                                className="mt-4 cursor-pointer"
-                                onClick={handleEasterEgg}
-                                whileHover={{ scale: 1.05 }}
-                            >
-                                <div className="text-xs text-gray-500 hover:text-primary-400 transition-colors">
-                                    🔍 Clique aqui para encontrar algo especial...
-                                </div>
-                            </motion.div>
-                        </div>
+                    <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
+                        <motion.span onClick={() => { setEasterEggFound(true); setTimeout(() => setEasterEggFound(false), 3000); }} className="cursor-pointer hover:text-primary-500 transition-colors select-none" whileHover={{ scale: 1.2 }}>🔍</motion.span>
+                        {easterEggFound && <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-primary-500 font-semibold">🎉 "A curiosidade é o primeiro passo para a inovação"</motion.span>}
+                        <span className="flex items-center gap-1">© {currentYear} feito com <FaHeart className="text-red-500" size={10} /> por Ronaldo</span>
                     </div>
                 </div>
-
-                {/* Easter Egg Message */}
-                {easterEggFound && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        className="mb-6 p-4 bg-gradient-to-r from-primary-500 to-blue-600 rounded-lg text-white text-center"
-                    >
-                        <p className="font-bold">🎉 Você encontrou o Easter Egg!</p>
-                        <p className="text-sm mt-1">
-                            "A curiosidade é o primeiro passo para a inovação" - Ronaldo
-                        </p>
-                    </motion.div>
-                )}
-
-                {/* Privacy Notice */}
-                <div className="border-t border-gray-800 my-8 pt-8 text-center">
-                    <motion.p
-                        className="text-xs text-gray-500 max-w-2xl mx-auto"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.7 }}
-                    >
-                        🔒 Este site coleta dados de navegação anônimos (como cliques, visualizações de seções e tempo na página) para melhorar a experiência do usuário e analisar o desempenho. Nenhum dado pessoal identificável é armazenado. Ao continuar navegando, você concorda com essa coleta de dados.
-                    </motion.p>
-                </div>
-
-                {/* Copyright */}
-                <div className="text-center">
-
-                    <motion.p
-                        className="text-gray-500 text-sm flex items-center justify-center gap-2"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                    >
-                        &copy; {currentYear} Desenvolvido com <FaHeart className="text-red-500 animate-pulse" /> por Ronaldo
-                    </motion.p>
-                    <p className="text-xs text-gray-600 mt-2">
-                        Feito com React, TailwindCSS & Framer Motion
-                    </p>
-                </div>
-
-
+                <p className="text-xs text-gray-400 dark:text-gray-600 text-center mt-4">
+                    🔒 Este site coleta dados de navegação anônimos para melhorar a experiência. Nenhum dado pessoal identificável é armazenado.
+                </p>
             </div>
         </footer>
     );

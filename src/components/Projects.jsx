@@ -2,7 +2,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import {
     FaGithub, FaExternalLinkAlt, FaReact, FaNode, FaDatabase, FaJava,
-    FaHtml5, FaCss3Alt, FaMagic, FaStar, FaLock, FaMobileAlt
+    FaHtml5, FaCss3Alt, FaStar, FaLock, FaChevronDown, FaLink,
+    FaCheckCircle, FaSpinner, FaPauseCircle, FaBook
 } from 'react-icons/fa';
 import {
     SiPrisma, SiTailwindcss, SiJavascript, SiTypescript, SiSpringboot,
@@ -13,434 +14,662 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/effect-coverflow';
 import ScrollReveal from './ScrollReveal';
+
+const STATUS_CONFIG = {
+    stable: { label: 'Estável', icon: <FaCheckCircle size={10} />, class: 'status-stable' },
+    dev: { label: 'Em desenvolvimento', icon: <FaSpinner size={10} />, class: 'status-dev' },
+    paused: { label: 'Pausado', icon: <FaPauseCircle size={10} />, class: 'status-paused' },
+};
+
+const projects = [
+    {
+        id: 1,
+        name: 'RonnyZim OS',
+        subtitle: 'The Intelligence Interface',
+        category: 'ia',
+        featured: true,
+        status: 'dev',
+        type: 'Web',
+        lastUpdate: 'Mai 2025',
+        description: 'Uma "interface generativa" focada em produtividade e gestão de carreira — conceito de "cérebro digital" com design de alta densidade e foco em reduzir distrações.',
+        problem: 'Centralizar contexto pessoal/técnico (skills, experiência, biorritmo) e automatizar busca/triagem de oportunidades.',
+        solution: 'Arquitetura com MCP para desacoplar IA de infra, Auth SSR + RLS com Supabase e integração com Gemini/Tavily.',
+        features: ['Memory Guardian', 'Market Intelligence', 'Auth SSR + RLS', 'Dashboard de carreira'],
+        stack: ['Next.js', 'TypeScript', 'Supabase', 'Framer Motion', 'MCP'],
+        challenges: 'Integração do protocolo MCP com SSR e gerenciamento de estado de contexto persistente.',
+        nextSteps: ['Dashboard de oportunidades', 'Integrações com LinkedIn API', 'App mobile'],
+        image: '🧠',
+        github: 'https://github.com/ronaldornd/RonnyZim',
+        demo: null,
+        ciUrl: 'https://github.com/ronaldornd/RonnyZim/actions',
+        isPrivate: false,
+        screenshots: [],
+    },
+    {
+        id: 2,
+        name: 'EnfeTech Mobile',
+        subtitle: 'Educação Gamificada em Enfermagem',
+        category: 'mobile',
+        featured: true,
+        status: 'dev',
+        type: 'Mobile',
+        lastUpdate: 'Abr 2025',
+        description: 'Aplicativo mobile gamificado para técnicos/estudantes de enfermagem, transformando protocolos e cálculos clínicos em uma experiência de estudo progressiva.',
+        problem: 'Tornar conteúdos complexos de enfermagem acessíveis e engajadores através de gamificação.',
+        solution: 'Empacotamento mobile com Capacitor, persistência local e UI moderna com Tailwind + animações.',
+        features: ['XP & Níveis', 'Flashcards interativos', 'Simuladores Clínicos', 'Progresso offline'],
+        stack: ['React', 'TailwindCSS', 'Capacitor', 'Framer Motion'],
+        challenges: 'Persistência offline com sincronização e feedback tátil consistente cross-platform.',
+        nextSteps: ['iOS build', 'Notificações push', 'Modo colaborativo'],
+        image: '🏥',
+        github: 'https://github.com/ronaldornd/enfetech',
+        demo: null,
+        ciUrl: 'https://github.com/ronaldornd/enfetech/actions',
+        isPrivate: false,
+        screenshots: [],
+    },
+    {
+        id: 3,
+        name: 'RND Profile',
+        subtitle: 'Dashboard Pessoal',
+        category: 'frontend',
+        status: 'stable',
+        type: 'Web',
+        lastUpdate: 'Mai 2025',
+        description: 'Portfólio pessoal interativo em formato de dashboard com painéis, animações suaves e foco em UX premium.',
+        problem: 'Criar um portfólio profissional moderno, responsivo e com identidade visual marcante.',
+        solution: 'React 19, Vite, Framer Motion, TailwindCSS e design system com tema dark/light persistente.',
+        features: ['Painéis interativos', 'Dark/Light mode', 'Animações', 'Formulário de contato'],
+        stack: ['React', 'TailwindCSS', 'Framer Motion', 'JavaScript'],
+        challenges: 'Transição suave entre painéis com AnimatePresence e layout dashboard responsivo.',
+        nextSteps: ['Internacionalização', 'Lighthouse 100', 'Blog integrado'],
+        image: '🚀',
+        github: 'https://github.com/ronaldornd/rnd-profile',
+        demo: 'https://ronaldornd.vercel.app',
+        ciUrl: null,
+    },
+    {
+        id: 4,
+        name: 'Live Web',
+        subtitle: 'Chat Real-Time',
+        category: 'frontend',
+        status: 'paused',
+        type: 'Web',
+        lastUpdate: 'Dez 2023',
+        description: 'Front-end de chat em tempo real com login via GitHub OAuth, recebimento em tempo real via Socket.IO e estado global via Context API.',
+        problem: 'Criar interface responsiva e moderna para chat em tempo real com autenticação OAuth.',
+        solution: 'Integração REST + WebSocket, autenticação GitHub OAuth e gerenciamento de estado com Context API.',
+        features: ['GitHub OAuth', 'Chat em tempo real', 'Context API', 'Interface responsiva'],
+        stack: ['TypeScript', 'React', 'Socket.IO', 'SCSS'],
+        challenges: 'Sincronização de eventos WebSocket com React state sem race conditions.',
+        nextSteps: ['Salas privadas', 'Histórico persistente'],
+        image: '💬',
+        github: 'https://github.com/ronaldornd/Live-web',
+        demo: null,
+    },
+    {
+        id: 5,
+        name: 'Live Backend',
+        subtitle: 'API NLW Heat',
+        category: 'backend',
+        status: 'paused',
+        type: 'API',
+        lastUpdate: 'Dez 2023',
+        description: 'Backend do sistema de mensagens em tempo real — OAuth GitHub, perfil, mensagens e eventos via Socket.IO.',
+        problem: 'Implementar autenticação OAuth, endpoints REST e comunicação WebSocket em tempo real.',
+        solution: 'TypeScript no backend, Node.js com integração OAuth e eventos em tempo real via Socket.IO.',
+        features: ['OAuth GitHub', 'REST endpoints', 'WebSocket', 'Prisma ORM'],
+        stack: ['TypeScript', 'Node.js', 'Socket.IO'],
+        challenges: 'Gerenciar salas de socket e broadcasts sem vazamento de memória em sessões longas.',
+        nextSteps: ['Rate limiting', 'Testes de integração'],
+        image: '🔥',
+        github: 'https://github.com/ronaldornd/Live-back',
+        demo: null,
+    },
+    {
+        id: 6,
+        name: 'Live Native',
+        subtitle: 'App Mobile do Chat',
+        category: 'mobile',
+        status: 'paused',
+        type: 'Mobile',
+        lastUpdate: 'Dez 2023',
+        description: 'Cliente mobile do ecossistema Live — chat em tempo real via React Native + Expo, conectando ao backend via WebSocket.',
+        problem: 'Desenvolver versão mobile multiplataforma do sistema de mensagens.',
+        solution: 'React Native com Expo, navegação mobile, integração WebSocket e UI adaptativa.',
+        features: ['React Native', 'Expo', 'WebSocket client', 'UI adaptativa'],
+        stack: ['TypeScript', 'React Native'],
+        challenges: 'Gerenciar conexão WebSocket em background no ciclo de vida do app mobile.',
+        nextSteps: ['Push notifications', 'Offline mode'],
+        image: '📱',
+        github: 'https://github.com/ronaldornd/Live-native',
+        demo: null,
+    },
+    {
+        id: 7,
+        name: 'OxeFood API',
+        subtitle: 'Projeto Acadêmico',
+        category: 'backend',
+        status: 'stable',
+        type: 'API',
+        lastUpdate: 'Jun 2024',
+        description: 'API REST em Java/Spring Boot para sistema de delivery de alimentos — disciplina Desenvolvimento WEB no IFPE.',
+        problem: 'Desenvolver API REST completa com fundamentos sólidos de backend.',
+        solution: 'APIs REST com Java e Spring Boot, persistência de dados e arquitetura MVC.',
+        features: ['CRUD completo', 'Spring Boot', 'MVC pattern', 'Persistência'],
+        stack: ['Java', 'Spring Boot'],
+        challenges: 'Configurar corretamente as relações JPA e gerenciar transações de banco de dados.',
+        nextSteps: ['Adicionar autenticação JWT', 'Deploy em cloud'],
+        image: '🍔',
+        github: 'https://github.com/ronaldornd/oxefood-api-ronaldornd',
+        demo: null,
+    },
+    {
+        id: 8,
+        name: 'OxeFood Web',
+        subtitle: 'Interface do Delivery',
+        category: 'fullstack',
+        status: 'stable',
+        type: 'Web',
+        lastUpdate: 'Jun 2024',
+        description: 'Interface web para o sistema OxeFood — CRUD completo, fluxos de UI e integração com API REST do backend.',
+        problem: 'Criar interface intuitiva para sistema de pedidos online integrado à API.',
+        solution: 'Integrei frontend React com API REST e implementei fluxo completo de pedidos.',
+        features: ['CRUD visual', 'Integração REST', 'Fluxo de pedidos', 'SPA'],
+        stack: ['JavaScript', 'React'],
+        challenges: 'Gerenciar estado global de pedidos e sincronização com a API de forma responsiva.',
+        nextSteps: ['Autenticação', 'Carrinho persistente'],
+        image: '🌐',
+        github: 'https://github.com/ronaldornd/oxefood-web-ronaldornd',
+        demo: null,
+    },
+    {
+        id: 9,
+        name: 'RND Links',
+        subtitle: 'Linktree Pessoal',
+        category: 'frontend',
+        status: 'stable',
+        type: 'Web',
+        lastUpdate: 'Jan 2024',
+        description: 'Página de links estilo Linktree personalizada com design clean e responsivo.',
+        problem: 'Centralizar todos os links importantes em uma única página.',
+        solution: 'Landing page simples e efetiva com HTML/CSS puro, foco em design minimalista.',
+        features: ['HTML/CSS puro', 'Design responsivo', 'Links sociais', 'Sem dependências'],
+        stack: ['HTML', 'CSS'],
+        challenges: 'Criar design atraente sem frameworks, com CSS puro e performance máxima.',
+        nextSteps: ['Modo escuro', 'Analytics'],
+        image: '🔗',
+        github: 'https://github.com/ronaldornd/rndlinks',
+        demo: 'https://ronaldornd.github.io/rndlinks/',
+    },
+];
+
+const filters = [
+    { id: 'all', name: 'Todos', icon: '🌟' },
+    { id: 'frontend', name: 'Front-End', icon: '🎨' },
+    { id: 'backend', name: 'Back-End', icon: '⚙️' },
+    { id: 'fullstack', name: 'Fullstack', icon: '🔄' },
+    { id: 'mobile', name: 'Mobile', icon: '📱' },
+    { id: 'ia', name: 'IA', icon: '🤖' },
+];
+
+const getTechIcon = (tech) => {
+    const icons = {
+        'React': <FaReact className="text-blue-400" />, 'React Native': <FaReact className="text-blue-500" />,
+        'Node.js': <FaNode className="text-green-500" />, 'PostgreSQL': <FaDatabase className="text-blue-600" />,
+        'Prisma': <SiPrisma className="text-indigo-600" />, 'TailwindCSS': <SiTailwindcss className="text-cyan-400" />,
+        'JavaScript': <SiJavascript className="text-yellow-400" />, 'TypeScript': <SiTypescript className="text-blue-600" />,
+        'Java': <FaJava className="text-red-600" />, 'Spring Boot': <SiSpringboot className="text-green-600" />,
+        'HTML': <FaHtml5 className="text-orange-500" />, 'CSS': <FaCss3Alt className="text-blue-500" />,
+        'Framer Motion': <SiFramer className="text-pink-500" />, 'Next.js': <SiNextdotjs className="text-gray-800 dark:text-gray-200" />,
+        'Supabase': <SiSupabase className="text-emerald-500" />, 'Socket.IO': <SiSocketdotio className="text-gray-700 dark:text-gray-300" />,
+        'Capacitor': <SiCapacitor className="text-blue-500" />, 'MCP': <FaDatabase className="text-amber-500" />,
+        'SCSS': <FaCss3Alt className="text-pink-400" />,
+    };
+    return icons[tech] || <FaReact />;
+};
+
+const getCategoryColor = (category) => {
+    const colors = {
+        frontend: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
+        backend: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
+        fullstack: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300',
+        mobile: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300',
+        ia: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300',
+    };
+    return colors[category] || '';
+};
+
+const getCategoryLabel = (category) => {
+    const labels = { frontend: 'Front-End', backend: 'Back-End', fullstack: 'Fullstack', mobile: 'Mobile', ia: 'IA' };
+    return labels[category] || category;
+};
+
+const ProjectCard = ({ project }) => {
+    const status = STATUS_CONFIG[project.status] || STATUS_CONFIG.dev;
+
+    return (
+        <div className="card-glass overflow-hidden h-full flex flex-col md:flex-row">
+
+            {/* LEFT — Visual card (40%) */}
+            <div className={`relative md:w-2/5 flex-shrink-0 flex flex-col items-center justify-center ${
+                project.featured
+                    ? 'bg-gradient-to-br from-primary-600 via-emerald-500 to-blue-600'
+                    : 'bg-gradient-to-br from-primary-500 to-blue-600'
+            } p-6 min-h-48`}>
+
+                {/* Badges top-left */}
+                <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+                    {project.featured && (
+                        <span className="badge-featured"><FaStar size={10} />Destaque</span>
+                    )}
+                    {project.isPrivate && (
+                        <span className="badge-private"><FaLock size={10} />Privado</span>
+                    )}
+                </div>
+
+                {/* Badges top-right */}
+                <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5">
+                    <span className={`badge-category ${getCategoryColor(project.category)}`}>
+                        {getCategoryLabel(project.category)}
+                    </span>
+                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-full ${status.class}`}>
+                        {status.icon}{status.label}
+                    </span>
+                </div>
+
+                {/* Main icon */}
+                <span className="text-7xl mb-3">{project.image}</span>
+
+                {/* Title block */}
+                <div className="text-center">
+                    <h3 className="text-xl font-bold text-white">{project.name}</h3>
+                    {project.subtitle && (
+                        <p className="text-xs text-white/70 mt-0.5">{project.subtitle}</p>
+                    )}
+                    <p className="text-xs text-white/60 mt-1">{project.type} · {project.lastUpdate}</p>
+                </div>
+
+                {/* Action links */}
+                <div className="flex gap-2 mt-4">
+                    {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer"
+                            data-tracking-id={`project-${project.name.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="p-2 bg-white/20 hover:bg-white/30 rounded-full text-white transition-colors"
+                            title="Ver no GitHub">
+                            <FaGithub size={16} />
+                        </a>
+                    )}
+                    {project.demo && (
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer"
+                            data-tracking-id={`project-demo-${project.name.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="p-2 bg-white/20 hover:bg-white/30 rounded-full text-white transition-colors"
+                            title="Ver demo">
+                            <FaExternalLinkAlt size={14} />
+                        </a>
+                    )}
+                    {project.ciUrl && (
+                        <a href={project.ciUrl} target="_blank" rel="noopener noreferrer"
+                            className="p-2 bg-white/20 hover:bg-white/30 rounded-full text-white transition-colors"
+                            title="GitHub Actions CI">
+                            <FaCheckCircle size={14} className="text-green-300" />
+                        </a>
+                    )}
+                </div>
+            </div>
+
+            {/* RIGHT — Detail panel (60%) */}
+            <div className="flex-1 p-5 flex flex-col gap-3 overflow-y-auto">
+
+                {/* Description */}
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{project.description}</p>
+
+                {/* 2-col info grid */}
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                    <div className="space-y-1">
+                        <span className="font-bold text-primary-500 block">🎯 Problema</span>
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{project.problem}</p>
+                    </div>
+                    <div className="space-y-1">
+                        <span className="font-bold text-primary-500 block">💡 Solução</span>
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{project.solution}</p>
+                    </div>
+                    <div className="space-y-1">
+                        <span className="font-bold text-gray-700 dark:text-gray-300 block">⚠️ Desafios</span>
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{project.challenges}</p>
+                    </div>
+                    {project.nextSteps && (
+                        <div className="space-y-1">
+                            <span className="font-bold text-gray-700 dark:text-gray-300 block">🗺️ Próximos passos</span>
+                            <ul className="space-y-0.5">
+                                {project.nextSteps.map((step, i) => (
+                                    <li key={i} className="text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                                        <span className="text-primary-400">→</span>{step}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </div>
+
+                {/* Features */}
+                {project.features && (
+                    <div>
+                        <p className="text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">✨ Funcionalidades</p>
+                        <div className="flex flex-wrap gap-1.5">
+                            {project.features.map((f, i) => (
+                                <span key={i} className="text-xs px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-md font-medium">
+                                    {f}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* Stack */}
+                <div>
+                    <p className="text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">🛠️ Stack</p>
+                    <div className="flex flex-wrap gap-1.5">
+                        {project.stack.map((tech, i) => (
+                            <motion.div key={i}
+                                className="flex items-center gap-1 px-2 py-0.5 bg-gray-100 dark:bg-dark-border rounded-full text-xs"
+                                whileHover={{ scale: 1.06 }}
+                            >
+                                {getTechIcon(tech)}
+                                <span className="font-medium">{tech}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Screenshots */}
+                <div>
+                    <p className="text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">🖼️ Prévia</p>
+                    {project.screenshots && project.screenshots.length > 0 ? (
+                        <div className="flex gap-2 overflow-x-auto pb-1">
+                            {project.screenshots.map((src, i) => (
+                                <motion.a key={i} href={src} target="_blank" rel="noopener noreferrer"
+                                    className="flex-shrink-0 w-28 h-16 rounded-lg overflow-hidden border border-dark-border hover:border-primary-500 transition-colors"
+                                    whileHover={{ scale: 1.04 }}
+                                >
+                                    <img src={src} alt={`Screenshot ${i + 1}`} className="w-full h-full object-cover" />
+                                </motion.a>
+                            ))}
+                        </div>
+                    ) : (
+                        <p className="text-xs text-gray-500 dark:text-gray-600 italic flex items-center gap-1.5">
+                            <span>📸</span> Prints em breve — adicione URLs em <code className="text-primary-500 ml-1">screenshots: []</code>
+                        </p>
+                    )}
+                </div>
+
+                {/* CI badge */}
+                {project.ciUrl && (
+                    <a href={project.ciUrl} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 hover:underline self-start">
+                        <FaCheckCircle size={11} />Ver CI/CD no GitHub Actions
+                    </a>
+                )}
+            </div>
+        </div>
+    );
+};
+
+
+const Projects = () => {
+
+            {/* Header image */}
+            <div className={`relative h-44 flex items-center justify-center text-8xl ${project.featured ? 'bg-gradient-to-br from-primary-600 via-emerald-500 to-blue-600' : 'bg-gradient-to-br from-primary-500 to-blue-600'}`}>
+                {project.featured && (
+                    <div className="absolute top-3 left-3 z-10">
+                        <span className="badge-featured"><FaStar size={10} />Destaque</span>
+                    </div>
+                )}
+                <div className="absolute top-3 right-3 z-10 flex flex-col items-end gap-1.5">
+                    <span className={`badge-category ${getCategoryColor(project.category)}`}>{getCategoryLabel(project.category)}</span>
+                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-full ${status.class}`}>
+                        {status.icon}{status.label}
+                    </span>
+                </div>
+                {project.image}
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                    {project.github && (
+                        <motion.a href={project.github} target="_blank" rel="noopener noreferrer"
+                            data-tracking-id={`project-${project.name.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="p-2.5 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
+                            whileHover={{ rotate: 360 }} transition={{ duration: 0.3 }}>
+                            <FaGithub size={20} />
+                        </motion.a>
+                    )}
+                    {project.demo && (
+                        <motion.a href={project.demo} target="_blank" rel="noopener noreferrer"
+                            data-tracking-id={`project-demo-${project.name.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="p-2.5 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
+                            whileHover={{ rotate: 360 }} transition={{ duration: 0.3 }}>
+                            <FaExternalLinkAlt size={16} />
+                        </motion.a>
+                    )}
+                    {project.ciUrl && (
+                        <motion.a href={project.ciUrl} target="_blank" rel="noopener noreferrer"
+                            className="p-2.5 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
+                            title="GitHub Actions CI" whileHover={{ rotate: 360 }} transition={{ duration: 0.3 }}>
+                            <FaCheckCircle size={16} className="text-green-600" />
+                        </motion.a>
+                    )}
+                </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-5 flex-1 flex flex-col">
+                {/* Title + meta */}
+                <div className="flex items-start justify-between mb-2 gap-2">
+                    <div>
+                        <h3 className="text-xl font-bold gradient-text">{project.name}</h3>
+                        {project.subtitle && <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{project.subtitle}</p>}
+                    </div>
+                    <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                        {project.isPrivate && (
+                            <span className="badge-private"><FaLock size={10} />Privado</span>
+                        )}
+                        <span className="text-xs text-gray-400 dark:text-gray-500">{project.type} · {project.lastUpdate}</span>
+                    </div>
+                </div>
+
+                <p className="text-gray-700 dark:text-gray-300 text-sm mb-3 text-pretty">{project.description}</p>
+
+                {/* Problem & Solution */}
+                <div className="space-y-2 mb-3">
+                    <div className="text-xs">
+                        <span className="font-bold text-primary-500">🎯 Problema: </span>
+                        <span className="text-gray-600 dark:text-gray-400">{project.problem}</span>
+                    </div>
+                    <div className="text-xs">
+                        <span className="font-bold text-primary-500">💡 Solução: </span>
+                        <span className="text-gray-600 dark:text-gray-400">{project.solution}</span>
+                    </div>
+                </div>
+
+                {/* Features */}
+                {project.features && (
+                    <div className="flex flex-wrap gap-1 mb-3">
+                        {project.features.map((f, i) => (
+                            <span key={i} className="text-xs px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-md font-medium">
+                                {f}
+                            </span>
+                        ))}
+                    </div>
+                )}
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-gray-100 dark:border-dark-border mb-3 mt-auto">
+                    {project.stack.map((tech, i) => (
+                        <motion.div key={i} className="flex items-center gap-1 px-2 py-0.5 bg-gray-100 dark:bg-dark-border rounded-full text-xs" whileHover={{ scale: 1.06 }}>
+                            {getTechIcon(tech)}
+                            <span className="font-medium text-xs">{tech}</span>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Expandable case study */}
+                <button
+                    onClick={() => setExpanded(!expanded)}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-primary-500 hover:text-primary-600 transition-colors mt-1"
+                >
+                    <FaBook size={10} />
+                    Case study
+                    <motion.span animate={{ rotate: expanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                        <FaChevronDown size={9} />
+                    </motion.span>
+                </button>
+
+                <AnimatePresence>
+                    {expanded && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                            className="overflow-hidden"
+                        >
+                            <div className="pt-3 space-y-2.5 text-xs">
+                                <div>
+                                    <span className="font-bold text-gray-700 dark:text-gray-300 block mb-1">⚠️ Desafios:</span>
+                                    <p className="text-gray-500 dark:text-gray-400">{project.challenges}</p>
+                                </div>
+                                {project.nextSteps && (
+                                    <div>
+                                        <span className="font-bold text-gray-700 dark:text-gray-300 block mb-1">🗺️ Próximos passos:</span>
+                                        <ul className="space-y-1">
+                                            {project.nextSteps.map((step, i) => (
+                                                <li key={i} className="text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                                                    <span className="text-primary-400">→</span> {step}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                                {project.ciUrl && (
+                                    <a href={project.ciUrl} target="_blank" rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 hover:underline">
+                                        <FaCheckCircle size={10} /> Ver CI/CD no GitHub Actions
+                                    </a>
+                                )}
+                                {/* Screenshots Gallery */}
+                                <div className="pt-1">
+                                    <span className="font-bold text-gray-700 dark:text-gray-300 block mb-2">🖼️ Prévia do Projeto:</span>
+                                    {project.screenshots && project.screenshots.length > 0 ? (
+                                        <div className="flex gap-2 overflow-x-auto pb-1">
+                                            {project.screenshots.map((src, i) => (
+                                                <motion.a key={i} href={src} target="_blank" rel="noopener noreferrer"
+                                                    className="flex-shrink-0 w-32 h-20 rounded-lg overflow-hidden border border-dark-border hover:border-primary-500 transition-colors"
+                                                    whileHover={{ scale: 1.04 }}
+                                                >
+                                                    <img src={src} alt={`Screenshot ${i + 1}`} className="w-full h-full object-cover" />
+                                                </motion.a>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="flex items-center gap-2 text-gray-500 dark:text-gray-600 italic">
+                                            <span className="text-base">📸</span>
+                                            <span>Prints em breve — adicione em <code className="text-primary-500">screenshots: []</code></span>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+        </motion.div>
+    );
+};
 
 const Projects = () => {
     const [filter, setFilter] = useState('all');
 
-    const projects = [
-        {
-            id: 1,
-            name: 'RonnyZim OS',
-            subtitle: 'The Intelligence Interface',
-            category: 'ia',
-            featured: true,
-            description: 'Uma "interface generativa" focada em produtividade e gestão de carreira — conceito de "cérebro digital" com design de alta densidade e foco em reduzir distrações.',
-            problem: 'Centralizar contexto pessoal/técnico (skills, experiência, biorritmo) e automatizar busca/triagem de oportunidades.',
-            learning: 'Arquitetura com MCP para desacoplar IA de infra, Auth SSR + RLS com Supabase, e integração com Gemini/Tavily.',
-            image: '🧠',
-            technologies: ['Next.js', 'TypeScript', 'Supabase', 'Framer Motion', 'MCP'],
-            highlights: ['Memory Guardian', 'Market Intelligence', 'Auth SSR + RLS'],
-            github: 'https://github.com/ronaldornd/RonnyZim',
-            demo: null,
-            isPrivate: false,
-        },
-        {
-            id: 2,
-            name: 'EnfeTech Mobile',
-            subtitle: 'Educação Gamificada em Enfermagem',
-            category: 'mobile',
-            featured: true,
-            description: 'Aplicativo mobile gamificado para técnicos/estudantes de enfermagem, transformando protocolos e cálculos clínicos em uma experiência de estudo progressiva.',
-            problem: 'Tornar conteúdos complexos de enfermagem acessíveis e engajadores através de gamificação.',
-            learning: 'Empacotamento mobile com Capacitor, persistência local, UI moderna com Tailwind + animações, e feedback tátil.',
-            image: '🏥',
-            technologies: ['React', 'TailwindCSS', 'Capacitor', 'Framer Motion'],
-            highlights: ['XP & Níveis', 'Flashcards', 'Simuladores Clínicos'],
-            github: 'https://github.com/ronaldornd/enfetech',
-            demo: null,
-            isPrivate: false,
-        },
-        {
-            id: 3,
-            name: 'RND Profile',
-            category: 'frontend',
-            description: 'Landing page/portfólio pessoal interativo com seções dinâmicas, animações suaves e foco em UX premium.',
-            problem: 'Criar um portfólio profissional moderno, responsivo e com identidade visual marcante.',
-            learning: 'React 19, Vite, Framer Motion, TailwindCSS e design system com tema dark/light persistente.',
-            image: '🚀',
-            technologies: ['React', 'TailwindCSS', 'Framer Motion', 'JavaScript'],
-            github: 'https://github.com/ronaldornd/rnd-profile',
-            demo: 'https://ronaldornd.vercel.app',
-        },
-        {
-            id: 4,
-            name: 'Live Web',
-            subtitle: 'Chat Real-Time',
-            category: 'frontend',
-            description: 'Front-end de chat em tempo real com login via GitHub OAuth, recebimento em tempo real via Socket.IO e estado global via Context API.',
-            problem: 'Criar interface responsiva e moderna para chat em tempo real com autenticação OAuth.',
-            learning: 'Integração REST + WebSocket, autenticação GitHub OAuth, e gerenciamento de estado com Context API.',
-            image: '💬',
-            technologies: ['TypeScript', 'React', 'Socket.IO', 'SCSS'],
-            github: 'https://github.com/ronaldornd/Live-web',
-            demo: null,
-        },
-        {
-            id: 5,
-            name: 'Live Backend',
-            subtitle: 'API NLW Heat',
-            category: 'backend',
-            description: 'Backend do sistema de mensagens em tempo real — OAuth GitHub, perfil, mensagens e eventos via Socket.IO.',
-            problem: 'Implementar autenticação OAuth, endpoints REST e comunicação WebSocket em tempo real.',
-            learning: 'TypeScript no backend, Node.js com integração OAuth e eventos em tempo real.',
-            image: '🔥',
-            technologies: ['TypeScript', 'Node.js', 'Socket.IO'],
-            github: 'https://github.com/ronaldornd/Live-back',
-            demo: null,
-        },
-        {
-            id: 6,
-            name: 'Live Native',
-            subtitle: 'App Mobile do Chat',
-            category: 'mobile',
-            description: 'Cliente mobile do ecossistema Live — chat em tempo real via React Native + Expo, conectando ao backend via WebSocket.',
-            problem: 'Desenvolver versão mobile multiplataforma do sistema de mensagens.',
-            learning: 'React Native com Expo, navegação mobile, integração WebSocket e UI adaptativa.',
-            image: '📱',
-            technologies: ['TypeScript', 'React Native'],
-            github: 'https://github.com/ronaldornd/Live-native',
-            demo: null,
-        },
-        {
-            id: 7,
-            name: 'OxeFood API',
-            subtitle: 'Projeto Acadêmico',
-            category: 'backend',
-            description: 'API REST em Java/Spring Boot para sistema de delivery de alimentos — disciplina Desenvolvimento WEB no IFPE.',
-            problem: 'Desenvolver API REST completa com fundamentos sólidos de backend.',
-            learning: 'APIs REST com Java e Spring Boot, persistência de dados, e arquitetura MVC.',
-            image: '🍔',
-            technologies: ['Java', 'Spring Boot'],
-            github: 'https://github.com/ronaldornd/oxefood-api-ronaldornd',
-            demo: null,
-        },
-        {
-            id: 8,
-            name: 'OxeFood Web',
-            category: 'fullstack',
-            description: 'Interface web para o sistema OxeFood — CRUD completo, fluxos de UI e integração com API REST do backend.',
-            problem: 'Criar interface intuitiva para sistema de pedidos online.',
-            learning: 'Integrei frontend React com API REST e implementei fluxo completo de pedidos.',
-            image: '🌐',
-            technologies: ['JavaScript', 'React'],
-            github: 'https://github.com/ronaldornd/oxefood-web-ronaldornd',
-            demo: null,
-        },
-        {
-            id: 9,
-            name: 'RND Links',
-            category: 'frontend',
-            description: 'Página de links estilo Linktree personalizada com design clean e responsivo.',
-            problem: 'Centralizar todos os links importantes em uma única página.',
-            learning: 'Landing page simples e efetiva com HTML/CSS puro, foco em design minimalista.',
-            image: '🔗',
-            technologies: ['HTML', 'CSS'],
-            github: 'https://github.com/ronaldornd/rndlinks',
-            demo: 'https://ronaldornd.github.io/rndlinks/',
-        },
-    ];
-
-    const filters = [
-        { id: 'all', name: 'Todos', icon: '🌟' },
-        { id: 'frontend', name: 'Front-End', icon: '🎨' },
-        { id: 'backend', name: 'Back-End', icon: '⚙️' },
-        { id: 'fullstack', name: 'Fullstack', icon: '🔄' },
-        { id: 'mobile', name: 'Mobile', icon: '📱' },
-        { id: 'ia', name: 'IA', icon: '🤖' },
-    ];
-
-    const getTechIcon = (tech) => {
-        const icons = {
-            'React': <FaReact className="text-blue-400" />,
-            'React Native': <FaReact className="text-blue-500" />,
-            'Node.js': <FaNode className="text-green-500" />,
-            'PostgreSQL': <FaDatabase className="text-blue-600" />,
-            'Prisma': <SiPrisma className="text-indigo-600" />,
-            'TailwindCSS': <SiTailwindcss className="text-cyan-400" />,
-            'JavaScript': <SiJavascript className="text-yellow-400" />,
-            'TypeScript': <SiTypescript className="text-blue-600" />,
-            'Java': <FaJava className="text-red-600" />,
-            'Spring Boot': <SiSpringboot className="text-green-600" />,
-            'HTML': <FaHtml5 className="text-orange-500" />,
-            'CSS': <FaCss3Alt className="text-blue-500" />,
-            'Framer Motion': <SiFramer className="text-pink-500" />,
-            'Next.js': <SiNextdotjs className="text-gray-800 dark:text-gray-200" />,
-            'Supabase': <SiSupabase className="text-emerald-500" />,
-            'Socket.IO': <SiSocketdotio className="text-gray-700 dark:text-gray-300" />,
-            'Capacitor': <SiCapacitor className="text-blue-500" />,
-            'MCP': <FaDatabase className="text-amber-500" />,
-            'SCSS': <FaCss3Alt className="text-pink-400" />,
-        };
-        return icons[tech] || <FaReact />;
-    };
-
-    const getCategoryColor = (category) => {
-        const colors = {
-            frontend: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
-            backend: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
-            fullstack: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300',
-            mobile: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300',
-            ia: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300',
-        };
-        return colors[category] || '';
-    };
-
-    const getCategoryLabel = (category) => {
-        const labels = {
-            frontend: 'Front-End',
-            backend: 'Back-End',
-            fullstack: 'Fullstack',
-            mobile: 'Mobile',
-            ia: 'IA',
-        };
-        return labels[category] || category;
-    };
-
-    const filteredProjects = filter === 'all'
-        ? projects
-        : projects.filter(p => p.category === filter);
+    const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter);
 
     return (
-        <section id="projects" className="bg-gray-50 dark:bg-dark-card/30 py-16 md:py-20 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <ScrollReveal variant="slideUp" once={true}>
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-balance">
-                        Meus <span className="gradient-text">Projetos</span>
-                    </h2>
-                    <p className="text-center text-gray-600 dark:text-gray-400 mb-12 text-pretty">
-                        Onde ideias ganham vida através do código
-                    </p>
-                </ScrollReveal>
-
-                {/* Filter Buttons */}
-                <ScrollReveal variant="fadeIn" once={true} className="flex flex-wrap justify-center gap-3 mb-12">
-                    {filters.map((f) => (
-                        <motion.button
-                            key={f.id}
-                            onClick={() => setFilter(f.id)}
-                            className={`px-5 py-2 rounded-lg font-semibold text-sm transition-all flex items-center gap-2 ${filter === f.id
-                                ? 'bg-gradient-to-r from-primary-500 to-blue-600 text-white shadow-lg shadow-primary-500/25'
-                                : 'bg-white dark:bg-dark-card text-gray-700 dark:text-gray-300 hover:shadow-md border border-gray-200 dark:border-dark-border'
+        <section id="projects" className="h-full flex flex-col px-4 md:px-8 py-4 overflow-hidden">
+            <motion.div
+                className="max-w-6xl mx-auto w-full flex flex-col h-full gap-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+            >
+                {/* Header + filters row */}
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                    <div>
+                        <p className="text-xs text-primary-500 font-bold uppercase tracking-widest mb-1">Portfólio</p>
+                        <h2 className="text-2xl md:text-3xl font-bold">Meus <span className="gradient-text">Projetos</span></h2>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                        {filters.map((f) => (
+                            <motion.button
+                                key={f.id}
+                                onClick={() => setFilter(f.id)}
+                                className={`px-3 py-1 rounded-lg font-semibold text-xs transition-all flex items-center gap-1 ${
+                                    filter === f.id
+                                        ? 'bg-gradient-to-r from-primary-500 to-blue-600 text-white shadow-lg shadow-primary-500/25'
+                                        : 'bg-white dark:bg-dark-card text-gray-700 dark:text-gray-300 hover:shadow-md border border-gray-200 dark:border-dark-border'
                                 }`}
-                            whileHover={{ scale: 1.05, y: -1 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <span>{f.icon}</span>
-                            {f.name}
-                        </motion.button>
-                    ))}
-                </ScrollReveal>
+                                whileHover={{ scale: 1.04, y: -1 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <span>{f.icon}</span>{f.name}
+                            </motion.button>
+                        ))}
+                    </div>
+                </div>
 
-                {/* Projects Carousel */}
-                <ScrollReveal variant="fadeIn" className="w-full">
+                {/* Swiper — 1 slide at a time, shows project card + detail side by side */}
+                <div className="flex-1 overflow-hidden">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={filter}
-                            initial={{ opacity: 0, y: 20 }}
+                            className="h-full"
+                            initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
+                            exit={{ opacity: 0, y: -12 }}
+                            transition={{ duration: 0.25 }}
                         >
                             <Swiper
                                 modules={[Navigation, Pagination, Autoplay]}
                                 grabCursor={true}
-                                centeredSlides={false}
                                 slidesPerView={1}
-                                spaceBetween={16}
-                                navigation={{
-                                    enabled: true,
-                                }}
-                                pagination={{
-                                    clickable: true,
-                                    dynamicBullets: true
-                                }}
-                                autoplay={{
-                                    delay: 6000,
-                                    disableOnInteraction: false,
-                                    pauseOnMouseEnter: true,
-                                }}
-                                loop={filteredProjects.length > 2}
-                                className="projects-swiper !pb-16"
+                                spaceBetween={20}
+                                navigation={{ enabled: true }}
+                                pagination={{ clickable: true, dynamicBullets: true }}
+                                autoplay={{ delay: 8000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                                loop={filteredProjects.length > 1}
+                                className="projects-swiper h-full"
+                                style={{ height: '100%' }}
                                 breakpoints={{
-                                    320: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 16,
-                                        centeredSlides: false,
-                                    },
-                                    640: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 20,
-                                        centeredSlides: false,
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 24,
-                                        centeredSlides: false,
-                                    },
-                                    1024: {
-                                        slidesPerView: 2.5,
-                                        spaceBetween: 30,
-                                        centeredSlides: true,
-                                    },
-                                    1280: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 30,
-                                        centeredSlides: true,
-                                    },
+                                    1024: { slidesPerView: 1.08, centeredSlides: true },
+                                    1280: { slidesPerView: 1.1, centeredSlides: true },
                                 }}
                             >
                                 {filteredProjects.map((project) => (
                                     <SwiperSlide key={project.id} className="!h-auto">
-                                        <motion.div
-                                            className={`${project.featured ? 'card-glass-featured' : 'card-glass'} overflow-hidden group h-full flex flex-col w-full mx-auto`}
-                                            whileHover={{ y: -8 }}
-                                            transition={{ duration: 0.3 }}
-                                        >
-                                            {/* Project Image/Icon Header */}
-                                            <div className={`relative h-48 flex items-center justify-center text-8xl ${
-                                                project.featured
-                                                    ? 'bg-gradient-to-br from-primary-600 via-emerald-500 to-blue-600'
-                                                    : 'bg-gradient-to-br from-primary-500 to-blue-600'
-                                            }`}>
-                                                {/* Featured badge */}
-                                                {project.featured && (
-                                                    <div className="absolute top-3 left-3 z-10">
-                                                        <span className="badge-featured">
-                                                            <FaStar size={10} />
-                                                            Destaque
-                                                        </span>
-                                                    </div>
-                                                )}
-
-                                                {/* Category badge */}
-                                                <div className="absolute top-3 right-3 z-10">
-                                                    <span className={`badge-category ${getCategoryColor(project.category)}`}>
-                                                        {getCategoryLabel(project.category)}
-                                                    </span>
-                                                </div>
-
-                                                {project.image}
-
-                                                {/* Hover overlay with links */}
-                                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                                    {project.github && (
-                                                        <motion.a
-                                                            href={project.github}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            data-tracking-id={`project-${project.name.toLowerCase().replace(/\s+/g, '-')}`}
-                                                            className="p-3 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
-                                                            whileHover={{ rotate: 360 }}
-                                                            transition={{ duration: 0.3 }}
-                                                        >
-                                                            <FaGithub size={24} />
-                                                        </motion.a>
-                                                    )}
-                                                    {project.demo && (
-                                                        <motion.a
-                                                            href={project.demo}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            data-tracking-id={`project-demo-${project.name.toLowerCase().replace(/\s+/g, '-')}`}
-                                                            className="p-3 bg-white rounded-full text-gray-900 hover:scale-110 transition-transform"
-                                                            whileHover={{ rotate: 360 }}
-                                                            transition={{ duration: 0.3 }}
-                                                        >
-                                                            <FaExternalLinkAlt size={20} />
-                                                        </motion.a>
-                                                    )}
-                                                </div>
-                                            </div>
-
-                                            {/* Project Content */}
-                                            <div className="p-6 flex-1 flex flex-col">
-                                                <div className="flex items-start justify-between mb-2">
-                                                    <div>
-                                                        <h3 className="text-2xl font-bold gradient-text">{project.name}</h3>
-                                                        {project.subtitle && (
-                                                            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium mt-0.5">
-                                                                {project.subtitle}
-                                                            </p>
-                                                        )}
-                                                    </div>
-                                                    {project.isPrivate && (
-                                                        <span className="badge-private">
-                                                            <FaLock size={10} /> Privado
-                                                        </span>
-                                                    )}
-                                                </div>
-
-                                                <p className="text-gray-700 dark:text-gray-300 mb-4 text-pretty">
-                                                    {project.description}
-                                                </p>
-
-                                                {/* Problem & Learning */}
-                                                <div className="space-y-2 mb-4 flex-1">
-                                                    <div className="text-sm">
-                                                        <span className="font-semibold text-primary-500">🎯 Problema:</span>
-                                                        <p className="text-gray-600 dark:text-gray-400 mt-1">{project.problem}</p>
-                                                    </div>
-                                                    <div className="text-sm">
-                                                        <span className="font-semibold text-primary-500">💡 Aprendizado:</span>
-                                                        <p className="text-gray-600 dark:text-gray-400 mt-1">{project.learning}</p>
-                                                    </div>
-                                                </div>
-
-                                                {/* Highlights for featured projects */}
-                                                {project.highlights && (
-                                                    <div className="flex flex-wrap gap-1.5 mb-4">
-                                                        {project.highlights.map((h, i) => (
-                                                            <span
-                                                                key={i}
-                                                                className="text-xs px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-md font-medium"
-                                                            >
-                                                                {h}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                )}
-
-                                                {/* Technologies */}
-                                                <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-gray-100 dark:border-dark-border">
-                                                    {project.technologies.map((tech, i) => (
-                                                        <motion.div
-                                                            key={i}
-                                                            className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-100 dark:bg-dark-border rounded-full text-sm"
-                                                            whileHover={{ scale: 1.05 }}
-                                                        >
-                                                            {getTechIcon(tech)}
-                                                            <span className="text-xs font-medium">{tech}</span>
-                                                        </motion.div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </motion.div>
+                                        <ProjectCard project={project} />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
                         </motion.div>
                     </AnimatePresence>
-                </ScrollReveal>
+                </div>
 
-                {/* CTA */}
-                <ScrollReveal variant="fadeIn" once={true} className="text-center mt-12">
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                        Quer ver mais projetos?
-                    </p>
-                    <a
-                        href="https://github.com/ronaldornd"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tracking-id="github-profile"
-                        className="btn-primary inline-flex items-center gap-2"
-                    >
-                        <FaGithub />
-                        Visitar meu GitHub
+                {/* CTA footer */}
+                <div className="flex items-center justify-between text-xs text-gray-500 flex-shrink-0">
+                    <span>{filteredProjects.length} projeto{filteredProjects.length !== 1 ? 's' : ''} exibido{filteredProjects.length !== 1 ? 's' : ''}</span>
+                    <a href="https://github.com/ronaldornd" target="_blank" rel="noopener noreferrer"
+                        data-tracking-id="github-profile" className="inline-flex items-center gap-1.5 text-primary-500 hover:text-primary-400 font-semibold transition-colors">
+                        <FaGithub size={12} />Ver mais no GitHub
                     </a>
-                </ScrollReveal>
-            </div>
+                </div>
+            </motion.div>
         </section>
     );
 };

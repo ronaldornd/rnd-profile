@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion';
-import { FaCode, FaCoffee, FaMusic, FaLaptopCode } from 'react-icons/fa';
+import { FaCode, FaCoffee, FaMusic, FaLaptopCode, FaCheckCircle } from 'react-icons/fa';
 import ScrollReveal from './ScrollReveal';
 
 const About = () => {
+    const journey = [
+        { icon: '🎓', title: 'Desenvolvimento Web para Internet', org: 'IFPE', period: '2022–2024', desc: 'Técnico em Informática para Internet' },
+        { icon: '👨‍🏫', title: 'Monitor de Disciplina', org: 'IFPE', period: '2023–2024', desc: 'Ensino técnico · Nota 9.5 de avaliação' },
+        { icon: '🔧', title: 'Suporte & Manuteno Freelance', org: 'Autônomo', period: '2022–2024', desc: 'Manutenção, suporte remoto, Windows/Linux' },
+        { icon: '💻', title: 'Desenvolvedor Web', org: 'Projetos pessoais', period: '2023–Atual', desc: 'React, Node.js, PostgreSQL, IA' },
+    ];
+
     const interests = [
         { icon: <FaCode />, text: 'Desenvolvimento' },
         { icon: <FaCoffee />, text: 'Café' },
@@ -10,165 +17,134 @@ const About = () => {
         { icon: <FaLaptopCode />, text: 'Design' },
     ];
 
-    const journeyItems = [
-        {
-            title: 'Curso Técnico - IFPE',
-            description: 'Formação em Informática para Internet, onde descobri minha paixão por desenvolvimento.',
-            icon: '🎓',
-        },
-        {
-            title: 'Monitor de Disciplina',
-            description: 'Experiência ajudando outros alunos, desenvolvendo habilidades de comunicação e ensino (nota 9.5).',
-            icon: '👨‍🏫',
-        },
-        {
-            title: 'Manutenção e Suporte',
-            description: 'Trabalhos freelance resolvendo problemas técnicos e mantendo sistemas funcionando.',
-            icon: '🔧',
-        },
-        {
-            title: 'Desenvolvimento Web',
-            description: 'Migração para o mundo do desenvolvimento, focando em React, Node.js e PostgreSQL.',
-            icon: '💻',
-        },
+    const facts = [
+        '💪 Já resolvi bugs às 3h da manhã só por teimosia.',
+        '☕ Combustível oficial: café e música lofi.',
+        '🎯 Aprendizado contínuo é um valor pessoal.',
     ];
 
+    const containerAnim = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } } };
+    const item = { hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
+
     return (
-        <section id="about" className="section-container bg-gray-50 dark:bg-dark-card/30">
-            <div className="max-w-4xl mx-auto">
-                {/* Header */}
-                <ScrollReveal variant="slideUp">
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-                        Quem é <span className="gradient-text">Ronaldo</span>?
-                    </h2>
-                    <p className="text-center text-gray-600 dark:text-gray-400 mb-12">
-                        Um pouco sobre minha jornada
-                    </p>
-                </ScrollReveal>
+        <section id="about" className="h-full flex flex-col justify-center px-4 md:px-8 py-4 overflow-hidden">
+            <motion.div
+                className="max-w-6xl mx-auto w-full grid md:grid-cols-3 gap-5 items-start"
+                variants={containerAnim}
+                initial="hidden"
+                animate="visible"
+            >
+                {/* COLUMN 1 — Photo + bio */}
+                <motion.div variants={item} className="flex flex-col gap-4">
+                    {/* Section label */}
+                    <div>
+                        <p className="text-xs text-primary-500 font-bold uppercase tracking-widest mb-1">Sobre mim</p>
+                        <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+                            Quem é <span className="gradient-text">Ronaldo</span>?
+                        </h2>
+                    </div>
 
-                {/* Main Content Grid */}
-                <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
-                    {/* Image/Avatar Side */}
-                    <ScrollReveal variant="slideLeft">
-                        <div className="flex justify-center">
-                            <div className="relative">
-                                <motion.div
-                                    className="w-64 h-64 rounded-2xl bg-gradient-to-br from-primary-500 to-blue-600 p-1"
-                                    whileHover={{ scale: 1.05, rotate: 3 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <div className="w-full h-full rounded-2xl bg-gray-200 dark:bg-dark-card flex items-center justify-center text-8xl font-bold gradient-text">
-                                        <img
-                                            src="https://github.com/ronaldornd.png"
-                                            alt="Ronaldo"
-                                            className="w-full h-full rounded-full object-cover"
-                                        />
-                                    </div>
-                                </motion.div>
-                                {/* Floating elements */}
-                                <motion.div
-                                    className="absolute -top-4 -right-4 bg-primary-500 text-white p-3 rounded-lg shadow-lg"
-                                    animate={{ y: [0, -10, 0] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                >
-                                    💻
-                                </motion.div>
-                                <motion.div
-                                    className="absolute -bottom-4 -left-4 bg-blue-600 text-white p-3 rounded-lg shadow-lg"
-                                    animate={{ y: [0, -10, 0] }}
-                                    transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                                >
-                                    🚀
-                                </motion.div>
-                            </div>
+                    {/* Photo */}
+                    <motion.div
+                        className="relative w-36 h-36 md:w-44 md:h-44"
+                        whileHover={{ scale: 1.04, rotate: 1 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <div className="w-full h-full rounded-2xl bg-gradient-to-br from-primary-500 to-blue-600 p-0.5">
+                            <img src="https://github.com/ronaldornd.png" alt="Ronaldo" className="w-full h-full rounded-2xl object-cover" />
                         </div>
-                    </ScrollReveal>
+                        <motion.div className="absolute -top-3 -right-3 bg-primary-500 text-white p-2 rounded-lg shadow-lg text-sm" animate={{ y: [0, -6, 0] }} transition={{ duration: 2, repeat: Infinity }}>💻</motion.div>
+                        <motion.div className="absolute -bottom-3 -left-3 bg-blue-600 text-white p-2 rounded-lg shadow-lg text-sm" animate={{ y: [0, -6, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 1 }}>🚀</motion.div>
+                    </motion.div>
 
-                    {/* Text Side */}
-                    <ScrollReveal variant="slideRight">
-                        <div className="space-y-4">
-                            <p className="text-lg text-gray-700 dark:text-gray-300">
-                                Sou um <span className="font-semibold gradient-text">criador curioso</span> que
-                                começou desmontando computadores e hoje reconstrói ideias com código.
-                            </p>
-                            <p className="text-lg text-gray-700 dark:text-gray-300">
-                                Gosto de unir <span className="font-semibold text-primary-500">lógica e arte</span> —
-                                da tela ao sistema.
-                            </p>
-                            <div className="card-glass p-6 mt-6">
-                                <h3 className="text-xl font-bold mb-3 gradient-text">Minha Missão</h3>
-                                <p className="text-gray-700 dark:text-gray-300">
-                                    Aprender sempre, compartilhar conhecimento e criar soluções acessíveis
-                                    que fazem a diferença na vida das pessoas.
-                                </p>
-                            </div>
+                    {/* Bio */}
+                    <div className="space-y-2">
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                            Sou um <span className="font-semibold gradient-text">criador curioso</span> que começou desmontando computadores e hoje reconstrói ideias com código. Gosto de unir <span className="font-semibold text-primary-500">lógica e arte</span> — da tela ao sistema.
+                        </p>
+                        <div className="card-glass p-3">
+                            <p className="text-xs font-bold text-primary-500 mb-1">🎯 Minha Missão</p>
+                            <p className="text-xs text-gray-600 dark:text-gray-400">Aprender sempre, compartilhar conhecimento e criar soluções acessíveis que fazem a diferença.</p>
                         </div>
-                    </ScrollReveal>
-                </div>
+                    </div>
+                </motion.div>
 
-                {/* Journey Timeline */}
-                <ScrollReveal variant="slideUp" className="mb-12">
-                    <h3 className="text-2xl font-bold mb-6 text-center">Minha Trajetória</h3>
-                    <div className="space-y-6">
-                        {journeyItems.map((item, index) => (
-                            <ScrollReveal key={index} variant="slideLeft" delay={index * 0.1}>
+                {/* COLUMN 2 — Journey timeline */}
+                <motion.div variants={item} className="flex flex-col gap-4">
+                    <p className="text-xs text-primary-500 font-bold uppercase tracking-widest">Trajetória</p>
+                    <div className="relative">
+                        <div className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-primary-500 to-blue-600" />
+                        <div className="space-y-3 pl-10">
+                            {journey.map((j, i) => (
                                 <motion.div
-                                    className="card-glass p-6 flex gap-4"
-                                    whileHover={{ scale: 1.02, x: 10 }}
-                                    transition={{ duration: 0.2 }}
+                                    key={i}
+                                    className="relative card-glass p-3 group"
+                                    whileHover={{ x: 4 }}
+                                    transition={{ duration: 0.18 }}
                                 >
-                                    <div className="text-4xl">{item.icon}</div>
-                                    <div>
-                                        <h4 className="text-xl font-bold mb-2 text-primary-500">{item.title}</h4>
-                                        <p className="text-gray-600 dark:text-gray-400">{item.description}</p>
+                                    <div className="absolute -left-7 top-1/2 -translate-y-1/2 w-4 h-4 bg-primary-500 rounded-full border-2 border-dark-bg flex items-center justify-center text-xs">{j.icon}</div>
+                                    <p className="text-xs font-bold text-gray-800 dark:text-gray-200 leading-tight">{j.title}</p>
+                                    <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                                        {j.org && <span className="text-xs text-primary-500 font-semibold">{j.org}</span>}
+                                        {j.period && <span className="text-xs text-gray-400 bg-gray-100 dark:bg-dark-border px-1.5 py-0.5 rounded font-mono">{j.period}</span>}
                                     </div>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{j.desc}</p>
                                 </motion.div>
-                            </ScrollReveal>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </ScrollReveal>
+                </motion.div>
 
-                {/* Fun Facts */}
-                <ScrollReveal variant="scale" className="mb-12">
-                    <h3 className="text-2xl font-bold mb-6 text-center">Curiosidades</h3>
-                    <div className="grid md:grid-cols-2 gap-4">
-                        <motion.div
-                            className="card-glass p-6"
-                            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59,130,246,0.2)" }}
-                        >
-                            <p className="text-gray-700 dark:text-gray-300">
-                                💪 Já resolvi bugs às <span className="font-bold text-primary-500">3h da manhã</span> só por teimosia.
-                            </p>
-                        </motion.div>
-                        <motion.div
-                            className="card-glass p-6"
-                            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(34,197,94,0.2)" }}
-                        >
-                            <p className="text-gray-700 dark:text-gray-300">
-                                ☕ Combustível oficial: <span className="font-bold text-primary-500">café</span> e música.
-                            </p>
-                        </motion.div>
+                {/* COLUMN 3 — Curiosidades + interesses */}
+                <motion.div variants={item} className="flex flex-col gap-4">
+                    {/* Facts */}
+                    <div>
+                        <p className="text-xs text-primary-500 font-bold uppercase tracking-widest mb-2">Curiosidades</p>
+                        <div className="space-y-2">
+                            {facts.map((f, i) => (
+                                <motion.div
+                                    key={i}
+                                    className="card-glass p-3 text-sm text-gray-700 dark:text-gray-300"
+                                    whileHover={{ x: 3 }}
+                                    transition={{ duration: 0.15 }}
+                                >
+                                    {f}
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
-                </ScrollReveal>
 
-                {/* Interests */}
-                <ScrollReveal variant="slideUp">
-                    <h3 className="text-2xl font-bold mb-6 text-center">Interesses</h3>
-                    <div className="flex flex-wrap justify-center gap-4">
-                        {interests.map((interest, index) => (
-                            <motion.div
-                                key={index}
-                                className="card-glass px-6 py-3 flex items-center gap-3"
-                                whileHover={{ scale: 1.1, rotate: 2 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <span className="text-primary-500 text-xl">{interest.icon}</span>
-                                <span className="font-semibold">{interest.text}</span>
-                            </motion.div>
-                        ))}
+                    {/* Interests */}
+                    <div>
+                        <p className="text-xs text-primary-500 font-bold uppercase tracking-widest mb-2">Interesses</p>
+                        <div className="grid grid-cols-2 gap-2">
+                            {interests.map((interest, i) => (
+                                <motion.div
+                                    key={i}
+                                    className="card-glass px-3 py-2 flex items-center gap-2"
+                                    whileHover={{ scale: 1.04, rotate: 1 }}
+                                    whileTap={{ scale: 0.96 }}
+                                >
+                                    <span className="text-primary-500 text-base">{interest.icon}</span>
+                                    <span className="font-semibold text-xs">{interest.text}</span>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
-                </ScrollReveal>
-            </div>
+
+                    {/* Mini skill tags */}
+                    <div>
+                        <p className="text-xs text-primary-500 font-bold uppercase tracking-widest mb-2">Foco atual</p>
+                        <div className="flex flex-wrap gap-1.5">
+                            {['TypeScript', 'Next.js', 'IA', 'Docker', 'Testing'].map(s => (
+                                <span key={s} className="px-2.5 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs rounded-full font-medium">
+                                    {s}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </motion.div>
+            </motion.div>
         </section>
     );
 };
